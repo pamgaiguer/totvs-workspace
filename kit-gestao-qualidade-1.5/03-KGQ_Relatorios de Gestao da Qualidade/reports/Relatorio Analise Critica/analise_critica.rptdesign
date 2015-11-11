@@ -2,12 +2,6 @@
 <report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
     <property name="createdBy">Eclipse BIRT Designer Version 4.4.2.v201410272105 Build &lt;4.4.2.v20150217-1805></property>
     <property name="units">in</property>
-    <method name="initialize"><![CDATA[importPackage(Packages.com.datasul.technology.webdesk.dataset.service);
-importPackage(Packages.com.datasul.technology.webdesk.dataset);
-importPackage(Packages.com.datasul.technology.webdesk.search.controller);
-importPackage(Packages.java.util);
-var count = 0;
-var dataset = null;]]></method>
     <property name="iconFile">/templates/blank_report.gif</property>
     <property name="layoutPreference">auto layout</property>
     <property name="bidiLayoutOrientation">ltr</property>
@@ -38,17 +32,16 @@ var dataset = null;]]></method>
             </structure>
         </scalar-parameter>
         <scalar-parameter name="_nmArea" id="599">
-            <text-property name="promptText">Informe a area da ocorrência</text-property>
+            <text-property name="promptText">Informe a Ã¡rea da ocorrência</text-property>
             <property name="valueType">dynamic</property>
             <property name="isRequired">true</property>
-            <property name="dataSetName">dataset_areas_2</property>
+            <property name="dataSetName">dataset_areas</property>
             <expression name="valueExpr" type="javascript">dataSetRow["nmArea"]</expression>
             <expression name="labelExpr" type="javascript">dataSetRow["nmArea"]</expression>
             <expression name="sortByColumn">dataSetRow["nmArea"]</expression>
             <property name="sortDirection">asc</property>
             <property name="dataType">string</property>
             <property name="distinct">true</property>
-            <list-property name="selectionList"/>
             <property name="paramType">simple</property>
             <property name="controlType">list-box</property>
             <property name="mustMatch">true</property>
@@ -59,7 +52,32 @@ var dataset = null;]]></method>
         </scalar-parameter>
     </parameters>
     <data-sources>
-        <script-data-source name="ds_analise_critica" id="923"/>
+        <script-data-source name="ds_analise_critica" id="7">
+            <method name="beforeOpen"><![CDATA[importPackage(Packages.com.datasul.technology.webdesk.dataset.service);
+importPackage(Packages.com.datasul.technology.webdesk.dataset);
+importPackage(Packages.com.datasul.technology.webdesk.search.controller);
+
+
+factory = DatasetFactory.getInstance(${WKCompany});
+datasetAnaliseCritica = null;
+datasetAreas = null;
+count = 0;
+constraintActive = factory.createConstraint("metadata#active", true, true, ConstraintType.MUST);
+
+getStatus = function(status){
+	if(status.equals("ativo")){
+		return "Em andamento";
+	} else if(status.equals("cancelado")){
+		return "Cancelado";
+	} else if(status.equals("finalizado")){
+		return "Finalizado";
+	} else{
+		return "";
+	}
+} 
+
+]]></method>
+        </script-data-source>
     </data-sources>
     <data-sets>
         <script-data-set name="dataset_analise_critica" id="8">
@@ -475,34 +493,42 @@ var dataset = null;]]></method>
                 </list-property>
             </structure>
             <method name="beforeOpen"><![CDATA[java.lang.System.out.println("dataset_analise_critica.beforeOpen(): getting dataset");
+
 try {
 	count = 0;
 	var constraintsAnaliseCritica = new Array();
 	constraintsAnaliseCritica.push(constraintActive);		
 	
-	var constraintOcorrencia = new function(){
-		var ocorrenciaInicial = null;
-		if(params["_cdOcorrenciaInicial"].value != null &amp;&amp; !params["_cdOcorrenciaInicial"].value.equals("")) {
-			var ocorrenciaInicial = params["_cdOcorrenciaInicial"].value;
-		}
-		
-		var ocorrenciaFinal = null;
-		if(params["_cdOcorrenciaFinal"].value != null &amp;&amp; !params["_cdOcorrenciaFinal"].value.equals("")) {
-			var ocorrenciaFinal = params["_cdOcorrenciaFinal"].value;
-		}
-		return factory.createConstraint("cdOcorrencia", ocorrenciaInicial, ocorrenciaFinal, ConstraintType.MUST);
-	};
+	var ocorrenciaInicial = null;
+	var ocorrenciaFinal = null;
+	var constraintOcorrencia = null;	
 	
-	var constraintArea = new function(){
-		return factory.createConstraint("nmArea", params["_nmArea"], params["_nmArea"], ConstraintType.MUST);
-	};
+	if(params["_cdOcorrenciaInicial"].value != null &amp;&amp; !params["_cdOcorrenciaInicial"].value.equals("")) {
+		ocorrenciaInicial = params["_cdOcorrenciaInicial"].value;
+	}
+	if(params["_cdOcorrenciaFinal"].value != null &amp;&amp; !params["_cdOcorrenciaFinal"].value.equals("")) {
+		ocorrenciaFinal = params["_cdOcorrenciaFinal"].value;
+	}
+	
+	if (ocorrenciaInicial!= null &amp;&amp; ocorrenciaFinal != null){
+		constraintOcorrencia = factory.createConstraint("cdOcorrencia", ocorrenciaInicial, ocorrenciaFinal, ConstraintType.MUST);
+	}else if (ocorrenciaInicial!= null || ocorrenciaFinal == null){
+		constraintOcorrencia = factory.createConstraint("cdOcorrencia", ocorrenciaInicial, ocorrenciaInicial, ConstraintType.MUST);	
+	}else if (ocorrenciaInicial== null || ocorrenciaFinal != null){
+		constraintOcorrencia = factory.createConstraint("cdOcorrencia", ocorrenciaFinal, ocorrenciaFinal, ConstraintType.MUST);	
+	}
+
+	var constraintArea = factory.createConstraint("nmArea", params["_nmArea"], params["_nmArea"], ConstraintType.MUST);
 	
 	java.lang.System.out.println("dataset_analise_critica.beforeOpen(): constraintOcorrencia: " + constraintOcorrencia);
 	
-	constraintsAnaliseCritica.push(constraintOcorrencia);
+	if ((ocorrenciaInicial != null ) || (ocorrenciaFinal !=null) ){
+		constraintsAnaliseCritica.push(constraintOcorrencia);
+	}
 	constraintsAnaliseCritica.push(constraintArea);
 	
 	var sortingFields = new Array("cdOcorrencia");
+	java.lang.System.out.println("#>>>" + constraintsAnaliseCritica);
 	datasetAnaliseCritica = factory.getDataset("ecm_kgq_analise_critica", null, constraintsAnaliseCritica, sortingFields);
 }
 catch (e) {
@@ -510,11 +536,12 @@ catch (e) {
 }
 java.lang.System.out.println("dataset_analise_critica.beforeOpen(): dataset OK");]]></method>
             <property name="dataSource">ds_analise_critica</property>
-            <method name="fetch"><![CDATA[if (datasetAnaliseCritica != null) {
+            <method name="fetch"><![CDATA[
+if (datasetAnaliseCritica != null) {
 	if (count <	datasetAnaliseCritica.rowsCount) {
 		row["cdOcorrencia"] = datasetAnaliseCritica.getValue(count, "cdOcorrencia");
 		row["dsOcorrencia"] = datasetAnaliseCritica.getValue(count, "dsOcorrencia");
-		row["statusOcorrencia"] = getStatus(datasetAnaliseCritica.getValue(count, "statusOcorrencia"));
+		row["statusOcorrencia"] = datasetAnaliseCritica.getValue(count, "statusOcorrencia");
 		row["dtRegistro"] = datasetAnaliseCritica.getValue(count, "dtRegistro");		
 		row["dtOcorrencia"] = datasetAnaliseCritica.getValue(count, "dtOcorrencia");
 		row["nmTipoAcao"] = datasetAnaliseCritica.getValue(count, "nmTipoAcao");
@@ -524,7 +551,7 @@ java.lang.System.out.println("dataset_analise_critica.beforeOpen(): dataset OK")
 		row["nmCriticidade"] = datasetAnaliseCritica.getValue(count, "nmCriticidade");
 		
 		var fgContencao = datasetAnaliseCritica.getValue(count, "fgContencao");
-		if(fgContencao.equals("")){
+		if(fgContencao == ""){
 			row["fgContencao"] = "Não";
 		}
 		else{
@@ -532,7 +559,7 @@ java.lang.System.out.println("dataset_analise_critica.beforeOpen(): dataset OK")
 		}
 		
 		var fgOcorrenciaReincidente = datasetAnaliseCritica.getValue(count, "fgOcorrenciaReincidente");
-		if(fgOcorrenciaReincidente.equals("")){
+		if(fgOcorrenciaReincidente == ""){
 			row["fgOcorrenciaReincidente"] = "Não";
 		}
 		else{
@@ -571,7 +598,7 @@ java.lang.System.out.println("dataset_analise_critica.beforeOpen(): dataset OK")
         <script-data-set name="dataset_areas" id="598">
             <list-property name="resultSetHints">
                 <structure>
-                    <property name="position">1</property>
+                    <property name="position">0</property>
                     <property name="name">nmArea</property>
                     <property name="dataType">string</property>
                 </structure>
@@ -592,24 +619,21 @@ java.lang.System.out.println("dataset_analise_critica.beforeOpen(): dataset OK")
             </structure>
             <method name="beforeOpen"><![CDATA[java.lang.System.out.println("dataset_areas.beforeOpen(): getting dataset");
 try {
-	var factory = DatasetFactory.getInstance(1);
+	count = 0;
 	java.lang.System.err.println("this.factory.getClass() " + factory);
 	var constraintsAreas = new Array();
 	constraintsAreas.push(constraintActive);
 		
-//	var sortingFields = new Array("cdOcorrencia");
-	dataset = factory.getDataset("ecm_kgq_areas", null, constraintsAreas, sortingFields);
-
+	datasetAreas = factory.getDataset("ecm_kgq_areas", null, constraintsAreas, null);	
 }
 catch (e) {
 	java.lang.System.err.println(">>dataset_area.beforeOpen: " + e);	
-}finally{
 }
 java.lang.System.out.println("dataset_areas.beforeOpen(): dataset OK");]]></method>
             <property name="dataSource">ds_analise_critica</property>
             <method name="fetch"><![CDATA[java.lang.System.out.println("dataset_areas.fecth: datasetAreas: " + datasetAreas);
 if (datasetAreas != null) {
-	java.lang.System.out.println("dataset_areas.fecth - count: "+count + " datasetAreas.rowsCount: " + datasetAreas.rowsCount);
+	java.lang.System.out.println("<<<dataset_areas.fecth - count: "+count + " datasetAreas.rowsCount: " + datasetAreas.rowsCount);
 	if (count <	datasetAreas.rowsCount) {
 		row["nmArea"] = datasetAreas.getValue(count, "nmArea");		
 		count++;
@@ -618,53 +642,6 @@ if (datasetAreas != null) {
 	return false;
 }
 ]]></method>
-        </script-data-set>
-        <script-data-set name="dataset_areas_2" id="924">
-            <list-property name="resultSetHints">
-                <structure>
-                    <property name="position">0</property>
-                    <property name="name">nmArea</property>
-                    <property name="dataType">string</property>
-                </structure>
-            </list-property>
-            <list-property name="columnHints">
-                <structure>
-                    <property name="columnName">nmArea</property>
-                </structure>
-            </list-property>
-            <structure name="cachedMetaData">
-                <list-property name="resultSet">
-                    <structure>
-                        <property name="position">1</property>
-                        <property name="name">nmArea</property>
-                        <property name="dataType">string</property>
-                    </structure>
-                </list-property>
-            </structure>
-            <method name="beforeOpen"><![CDATA[try{
-    var factory = DatasetFactory.getInstance(${WKCompany});
-    var constraints = new Array(); 
-    var sortingFields = new Array();
-    var i = 0; 
-    
-     dataset = factory.getDataset("ecm_kgq_areas", null, constraints, sortingFields);
-     
-    }catch (e) {
-}finally {
-}]]></method>
-            <property name="dataSource">ds_analise_critica</property>
-            <method name="fetch"><![CDATA[if (dataset != null) {
-    if (count <  dataset.rowsCount){
-        //monta o objeto da linha
-        row["nmArea"] = dataset.getValue(count, "nmArea");
-
-        //Atualiza o contador 
-        count++;
-        return true;
-    }
-}
-return false;
-    ]]></method>
         </script-data-set>
     </data-sets>
     <styles>

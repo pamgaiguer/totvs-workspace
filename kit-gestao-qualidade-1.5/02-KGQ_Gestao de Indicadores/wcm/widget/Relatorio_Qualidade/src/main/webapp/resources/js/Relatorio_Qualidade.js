@@ -113,7 +113,7 @@ var applicationCodeObj = SuperWidget.extend({
 		
 		var Constraints = new Array(c1);
 		
-		var dataset = DatasetFactory.getDataset1111("ds_indicadores", null, Constraints, null);
+		var dataset = DatasetFactory.getDataset("ds_indicadores", null, Constraints, null);
 		
 		for(var i = 0; i < dataset.values.length; i++){
 			if(dataset.values[i].goalType == 0){
