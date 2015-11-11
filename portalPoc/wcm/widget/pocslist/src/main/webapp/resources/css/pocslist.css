@@ -1,0 +1,24 @@
+[appcode=pocslist] td.details-control:before {
+    content: "\E062";
+}
+[appcode=pocslist] td.details-control {
+    position: relative;
+    top: 7px;
+    line-height: 1;
+    display: block;
+    font-family: 'Fluig Icons';
+    font-style: normal;
+    font-weight: 400;
+    border-top: 0px !important;
+    text-align: center;
+    cursor: pointer;
+}
+[appcode=pocslist] td {
+    vertical-align: middle !important;
+} 
+[appcode=pocslist] td.details-control {    
+    height: 26px;
+}
+[appcode=pocslist] [data-openmodal] {
+	cursor: pointer;
+}

@@ -1,0 +1,22 @@
+application.type=layout
+application.code=poclayout
+application.title=POC Layout
+application.description=Layout utilizado no Portal das POCs
+application.category=Portal das POCs
+application.renderer=freemarker
+application.icon=icon.png
+
+layout.defaultSlot=SlotA
+layout.file=layout.ftl
+locale.file.base.name=poclayout
+
+developer.code=brunobulnes
+developer.name=Bruno Bulnes
+developer.url=http://brunobulnes.tumblr.com
+
+slot.SlotChat=socialchat
+slot.SlotGlobalAlert=alertpopover
+slot.SlotInstantSearch=suggestsearch
+slot.SlotLogin=sociallogin
+slot.SlotUsePolicy=usepolicy
+slot.SlotMessagingNotify=socialmessagingnotify
