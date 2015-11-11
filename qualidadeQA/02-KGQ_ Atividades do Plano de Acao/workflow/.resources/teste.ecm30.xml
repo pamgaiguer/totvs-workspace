@@ -1,0 +1,1002 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.7.0" class="java.beans.XMLDecoder">
+ <object class="java.util.ArrayList">
+  <void method="add">
+   <object class="com.datasul.technology.webdesk.workflow.model.ProcessDefinition">
+    <void property="active">
+     <boolean>true</boolean>
+    </void>
+    <void property="baseDay">
+     <int>0</int>
+    </void>
+    <void property="baseMonth">
+     <int>0</int>
+    </void>
+    <void property="categoryId">
+     <string>Kit Gestão da Qualidade</string>
+    </void>
+    <void property="instruction">
+     <string>Elaboração das atividades cadastradas no plano de ação.</string>
+    </void>
+    <void property="periodId">
+     <string>Default</string>
+    </void>
+    <void property="processDefinitionPK">
+     <object class="com.datasul.technology.webdesk.workflow.model.ProcessDefinitionPK">
+      <void property="companyId">
+       <int>1</int>
+      </void>
+      <void property="processId">
+       <string>ecm_kgq_apa</string>
+      </void>
+     </object>
+    </void>
+    <void property="processDescription">
+     <string>Atividade do Plano de Ação</string>
+    </void>
+    <void property="publicProcess">
+     <boolean>false</boolean>
+    </void>
+    <void property="snapshotFrequency">
+     <int>0</int>
+    </void>
+    <void property="volumeId">
+     <string>Default</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.datasul.technology.webdesk.workflow.model.ProcessDefinitionVersion">
+    <void property="active">
+     <boolean>true</boolean>
+    </void>
+    <void property="counterSign">
+     <boolean>false</boolean>
+    </void>
+    <void property="editionMode">
+     <boolean>true</boolean>
+    </void>
+    <void property="formId">
+     <int>13</int>
+    </void>
+    <void property="processDefinitionVersionPK">
+     <object class="com.datasul.technology.webdesk.workflow.model.ProcessDefinitionVersionPK">
+      <void property="companyId">
+       <int>1</int>
+      </void>
+      <void property="processId">
+       <string>Atividade do Plano de Ação</string>
+      </void>
+      <void property="version">
+       <int>1</int>
+      </void>
+     </object>
+    </void>
+    <void property="versionDescription">
+     <string>Nova Versão.</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="java.util.ArrayList">
+    <void method="add">
+     <object class="com.datasul.technology.webdesk.workflow.model.ProcessState">
+      <void property="agreementPercentage">
+       <int>0</int>
+      </void>
+      <void property="allowanceAuthorityTime">
+       <int>3600</int>
+      </void>
+      <void property="allowanceManagerTime">
+       <int>0</int>
+      </void>
+      <void property="allowanceRequisitionerTime">
+       <int>0</int>
+      </void>
+      <void property="counterSign">
+       <boolean>false</boolean>
+      </void>
+      <void property="deadlineTime">
+       <int>0</int>
+      </void>
+      <void property="engineAllocationId">
+       <string></string>
+      </void>
+      <void property="forecastedEffort">
+       <int>0</int>
+      </void>
+      <void property="forecastedEffortType">
+       <int>0</int>
+      </void>
+      <void property="formFolder">
+       <int>0</int>
+      </void>
+      <void property="frequenceAuthorityTime">
+       <int>3600</int>
+      </void>
+      <void property="frequenceManagerTime">
+       <int>0</int>
+      </void>
+      <void property="frequenceRequisitionerTime">
+       <int>0</int>
+      </void>
+      <void property="inhibitTransfer">
+       <boolean>false</boolean>
+      </void>
+      <void property="initialState">
+       <boolean>true</boolean>
+      </void>
+      <void property="instruction">
+       <string>Iniciar o preenchimento do formulário do subprocesso de “Atividades do Plano de Ação&quot; após tomar conhecimento pelo responsável do processo de “Plano de Ação&quot;. 
+
+Obs.: Sem a finalização deste subprocesso não será permitido encerrar o processo do “Plano de Ação&quot;.</string>
+      </void>
+      <void property="joint">
+       <boolean>false</boolean>
+      </void>
+      <void property="notifyAuthorityDelay">
+       <boolean>true</boolean>
+      </void>
+      <void property="notifyAuthorityFollowUp">
+       <boolean>true</boolean>
+      </void>
+      <void property="notifyManagerDelay">
+       <boolean>false</boolean>
+      </void>
+      <void property="notifyManagerFollowUp">
+       <boolean>false</boolean>
+      </void>
+      <void property="notifyRequisitionerDelay">
+       <boolean>false</boolean>
+      </void>
+      <void property="notifyRequisitionerFollowUp">
+       <boolean>false</boolean>
+      </void>
+      <void property="periodId">
+       <string>Default</string>
+      </void>
+      <void property="positionX">
+       <int>200</int>
+      </void>
+      <void property="positionY">
+       <int>61</int>
+      </void>
+      <void property="processStatePK">
+       <object class="com.datasul.technology.webdesk.workflow.model.ProcessStatePK">
+        <void property="companyId">
+         <int>1</int>
+        </void>
+        <void property="processId">
+         <string>ecm_kgq_apa</string>
+        </void>
+        <void property="sequence">
+         <int>1</int>
+        </void>
+        <void property="version">
+         <int>1</int>
+        </void>
+       </object>
+      </void>
+      <void property="selectColleague">
+       <int>0</int>
+      </void>
+      <void property="stateDescription">
+       <string>Tomar Conhecimento</string>
+      </void>
+      <void property="stateName">
+       <string>Tomar Conhecimento</string>
+      </void>
+      <void property="stateType">
+       <int>0</int>
+      </void>
+      <void property="subProcessId">
+       <string></string>
+      </void>
+      <void property="transferAttachments">
+       <boolean>false</boolean>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.datasul.technology.webdesk.workflow.model.ProcessState">
+      <void property="agreementPercentage">
+       <int>0</int>
+      </void>
+      <void property="allowanceAuthorityTime">
+       <int>3600</int>
+      </void>
+      <void property="allowanceManagerTime">
+       <int>0</int>
+      </void>
+      <void property="allowanceRequisitionerTime">
+       <int>0</int>
+      </void>
+      <void property="counterSign">
+       <boolean>false</boolean>
+      </void>
+      <void property="deadlineTime">
+       <int>0</int>
+      </void>
+      <void property="engineAllocationConfiguration">
+       <string>&lt;AssignmentController&gt;&lt;FormField&gt;hiddenMatResponsavel&lt;/FormField&gt;&lt;/AssignmentController&gt;</string>
+      </void>
+      <void property="engineAllocationId">
+       <string>Campo Formulário</string>
+      </void>
+      <void property="forecastedEffort">
+       <int>0</int>
+      </void>
+      <void property="forecastedEffortType">
+       <int>0</int>
+      </void>
+      <void property="formFolder">
+       <int>0</int>
+      </void>
+      <void property="frequenceAuthorityTime">
+       <int>3600</int>
+      </void>
+      <void property="frequenceManagerTime">
+       <int>0</int>
+      </void>
+      <void property="frequenceRequisitionerTime">
+       <int>0</int>
+      </void>
+      <void property="inhibitTransfer">
+       <boolean>false</boolean>
+      </void>
+      <void property="initialState">
+       <boolean>false</boolean>
+      </void>
+      <void property="instruction">
+       <string>Realizar a execução das atividades cadastradas já preenchidas anteriormente no processo do “Plano de Ação&quot;. &#13;
+&#13;
+Obs.: Sem a finalização deste subprocesso não será permitido encerrar o processo do “Plano de Ação&quot;.</string>
+      </void>
+      <void property="joint">
+       <boolean>false</boolean>
+      </void>
+      <void property="notifyAuthorityDelay">
+       <boolean>true</boolean>
+      </void>
+      <void property="notifyAuthorityFollowUp">
+       <boolean>true</boolean>
+      </void>
+      <void property="notifyManagerDelay">
+       <boolean>false</boolean>
+      </void>
+      <void property="notifyManagerFollowUp">
+       <boolean>false</boolean>
+      </void>
+      <void property="notifyRequisitionerDelay">
+       <boolean>false</boolean>
+      </void>
+      <void property="notifyRequisitionerFollowUp">
+       <boolean>false</boolean>
+      </void>
+      <void property="periodId">
+       <string>Default</string>
+      </void>
+      <void property="positionX">
+       <int>340</int>
+      </void>
+      <void property="positionY">
+       <int>51</int>
+      </void>
+      <void property="processStatePK">
+       <object class="com.datasul.technology.webdesk.workflow.model.ProcessStatePK">
+        <void property="companyId">
+         <int>1</int>
+        </void>
+        <void property="processId">
+         <string>ecm_kgq_apa</string>
+        </void>
+        <void property="sequence">
+         <int>2</int>
+        </void>
+        <void property="version">
+         <int>1</int>
+        </void>
+       </object>
+      </void>
+      <void property="selectColleague">
+       <int>0</int>
+      </void>
+      <void property="stateDescription">
+       <string>Executar atividade</string>
+      </void>
+      <void property="stateName">
+       <string>Executar atividade</string>
+      </void>
+      <void property="stateType">
+       <int>0</int>
+      </void>
+      <void property="subProcessId">
+       <string></string>
+      </void>
+      <void property="transferAttachments">
+       <boolean>false</boolean>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.datasul.technology.webdesk.workflow.model.ProcessState">
+      <void property="agreementPercentage">
+       <int>0</int>
+      </void>
+      <void property="allowanceAuthorityTime">
+       <int>3600</int>
+      </void>
+      <void property="allowanceManagerTime">
+       <int>0</int>
+      </void>
+      <void property="allowanceRequisitionerTime">
+       <int>0</int>
+      </void>
+      <void property="counterSign">
+       <boolean>false</boolean>
+      </void>
+      <void property="deadlineTime">
+       <int>0</int>
+      </void>
+      <void property="engineAllocationConfiguration">
+       <string>&lt;AssignmentController&gt;&lt;BaseActivity&gt;1&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</string>
+      </void>
+      <void property="engineAllocationId">
+       <string>Executor Atividade</string>
+      </void>
+      <void property="forecastedEffort">
+       <int>0</int>
+      </void>
+      <void property="forecastedEffortType">
+       <int>0</int>
+      </void>
+      <void property="formFolder">
+       <int>0</int>
+      </void>
+      <void property="frequenceAuthorityTime">
+       <int>3600</int>
+      </void>
+      <void property="frequenceManagerTime">
+       <int>0</int>
+      </void>
+      <void property="frequenceRequisitionerTime">
+       <int>0</int>
+      </void>
+      <void property="inhibitTransfer">
+       <boolean>false</boolean>
+      </void>
+      <void property="initialState">
+       <boolean>false</boolean>
+      </void>
+      <void property="instruction">
+       <string>Efetuar notificação de conclusão das “Atividades do Plano de Ação&quot; ao responsável por este subprocesso. 
+
+Obs.: Sem a finalização deste subprocesso não será permitido encerrar o processo do “Plano de Ação&quot;.</string>
+      </void>
+      <void property="joint">
+       <boolean>false</boolean>
+      </void>
+      <void property="notifyAuthorityDelay">
+       <boolean>true</boolean>
+      </void>
+      <void property="notifyAuthorityFollowUp">
+       <boolean>true</boolean>
+      </void>
+      <void property="notifyManagerDelay">
+       <boolean>false</boolean>
+      </void>
+      <void property="notifyManagerFollowUp">
+       <boolean>false</boolean>
+      </void>
+      <void property="notifyRequisitionerDelay">
+       <boolean>false</boolean>
+      </void>
+      <void property="notifyRequisitionerFollowUp">
+       <boolean>false</boolean>
+      </void>
+      <void property="periodId">
+       <string>Default</string>
+      </void>
+      <void property="positionX">
+       <int>560</int>
+      </void>
+      <void property="positionY">
+       <int>51</int>
+      </void>
+      <void property="processStatePK">
+       <object class="com.datasul.technology.webdesk.workflow.model.ProcessStatePK">
+        <void property="companyId">
+         <int>1</int>
+        </void>
+        <void property="processId">
+         <string>ecm_kgq_apa</string>
+        </void>
+        <void property="sequence">
+         <int>4</int>
+        </void>
+        <void property="version">
+         <int>1</int>
+        </void>
+       </object>
+      </void>
+      <void property="selectColleague">
+       <int>0</int>
+      </void>
+      <void property="stateDescription">
+       <string>Notificar responsável</string>
+      </void>
+      <void property="stateName">
+       <string>Notificar responsável</string>
+      </void>
+      <void property="stateType">
+       <int>0</int>
+      </void>
+      <void property="subProcessId">
+       <string></string>
+      </void>
+      <void property="transferAttachments">
+       <boolean>false</boolean>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.datasul.technology.webdesk.workflow.model.ProcessState">
+      <void property="agreementPercentage">
+       <int>0</int>
+      </void>
+      <void property="allowanceAuthorityTime">
+       <int>0</int>
+      </void>
+      <void property="allowanceManagerTime">
+       <int>0</int>
+      </void>
+      <void property="allowanceRequisitionerTime">
+       <int>0</int>
+      </void>
+      <void property="counterSign">
+       <boolean>false</boolean>
+      </void>
+      <void property="deadlineTime">
+       <int>0</int>
+      </void>
+      <void property="engineAllocationConfiguration">
+       <string></string>
+      </void>
+      <void property="engineAllocationId">
+       <string></string>
+      </void>
+      <void property="forecastedEffort">
+       <int>0</int>
+      </void>
+      <void property="forecastedEffortType">
+       <int>0</int>
+      </void>
+      <void property="formFolder">
+       <int>0</int>
+      </void>
+      <void property="frequenceAuthorityTime">
+       <int>1</int>
+      </void>
+      <void property="frequenceManagerTime">
+       <int>0</int>
+      </void>
+      <void property="frequenceRequisitionerTime">
+       <int>0</int>
+      </void>
+      <void property="inhibitTransfer">
+       <boolean>false</boolean>
+      </void>
+      <void property="initialState">
+       <boolean>false</boolean>
+      </void>
+      <void property="instruction">
+       <string>Atividade final do processo</string>
+      </void>
+      <void property="joint">
+       <boolean>false</boolean>
+      </void>
+      <void property="notifyAuthorityDelay">
+       <boolean>true</boolean>
+      </void>
+      <void property="notifyAuthorityFollowUp">
+       <boolean>true</boolean>
+      </void>
+      <void property="notifyManagerDelay">
+       <boolean>false</boolean>
+      </void>
+      <void property="notifyManagerFollowUp">
+       <boolean>false</boolean>
+      </void>
+      <void property="notifyRequisitionerDelay">
+       <boolean>false</boolean>
+      </void>
+      <void property="notifyRequisitionerFollowUp">
+       <boolean>false</boolean>
+      </void>
+      <void property="periodId">
+       <string></string>
+      </void>
+      <void property="positionX">
+       <int>780</int>
+      </void>
+      <void property="positionY">
+       <int>61</int>
+      </void>
+      <void property="processStatePK">
+       <object class="com.datasul.technology.webdesk.workflow.model.ProcessStatePK">
+        <void property="companyId">
+         <int>1</int>
+        </void>
+        <void property="processId">
+         <string>ecm_kgq_apa</string>
+        </void>
+        <void property="sequence">
+         <int>7</int>
+        </void>
+        <void property="version">
+         <int>1</int>
+        </void>
+       </object>
+      </void>
+      <void property="selectColleague">
+       <int>0</int>
+      </void>
+      <void property="stateDescription">
+       <string>endevent7</string>
+      </void>
+      <void property="stateName">
+       <string>Fim</string>
+      </void>
+      <void property="stateType">
+       <int>0</int>
+      </void>
+      <void property="subProcessId">
+       <string></string>
+      </void>
+      <void property="transferAttachments">
+       <boolean>false</boolean>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="java.util.ArrayList"/>
+  </void>
+  <void method="add">
+   <object class="java.util.ArrayList">
+    <void method="add">
+     <object class="com.datasul.technology.webdesk.workflow.model.ProcessLink">
+      <void property="actionLabel">
+       <string>Executar atividade gerada</string>
+      </void>
+      <void property="finalStateSequence">
+       <int>2</int>
+      </void>
+      <void property="initialStateSequence">
+       <int>1</int>
+      </void>
+      <void property="processLinkPK">
+       <object class="com.datasul.technology.webdesk.workflow.model.ProcessLinkPK">
+        <void property="companyId">
+         <int>1</int>
+        </void>
+        <void property="linkSequence">
+         <int>1</int>
+        </void>
+        <void property="processId">
+         <string>ecm_kgq_apa</string>
+        </void>
+        <void property="version">
+         <int>1</int>
+        </void>
+       </object>
+      </void>
+      <void property="returnLabel">
+       <string></string>
+      </void>
+      <void property="returnPermited">
+       <boolean>false</boolean>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.datasul.technology.webdesk.workflow.model.ProcessLink">
+      <void property="actionLabel">
+       <string> Finalizar</string>
+      </void>
+      <void property="finalStateSequence">
+       <int>7</int>
+      </void>
+      <void property="initialStateSequence">
+       <int>4</int>
+      </void>
+      <void property="processLinkPK">
+       <object class="com.datasul.technology.webdesk.workflow.model.ProcessLinkPK">
+        <void property="companyId">
+         <int>1</int>
+        </void>
+        <void property="linkSequence">
+         <int>9</int>
+        </void>
+        <void property="processId">
+         <string>ecm_kgq_apa</string>
+        </void>
+        <void property="version">
+         <int>1</int>
+        </void>
+       </object>
+      </void>
+      <void property="returnLabel">
+       <string></string>
+      </void>
+      <void property="returnPermited">
+       <boolean>false</boolean>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.datasul.technology.webdesk.workflow.model.ProcessLink">
+      <void property="actionLabel">
+       <string></string>
+      </void>
+      <void property="finalStateSequence">
+       <int>4</int>
+      </void>
+      <void property="initialStateSequence">
+       <int>2</int>
+      </void>
+      <void property="processLinkPK">
+       <object class="com.datasul.technology.webdesk.workflow.model.ProcessLinkPK">
+        <void property="companyId">
+         <int>1</int>
+        </void>
+        <void property="linkSequence">
+         <int>10</int>
+        </void>
+        <void property="processId">
+         <string>ecm_kgq_apa</string>
+        </void>
+        <void property="version">
+         <int>1</int>
+        </void>
+       </object>
+      </void>
+      <void property="returnLabel">
+       <string></string>
+      </void>
+      <void property="returnPermited">
+       <boolean>false</boolean>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="java.util.ArrayList"/>
+  </void>
+  <void method="add">
+   <object class="java.util.ArrayList">
+    <void method="add">
+     <object class="com.datasul.technology.webdesk.workflow.model.WorkflowProcessEvent">
+      <void property="eventDescription">
+       <string>function afterCancelProcess(colleagueId,processId){
+	log.info(&quot;================= AFTER CANCEL PROCESS ====================&quot;);
+	hAPI.setCardValue(&quot;state&quot;, &quot;cancelado&quot;);
+	log.info(&quot;Cancelando atividade do plano de acao....&quot;);
+}</string>
+      </void>
+      <void property="workflowProcessEventPK">
+       <object class="com.datasul.technology.webdesk.workflow.model.WorkflowProcessEventPK">
+        <void property="companyId">
+         <int>1</int>
+        </void>
+        <void property="eventId">
+         <string>afterCancelProcess</string>
+        </void>
+        <void property="processId">
+         <string>ecm_kgq_apa</string>
+        </void>
+        <void property="version">
+         <int>1</int>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.datasul.technology.webdesk.workflow.model.WorkflowProcessEvent">
+      <void property="eventDescription">
+       <string>function afterProcessFinish(processId){
+	log.info(&quot;================= AFTER PROCESS FINISH ====================&quot;);
+	hAPI.setCardValue(&quot;state&quot;, &quot;finalizado&quot;);
+	log.info(&quot;Finalizando atividade do plano de acao....&quot;);
+}</string>
+      </void>
+      <void property="workflowProcessEventPK">
+       <object class="com.datasul.technology.webdesk.workflow.model.WorkflowProcessEventPK">
+        <void property="companyId">
+         <int>1</int>
+        </void>
+        <void property="eventId">
+         <string>afterProcessFinish</string>
+        </void>
+        <void property="processId">
+         <string>ecm_kgq_apa</string>
+        </void>
+        <void property="version">
+         <int>1</int>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.datasul.technology.webdesk.workflow.model.WorkflowProcessEvent">
+      <void property="eventDescription">
+       <string>function afterProcessCreate(processId){
+	log.info(&quot;================= AFTER PROCESS CREATE ====================&quot;);
+	hAPI.setCardValue(&quot;state&quot;, &quot;ativo&quot;);
+	hAPI.setCardValue(&quot;cdAtividadePA&quot;, processId);
+	log.info(&quot;Iniciando atividade do plano de acao....&quot;);
+}</string>
+      </void>
+      <void property="workflowProcessEventPK">
+       <object class="com.datasul.technology.webdesk.workflow.model.WorkflowProcessEventPK">
+        <void property="companyId">
+         <int>1</int>
+        </void>
+        <void property="eventId">
+         <string>afterProcessCreate</string>
+        </void>
+        <void property="processId">
+         <string>ecm_kgq_apa</string>
+        </void>
+        <void property="version">
+         <int>1</int>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.datasul.technology.webdesk.workflow.model.WorkflowProcessEvent">
+      <void property="eventDescription">
+       <string>function needEffectiveness(){
+	var checked = hAPI.getCardValue(&quot;fgVerifEficacia&quot;)==&quot;on&quot;;
+	log.info(&quot;================ PRECISA ANALISE DE EFICACIA?  &quot; + checked + &quot; ==================&quot;);
+	return checked;
+}</string>
+      </void>
+      <void property="workflowProcessEventPK">
+       <object class="com.datasul.technology.webdesk.workflow.model.WorkflowProcessEventPK">
+        <void property="companyId">
+         <int>1</int>
+        </void>
+        <void property="eventId">
+         <string>needEffectiveness</string>
+        </void>
+        <void property="processId">
+         <string>ecm_kgq_apa</string>
+        </void>
+        <void property="version">
+         <int>1</int>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.datasul.technology.webdesk.workflow.model.WorkflowProcessEvent">
+      <void property="eventDescription">
+       <string>function afterStateEntry(sequenceId){
+    var THREAD_SEQUENCE = 0;
+    var ULTIMO_SEGUNDO = 86399;
+   
+    log.info (&quot;=========================== afterStateEntry() =============================&quot;);
+   
+    var dataPrazoForm = hAPI.getCardValue(&quot;nmPrazoDeConclusao&quot;);
+    var responsavel   = hAPI.getCardValue(&quot;hiddenMatResponsavel&quot;);
+    var codigoSolicitacao = getValue(&quot;WKNumProces&quot;);
+   
+   
+    var arrayData = dataPrazoForm.split(&quot;/&quot;, 3);
+   
+    var dataPrazo = java.util.Calendar.getInstance();
+   
+    dataPrazo.set(java.util.Calendar.DAY_OF_MONTH, new java.lang.Integer(arrayData[0]));
+    dataPrazo.set(java.util.Calendar.MONTH, new java.lang.Integer(arrayData[1]) -1);
+    dataPrazo.set(java.util.Calendar.YEAR, new java.lang.Integer(arrayData[2]));
+   
+    try {   
+        hAPI.setDueDate(codigoSolicitacao, THREAD_SEQUENCE, responsavel, dataPrazo.getTime(), ULTIMO_SEGUNDO);
+    } catch (e) {
+        log.info (&quot;================== afterStateEntry deu erro ===&gt; &quot; + e);
+    }
+}</string>
+      </void>
+      <void property="workflowProcessEventPK">
+       <object class="com.datasul.technology.webdesk.workflow.model.WorkflowProcessEventPK">
+        <void property="companyId">
+         <int>1</int>
+        </void>
+        <void property="eventId">
+         <string>afterStateEntry</string>
+        </void>
+        <void property="processId">
+         <string>ecm_kgq_apa</string>
+        </void>
+        <void property="version">
+         <int>1</int>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="java.util.ArrayList"/>
+  </void>
+  <void method="add">
+   <object class="java.util.ArrayList">
+    <void method="add">
+     <object class="com.datasul.technology.webdesk.workflow.model.SwimLane">
+      <void property="color">
+       <string>FFFF66</string>
+      </void>
+      <void property="height">
+       <int>146</int>
+      </void>
+      <void property="positionY">
+       <int>4</int>
+      </void>
+      <void property="stateName">
+       <string>Executor</string>
+      </void>
+      <void property="swimLanePK">
+       <object class="com.datasul.technology.webdesk.workflow.model.SwimLanePK">
+        <void property="companyId">
+         <int>1</int>
+        </void>
+        <void property="processId">
+         <string>ecm_kgq_apa</string>
+        </void>
+        <void property="sequence">
+         <int>1</int>
+        </void>
+        <void property="version">
+         <int>1</int>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="java.util.ArrayList">
+    <void method="add">
+     <object class="com.datasul.technology.webdesk.workflow.model.ProcessComponGraf">
+      <void property="componType">
+       <int>1</int>
+      </void>
+      <void property="positionX">
+       <int>30</int>
+      </void>
+      <void property="positionY">
+       <int>60</int>
+      </void>
+      <void property="processComponGrafPK">
+       <object class="com.datasul.technology.webdesk.workflow.model.ProcessComponGrafPK">
+        <void property="companyId">
+         <int>1</int>
+        </void>
+        <void property="componGrafSequence">
+         <int>1</int>
+        </void>
+        <void property="processId">
+         <string>ecm_kgq_apa</string>
+        </void>
+        <void property="version">
+         <int>1</int>
+        </void>
+       </object>
+      </void>
+      <void property="stateName">
+       <string>Tomar conhecimento</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.datasul.technology.webdesk.workflow.model.ProcessComponGraf">
+      <void property="componType">
+       <int>1</int>
+      </void>
+      <void property="positionX">
+       <int>880</int>
+      </void>
+      <void property="positionY">
+       <int>58</int>
+      </void>
+      <void property="processComponGrafPK">
+       <object class="com.datasul.technology.webdesk.workflow.model.ProcessComponGrafPK">
+        <void property="companyId">
+         <int>1</int>
+        </void>
+        <void property="componGrafSequence">
+         <int>2</int>
+        </void>
+        <void property="processId">
+         <string>ecm_kgq_apa</string>
+        </void>
+        <void property="version">
+         <int>1</int>
+        </void>
+       </object>
+      </void>
+      <void property="stateName">
+       <string>Fim</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="java.util.ArrayList">
+    <void method="add">
+     <object class="com.datasul.technology.webdesk.workflow.model.ProcessLinkAssoc">
+      <void property="finalStateSequence">
+       <int>7</int>
+      </void>
+      <void property="initialStateSequence">
+       <int>2</int>
+      </void>
+      <void property="processLinkAssocPK">
+       <object class="com.datasul.technology.webdesk.workflow.model.ProcessLinkAssocPK">
+        <void property="companyId">
+         <int>1</int>
+        </void>
+        <void property="linkSequence">
+         <int>2</int>
+        </void>
+        <void property="processId">
+         <string>ecm_kgq_apa</string>
+        </void>
+        <void property="version">
+         <int>1</int>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.datasul.technology.webdesk.workflow.model.ProcessLinkAssoc">
+      <void property="finalStateSequence">
+       <int>1</int>
+      </void>
+      <void property="initialStateSequence">
+       <int>1</int>
+      </void>
+      <void property="processLinkAssocPK">
+       <object class="com.datasul.technology.webdesk.workflow.model.ProcessLinkAssocPK">
+        <void property="companyId">
+         <int>1</int>
+        </void>
+        <void property="linkSequence">
+         <int>11</int>
+        </void>
+        <void property="processId">
+         <string>ecm_kgq_apa</string>
+        </void>
+        <void property="version">
+         <int>1</int>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

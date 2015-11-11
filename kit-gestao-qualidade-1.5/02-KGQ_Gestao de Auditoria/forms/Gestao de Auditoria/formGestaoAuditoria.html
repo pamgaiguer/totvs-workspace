@@ -1,0 +1,222 @@
+<html>
+	<head>
+		<title>Gest&atilde;o de Auditoria</title>
+		<script language="javascript" type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+        <script language="javascript" type="text/javascript" src="/kitecm-1.0.7/js/utils.js"></script>
+        <script language="javascript" type="text/javascript" src="/kitecm-1.0.7/js/datepicker.js"></script>
+        <script language="javascript" type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+		<script language="javascript" type="text/javascript" src="js/bootstrap.min.js"></script>
+		<!--<script language="javascript" type="text/javascript" src="/kitecm/js/brava.js"></script>-->
+		<script language="javascript" type="text/javascript" src="js/custom.js"></script>
+		<link rel="stylesheet" type="text/css" href="/kitecm/css/style.css"/>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/custom.css"/>        
+	</head>
+	<body id="KitGestaoQualidade" onload="window.parent.document.getElementById('workflowView-cardViewer').style.border='none'; init()">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<div id="logo">
+						<img src="img/fluig.png" width="83px" height="83px">
+					</div>
+					<h2 style="padding-bottom: 20px !important">i18n.translate("titulo")</h2>
+					
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<form name="formGA" id="formGA" action="" method="post" role="form" class="form-horizontal">
+						<input type="hidden" value="valHiddenAuto" name="hiddenAtivAuto" id="hiddenAtivAuto"/>
+						<fieldset>
+					  		<legend>i18n.translate("legend_info_geral")</legend>
+						  	<div class="form-group">
+						    	<label for="nrSolicitacao" class="col-sm-2 control-label">i18n.translate("num_sol")</label>
+						    	<div class="col-sm-4">
+						      		<input type="text" class="form-control" name="nrSolicitacao" id="nrSolicitacao" readonly="true">
+						    	</div>
+						    	<label for="dtData" class="col-sm-2 control-label">i18n.translate("data")</label>
+						    	<div class="col-sm-4">
+						      		<input type="text" class="form-control" name="dtData" id="dtData" readonly="true">
+						    	</div>
+						  	</div>
+						  	<div class="form-group">
+						    	<label for="nrSolicitacao" class="col-sm-2 control-label">i18n.translate("matri_resp")</label>
+						    	<div class="col-sm-4">
+						      		<input type="text" class="form-control" name="nmMatricResponsavel" id="nmMatricResponsavel" readonly="true">
+						    	</div>
+						    	<label for="nrSolicitacao" class="col-sm-2 control-label">i18n.translate("resp")</label>
+						    	<div class="col-sm-4">
+						      		<input type="text" class="form-control" name="nmResponsavel" id="nmResponsavel" readonly="true">
+						    	</div>
+						  	</div>
+						  	<div class="form-group">
+						    	<label for="nmMatricSolicitante" class="col-sm-2 control-label">i18n.translate("matri_solic")</label>
+						    	<div class="col-sm-4" style="padding-left: 15px !important;">
+						      		<input type="text" class="form-control" name="nmMatricSolicitante" id="nmMatricSolicitante" readonly="true">
+						    	</div>
+						    	<label for="nmSolicitante" class="col-sm-2 control-label">i18n.translate("solic")</label>
+						    	<div class="input-group col-sm-4" style="padding-left: 15px !important;">
+						      		<input type="text" class="form-control" name="nmSolicitante" id="nmSolicitante" readonly="true">
+						      		<a style="width: 10px !important;" href="#" class="input-group-addon" id="addSolicitante" name="addSolicitante" title="Selecionar Solicitante" onClick="openZoomSolicitante()"><i class="glyphicon glyphicon-search"></i></a>
+						    	</div>
+						  	</div>
+						  	<div class="form-group">
+						    	<label for="nmSolicitante" class="col-sm-2 control-label">i18n.translate("area")</label>
+						    	<div class="input-group col-sm-4" style="padding-left: 15px !important;">
+						      		<input type="text" class="form-control" name="nmArea" id="nmArea" readonly="true">
+						      		<a style="width: 10px !important;" href="#" class="input-group-addon" id="addArea" name="addArea" title="Selecionar &aacute;rea" onClick="openZoomArea()"><i class="glyphicon glyphicon-search"></i></a>
+						    	</div>
+						  	</div>
+						  	<div class="form-group">
+								<label for="fgTipoAuditoria" class="col-sm-2 control-label">i18n.translate("tipo_audit")</label>
+								<div class="col-sm-8">
+								  	<label for="fgAuditoriaInterna" class="radio-inline">
+								    	<input type="radio" id="fgAuditoriaInterna" name="fgTipoAuditoria" value="fgTipoAuditInt">
+								    	i18n.translate("tp_interna")
+								  	</label>
+								  	<label for="fgAuditoriaExterna" class="radio-inline">
+								    	<input type="radio" id="fgAuditoriaExterna" name="fgTipoAuditoria" value="fgTipoAuditExt">
+								    	i18n.translate("tp_externa")
+								    	
+								  	</label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-5">
+									<div class="form-group">
+								  		<label for="dtOcorrencia" class="col-sm-5 control-label">i18n.translate("periodo_audit")</label>
+								    	<div class="input-group col-sm-7" style="padding-left: 7px !important;">
+								      		<input name="dtDataInicioAudit" id="dtDataInicioAudit" class="form-control" type="text" readonly="true" />
+								      		<input type="hidden" name="dtDataInvertInicioAudit" id="dtDataInvertInicioAudit" readonly="true" />
+								      		<a style="width: 10px !important;" href="#" class="input-group-addon" id="btCalendarDataIniAudit" name="btCalendarDataIniAudit" title="Selecionar data" onClick="selectDateInicioAudit('dtDataInicioAudit', this, false, true)"><i class="glyphicon glyphicon-calendar"></i></a>
+								    	</div>
+									</div>
+								</div>
+					  			<div class="col-sm-6">
+					  				<div class="form-group">
+								    	<label for="dtOcorrencia" class="col-sm-1 control-label">i18n.translate("ate")</label>
+								    	<div class="input-group col-sm-6" style="padding-left: 15px !important;">
+								      		<input name="dtDataFimAudit" id="dtDataFimAudit" class="form-control" type="text" readonly="true" />
+								      		<input type="hidden" name="dtDataInvertFimAudit" id="dtDataInvertFimAudit" readonly="true" />
+								      		<a style="width: 10px !important;" href="#" class="input-group-addon" id="btCalendarDataFimAudit" name="btCalendarDataFimAudit" title="Selecionar data" onClick="selectDateInicioAudit('dtDataFimAudit', this, false, true)"><i class="glyphicon glyphicon-calendar"></i></a>
+								    	</div>
+								    </div>
+							  	</div>
+						  	</div>
+						  	<input type="hidden" value="valorHidden" id="hiddenIndex" name="hiddenIndex"/>
+						  	<div class="form-group">
+						    	<label for="dsObjetivoAuditoria" class="col-sm-2 control-label">i18n.translate("obj_audit")</label>
+						    	<div class="col-sm-8">
+						      		<textarea class="form-control" rows="3" cols="8" id="dsObjetivoAuditoria" name="dsObjetivoAuditoria"></textarea>
+						    	</div>
+						  	</div>
+						  	<div class="form-group">
+						    	<label for="dsComunicado" class="col-sm-2 control-label">i18n.translate("comunicado")</label>
+						    	<div class="col-sm-8">
+						      		<textarea class="form-control" rows="3" cols="8" id="dsComunicado" name="dsComunicado"></textarea>
+						    	</div>
+						  	</div>
+						</fieldset>
+						
+						<fieldset>
+					  		<legend>i18n.translate("legend_plan_audit")</legend>
+						    <input type="hidden" name="hiddenLineCount" id="hiddenLineCount" value="" />
+							<input type="hidden" name="lineCount" id="lineCount" value="" />
+						    <button type="button" name="btIncluirArea" id="btIncluirArea" value="Adicionar" onclick="wdkAddChild('areaAuditada'); linhasGrid();" class="btn btn-primary">i18n.translate("adicionar_novo")</button>
+							<br/>
+							<br/>
+							<br/>
+							<div class="table-responsive">
+								<table name ="areaAuditada" id="areaAuditada" tablename="areaAuditada" noaddbutton="true" deleteicon="/kitecm/img/lixeira.gif" class="table table-striped" border="1">
+									<thead>
+										<tr>
+											<th>i18n.translate("periodo_audit")</th>
+											<th>i18n.translate("area_resp")</th>
+											<th>i18n.translate("auditor")</th>
+											<th>i18n.translate("obs")</th>
+										</tr>
+									</thead>
+									 <tbody>
+										<tr>
+											<td class="form-group col-md-1">
+												<div class="col-sm-10" >
+													<div class="form-group" style="margin-bottom: 0px !important">
+														<div class="input-group input-group-sm">
+															<input type="text" name="dtDataInicioAuditArea" id="dtDataInicioAuditArea" class="form-control input-sm" readonly="true" style="min-width: 100px;" />
+															<a href="#Bot" class="input-group-addon" id="btCalendar" name="btCalendar" title="Selecionar data" onClick="selectDateInicioAuditPai(this, false, true)"><i class="glyphicon glyphicon-calendar"></i></a>
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="dtDataFimAuditArea" class="control-label" style="font-size: 14px; width: 100%; text-align: left;">i18n.translate("ate")</label>
+														<div class="input-group input-group-sm">
+															<input type="text" name="dtDataFimAuditArea" id="dtDataFimAuditArea" class="form-control input-sm" readonly="true" style="min-width: 100px;"/>
+															<a href="#Bot" class="input-group-addon" id="btCalendar" name="btCalendar" title="Selecionar data" onClick="selectDateInicioAuditPai2(this, false, true)"><i class="glyphicon glyphicon-calendar"></i></a>
+														</div>
+													</div>
+												</div>
+											</td>
+											<td class="form-group col-md-3">
+										  		<div class="form-group">
+											    	<div class="col-sm-12">
+											      		<input id="nmAreaGrid" name="nmAreaGrid" class="form-control input-sm" type="text" readonly="true" style="min-width: 150px;" />
+											    	</div>
+											    </div>
+											    <div class="form-group" style="margin-left: 0px !important">
+											    	<div class="input-group col-sm-11">
+											      		<input id="nmResponsavelArea" name="nmResponsavelArea" class="form-control input-sm" type="text" readonly="true" style="min-width: 150px;" />
+														<a style="width: 10px !important;" href="#Bot" class="input-group-addon" id="addAreaGrid" name="addAreaGrid" title="Selecionar &aacute;rea" onclick="openZoomAreaGrid(this)"><i class="glyphicon glyphicon-search"></i></a>
+											    	</div>
+											  	</div>
+												<input type="hidden" value="" id="hiddenRespArea" name="hiddenRespArea"/>
+												<input type="hidden" id="nmMatriculaResponsavelArea" name="nmMatriculaResponsavelArea"/>
+											</td>
+											<td>
+												<div class="col-md-12">
+											  		<div class="form-group">
+												    	<div class="input-group col-sm-12">
+												      		<input id="nmAuditor" name="nmAuditor" class="form-control input-sm" type="text" readonly="true" style="min-width: 150px;" />
+															<a style="width: 10px !important;" href="#Bot" class="input-group-addon" id="zoomAuditor" name="zoomAuditor" title="Selecionar &aacute;rea" onclick="openZoomAuditor(this)"><i class="glyphicon glyphicon-search"></i></a>
+												    	</div>
+												  	</div>
+											  	</div>
+												<input type="hidden" id="nmMatriculaAuditor" name="nmMatriculaAuditor"/>
+												<input type="hidden" value="" id="hiddenAuditArea" name="hiddenAuditArea"/>
+											</td>
+											<td class="col-xs-3">
+												<textarea id="nmObservacoesPlanejamento" name="nmObservacoesPlanejamento" rows="3" cols="5" class="form-control input-sm" style="min-width: 150px;"></textarea>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</fieldset>
+
+						<fieldset>
+					  		<legend>i18n.translate("legend_aval_qual")</legend>
+						  	<div class="form-group">
+						    	<label for="nmMatricRespQualidade" class="col-sm-2 control-label">i18n.translate("matri_resp_qual")</label>
+						    	<div class="col-sm-4">
+						      		<input type="text" class="form-control" name="nmMatricRespQualidade" id="nmMatricRespQualidade" readonly="true">
+						    	</div>
+						    </div>
+						    <div class="form-group">
+						    	<label for="nmRespQualidade" class="col-sm-2 control-label">i18n.translate("nm_resp_qual")</label>
+						    	<div class="col-sm-4">
+						      		<input type="text" class="form-control" name="nmRespQualidade" id="nmRespQualidade" readonly="true">
+						    	</div>
+						  	</div>
+						  	<div class="form-group">
+						    	<label for="dsObservacoesQualidade" class="col-sm-2 control-label">i18n.translate("obs")</label>
+						    	<div class="col-sm-8">
+						      		<textarea id="dsObservacoesQualidade" name="dsObservacoesQualidade" class="form-control" rows="3" cols="8"></textarea>
+						    	</div>
+						    </div>
+				  		<fieldset>
+
+						<input type="hidden" name="status" id="status" value="" />
+					</form>
+				</div>	
+			</div>
+		</div>
+	</body>
+</html>

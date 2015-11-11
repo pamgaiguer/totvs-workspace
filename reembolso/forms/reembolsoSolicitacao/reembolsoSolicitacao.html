@@ -1,0 +1,100 @@
+<html>
+<head>
+  <link rel="stylesheet" href="http://style.fluig.com/css/fluig-style-guide.min.css"/>
+</head>
+<body>
+  <div class="fluig-style-guide">
+    <div class="container">
+
+      <form role="form" class="form-horizontal">
+        <div class="row">
+          <div class="form-group">
+            <div class="col-xs-12">
+              <h3 class="text-center"><strong>Incluir nota</strong></h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            <div class="col-xs-12">
+              <div class="btn-group-justified">
+                <div class="btn-group">
+                  <button class="btn btn-default" title="Tirar foto/Escanear comprovante">
+                    <span class="fluigicon fluigicon-camera"> Scanear</span>
+                  </button>
+                </div>
+                <div class="btn-group">
+                  <button class="btn btn-default" title="Anexar comprovante">
+                    <span class="fluigicon fluigicon-paperclip"> Anexar</span>
+                  </button>
+                </div>
+                <div class="btn-group">
+                  <button class="btn btn-default" title="Ver imagem">
+                    <span class="fluigicon fluigicon-picture"> Visualizar</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <div class="row">
+        <div class="form-group">
+          <label for="valorNota" class="col-xs-2">Valor:</label>
+          <div class="col-xs-10">
+            <div class="input-group">
+              <input type="text" class="form-control" id="valorNota" name="valorNota" placeholder="Valor da nota" mask="99990,00">
+              <span class="input-group-addon">
+               <span class="fluigicon fluigicon-remove"></span>
+             </span>
+           </div>
+         </div>
+       </div>
+     </div>
+
+
+     <div class="row">
+      <div class="form-group">
+        <label for="tipoNota" class="col-xs-2">Tipo:</label>
+        <div class="col-xs-10">
+          <select class="form-control" name="tipoNota" id="tipoNota">
+            <option>Estacionamento</option>
+            <option>Restaurante</option>
+            <option>Passagem</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group">
+        <label for="calendario" class="col-xs-2">Data:</label>
+        <div class="col-xs-10">
+          <input class="form-control" type="date" id="notaCalendario" name="calendario" />
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="form-group">
+        <label for="valorTotal" class="col-xs-2">Valor total:</label>
+        <div class="col-xs-8">
+          <input class="form-control" id="disabledInput" type="text" placeholder="Campo valor total" name="valorTotal" disabled="">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-default btn-primary pull-right">Solicitar</button>
+    </div>
+
+
+  </form>
+</div>
+</div>
+
+<script src="/portal/resources/js/jquery/jquery.js"></script>
+<script src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+<script src="http://style.fluig.com/js/fluig-style-guide.min.js"></script>
+<script src="js/custom.js"></script>
+</body>
+</html>

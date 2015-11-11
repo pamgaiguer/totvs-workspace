@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="**/*.java" kind="src" path="workflow"/>
+	<classpathentry excluding="**/*.java" kind="src" path="forms"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/TOTVS Designer Extensions"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

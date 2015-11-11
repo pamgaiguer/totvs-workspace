@@ -1,0 +1,50 @@
+<html>
+	<head>
+		<title>Cadastro de Área</title>
+		<script language="javascript" type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+		<script language="javascript" type="text/javascript" src="custom.js" ></script>
+        <script language="javascript" type="text/javascript" src="/kitecm-1.0.7/js/utils.js"> </script>
+        <script src="js/jquery-1.11.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/custom.css"/>
+		<link rel="stylesheet" type="text/css" href="/kitecm/css/style.css"/>
+		<!--<script language="javascript" type="text/javascript" src="/kitecm/js/brava.js"></script>-->
+	</head>
+	<body id="KitGestaoQualidade" onload="window.parent.document.getElementById('workflowView-cardViewer').style.border='none';">
+		<div class="container">
+	    	<div id="logo">
+				<img src="img/fluig.png" width="83px" height="83px">
+			</div>
+			<h2 style="padding-bottom: 20px !important">i18n.translate("titulo")</h2>
+		
+			<form action="" method="post" role="form" class="form-horizontal">
+				<fieldset>
+			  		<legend>i18n.translate("legend_cadas")</legend>
+			  		<div class="form-group">
+				    	<label for="nmArea" class="col-sm-2 control-label">i18n.translate("nome_area")</label>
+				    	<div class="col-sm-5">
+				      		<input type="text" class="form-control"  id="nmArea" name="nmArea" >
+				    	</div>
+				  	</div>
+				  	<div class="form-group">
+				  		<label for="nmResponsavelArea" class="col-sm-2 control-label">i18n.translate("Mat_resp")</label>
+				    	<div class="col-sm-5">
+				      		<input type="text" class="form-control" name="nmMatricRespArea" id="nmMatricRespArea" readonly="true">
+				    	</div>
+				    </div>
+				    
+				    <div class="form-group">
+				  		<label for="nmResponsavelArea" class="col-sm-2 control-label">i18n.translate("Nome_Resp")</label>
+				    	<div class="input-group col-sm-5" style="padding-left: 15px !important;">
+				      		<input type="text" class="form-control" name="nmResponsavelArea" id="nmResponsavelArea" readonly="true">
+				      		<a style="width: 10px !important;" href="#" class="input-group-addon" id="addRespArea" name="addRespArea" title="Selecionar Responsável" onClick="openZoomRespArea()"><i class="glyphicon glyphicon-search"></i></a>
+				      		<a style="width: 10px !important;" href="#" class="input-group-addon" id="limpaRespArea" name="limpaRespArea" title="Limpar" onClick="clearFields()"><i class="glyphicon glyphicon-remove"></i></a>
+				    	</div>
+				    </div>
+				</fieldset>
+			</form>
+		</div>
+	</body>
+</html>

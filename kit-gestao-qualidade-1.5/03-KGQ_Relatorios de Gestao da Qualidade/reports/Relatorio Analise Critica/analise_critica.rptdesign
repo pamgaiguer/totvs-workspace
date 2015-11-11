@@ -1,0 +1,2630 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.4.2.v201410272105 Build &lt;4.4.2.v20150217-1805></property>
+    <property name="units">in</property>
+    <method name="initialize"><![CDATA[importPackage(Packages.com.datasul.technology.webdesk.dataset.service);
+importPackage(Packages.com.datasul.technology.webdesk.dataset);
+importPackage(Packages.com.datasul.technology.webdesk.search.controller);
+importPackage(Packages.java.util);
+var count = 0;
+var dataset = null;]]></method>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="layoutPreference">auto layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <parameters>
+        <scalar-parameter name="_cdOcorrenciaInicial" id="112">
+            <text-property name="promptText">Informe o número da ocorrência inicial</text-property>
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="_cdOcorrenciaFinal" id="626">
+            <text-property name="promptText">Informe o número da ocorrência final</text-property>
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="_nmArea" id="599">
+            <text-property name="promptText">Informe a area da ocorrência</text-property>
+            <property name="valueType">dynamic</property>
+            <property name="isRequired">true</property>
+            <property name="dataSetName">dataset_areas_2</property>
+            <expression name="valueExpr" type="javascript">dataSetRow["nmArea"]</expression>
+            <expression name="labelExpr" type="javascript">dataSetRow["nmArea"]</expression>
+            <expression name="sortByColumn">dataSetRow["nmArea"]</expression>
+            <property name="sortDirection">asc</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">list-box</property>
+            <property name="mustMatch">true</property>
+            <property name="fixedOrder">false</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <script-data-source name="ds_analise_critica" id="923"/>
+    </data-sources>
+    <data-sets>
+        <script-data-set name="dataset_analise_critica" id="8">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">cdOcorrencia</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">dsOcorrencia</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">statusOcorrencia</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">dtRegistro</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">dtOcorrencia</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">nmTipoAcao</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">nmTipoOcorrencia</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">nmArea</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">nmOrigem</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">nmCriticidade</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">11</property>
+                    <property name="name">fgContencao</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">12</property>
+                    <property name="name">fgOcorrenciaReincidente</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">13</property>
+                    <property name="name">cdOcorrenciaReincidente</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">14</property>
+                    <property name="name">dsContencao</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">15</property>
+                    <property name="name">dsAnaliseCausa</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">16</property>
+                    <property name="name">dsAcoesExecutadas</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">17</property>
+                    <property name="name">dsEficacia</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">18</property>
+                    <property name="name">cdPlanoAcao</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">19</property>
+                    <property name="name">nmResponsavelPA</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">20</property>
+                    <property name="name">nmDataPA</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">21</property>
+                    <property name="name">nmAssunto</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">22</property>
+                    <property name="name">nmParticipantes</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">23</property>
+                    <property name="name">nmPauta</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">24</property>
+                    <property name="name">nmDefinicoes</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">25</property>
+                    <property name="name">statusPA</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">26</property>
+                    <property name="name">cdAtividadePA</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">27</property>
+                    <property name="name">nmOquCom</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">28</property>
+                    <property name="name">nmResponsavelAtividade</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">29</property>
+                    <property name="name">nmPrazoDeConclusao</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">30</property>
+                    <property name="name">dsAtividade</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">31</property>
+                    <property name="name">statusAtividade</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">cdOcorrencia</property>
+                </structure>
+                <structure>
+                    <property name="columnName">dsOcorrencia</property>
+                </structure>
+                <structure>
+                    <property name="columnName">statusOcorrencia</property>
+                </structure>
+                <structure>
+                    <property name="columnName">dtRegistro</property>
+                </structure>
+                <structure>
+                    <property name="columnName">dtOcorrencia</property>
+                </structure>
+                <structure>
+                    <property name="columnName">nmTipoAcao</property>
+                </structure>
+                <structure>
+                    <property name="columnName">nmTipoOcorrencia</property>
+                </structure>
+                <structure>
+                    <property name="columnName">nmArea</property>
+                </structure>
+                <structure>
+                    <property name="columnName">nmOrigem</property>
+                </structure>
+                <structure>
+                    <property name="columnName">nmCriticidade</property>
+                </structure>
+                <structure>
+                    <property name="columnName">fgContencao</property>
+                </structure>
+                <structure>
+                    <property name="columnName">fgOcorrenciaReincidente</property>
+                </structure>
+                <structure>
+                    <property name="columnName">cdOcorrenciaReincidente</property>
+                </structure>
+                <structure>
+                    <property name="columnName">dsContencao</property>
+                </structure>
+                <structure>
+                    <property name="columnName">dsAnaliseCausa</property>
+                </structure>
+                <structure>
+                    <property name="columnName">dsAcoesExecutadas</property>
+                </structure>
+                <structure>
+                    <property name="columnName">dsEficacia</property>
+                </structure>
+                <structure>
+                    <property name="columnName">cdPlanoAcao</property>
+                </structure>
+                <structure>
+                    <property name="columnName">nmResponsavelPA</property>
+                </structure>
+                <structure>
+                    <property name="columnName">nmDataPA</property>
+                </structure>
+                <structure>
+                    <property name="columnName">nmAssunto</property>
+                </structure>
+                <structure>
+                    <property name="columnName">nmParticipantes</property>
+                </structure>
+                <structure>
+                    <property name="columnName">nmPauta</property>
+                </structure>
+                <structure>
+                    <property name="columnName">nmDefinicoes</property>
+                </structure>
+                <structure>
+                    <property name="columnName">statusPA</property>
+                </structure>
+                <structure>
+                    <property name="columnName">cdAtividadePA</property>
+                </structure>
+                <structure>
+                    <property name="columnName">nmOquCom</property>
+                </structure>
+                <structure>
+                    <property name="columnName">nmResponsavelAtividade</property>
+                </structure>
+                <structure>
+                    <property name="columnName">nmPrazoDeConclusao</property>
+                </structure>
+                <structure>
+                    <property name="columnName">dsAtividade</property>
+                </structure>
+                <structure>
+                    <property name="columnName">statusAtividade</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">cdOcorrencia</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">dsOcorrencia</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">statusOcorrencia</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">dtRegistro</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">dtOcorrencia</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">nmTipoAcao</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">nmTipoOcorrencia</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">nmArea</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">nmOrigem</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">nmCriticidade</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">fgContencao</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">fgOcorrenciaReincidente</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">13</property>
+                        <property name="name">cdOcorrenciaReincidente</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">14</property>
+                        <property name="name">dsContencao</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">15</property>
+                        <property name="name">dsAnaliseCausa</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">16</property>
+                        <property name="name">dsAcoesExecutadas</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">17</property>
+                        <property name="name">dsEficacia</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">18</property>
+                        <property name="name">cdPlanoAcao</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">19</property>
+                        <property name="name">nmResponsavelPA</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">20</property>
+                        <property name="name">nmDataPA</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">21</property>
+                        <property name="name">nmAssunto</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">22</property>
+                        <property name="name">nmParticipantes</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">23</property>
+                        <property name="name">nmPauta</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">24</property>
+                        <property name="name">nmDefinicoes</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">25</property>
+                        <property name="name">statusPA</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">26</property>
+                        <property name="name">cdAtividadePA</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">27</property>
+                        <property name="name">nmOquCom</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">28</property>
+                        <property name="name">nmResponsavelAtividade</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">29</property>
+                        <property name="name">nmPrazoDeConclusao</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">30</property>
+                        <property name="name">dsAtividade</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">31</property>
+                        <property name="name">statusAtividade</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <method name="beforeOpen"><![CDATA[java.lang.System.out.println("dataset_analise_critica.beforeOpen(): getting dataset");
+try {
+	count = 0;
+	var constraintsAnaliseCritica = new Array();
+	constraintsAnaliseCritica.push(constraintActive);		
+	
+	var constraintOcorrencia = new function(){
+		var ocorrenciaInicial = null;
+		if(params["_cdOcorrenciaInicial"].value != null &amp;&amp; !params["_cdOcorrenciaInicial"].value.equals("")) {
+			var ocorrenciaInicial = params["_cdOcorrenciaInicial"].value;
+		}
+		
+		var ocorrenciaFinal = null;
+		if(params["_cdOcorrenciaFinal"].value != null &amp;&amp; !params["_cdOcorrenciaFinal"].value.equals("")) {
+			var ocorrenciaFinal = params["_cdOcorrenciaFinal"].value;
+		}
+		return factory.createConstraint("cdOcorrencia", ocorrenciaInicial, ocorrenciaFinal, ConstraintType.MUST);
+	};
+	
+	var constraintArea = new function(){
+		return factory.createConstraint("nmArea", params["_nmArea"], params["_nmArea"], ConstraintType.MUST);
+	};
+	
+	java.lang.System.out.println("dataset_analise_critica.beforeOpen(): constraintOcorrencia: " + constraintOcorrencia);
+	
+	constraintsAnaliseCritica.push(constraintOcorrencia);
+	constraintsAnaliseCritica.push(constraintArea);
+	
+	var sortingFields = new Array("cdOcorrencia");
+	datasetAnaliseCritica = factory.getDataset("ecm_kgq_analise_critica", null, constraintsAnaliseCritica, sortingFields);
+}
+catch (e) {
+	java.lang.System.err.println(">>dataset_analise_critica.beforeOpen: " + e);	
+}
+java.lang.System.out.println("dataset_analise_critica.beforeOpen(): dataset OK");]]></method>
+            <property name="dataSource">ds_analise_critica</property>
+            <method name="fetch"><![CDATA[if (datasetAnaliseCritica != null) {
+	if (count <	datasetAnaliseCritica.rowsCount) {
+		row["cdOcorrencia"] = datasetAnaliseCritica.getValue(count, "cdOcorrencia");
+		row["dsOcorrencia"] = datasetAnaliseCritica.getValue(count, "dsOcorrencia");
+		row["statusOcorrencia"] = getStatus(datasetAnaliseCritica.getValue(count, "statusOcorrencia"));
+		row["dtRegistro"] = datasetAnaliseCritica.getValue(count, "dtRegistro");		
+		row["dtOcorrencia"] = datasetAnaliseCritica.getValue(count, "dtOcorrencia");
+		row["nmTipoAcao"] = datasetAnaliseCritica.getValue(count, "nmTipoAcao");
+		row["nmTipoOcorrencia"] = datasetAnaliseCritica.getValue(count, "nmTipoOcorrencia");
+		row["nmArea"] = datasetAnaliseCritica.getValue(count, "nmArea");
+		row["nmOrigem"] = datasetAnaliseCritica.getValue(count, "nmOrigem");
+		row["nmCriticidade"] = datasetAnaliseCritica.getValue(count, "nmCriticidade");
+		
+		var fgContencao = datasetAnaliseCritica.getValue(count, "fgContencao");
+		if(fgContencao.equals("")){
+			row["fgContencao"] = "Não";
+		}
+		else{
+			row["fgContencao"] = fgContencao;
+		}
+		
+		var fgOcorrenciaReincidente = datasetAnaliseCritica.getValue(count, "fgOcorrenciaReincidente");
+		if(fgOcorrenciaReincidente.equals("")){
+			row["fgOcorrenciaReincidente"] = "Não";
+		}
+		else{
+			row["fgOcorrenciaReincidente"] = fgOcorrenciaReincidente;
+		}		
+		 
+		row["cdOcorrenciaReincidente"] = datasetAnaliseCritica.getValue(count, "cdOcorrenciaReincidente");
+		row["dsContencao"] = datasetAnaliseCritica.getValue(count, "dsContencao");
+		row["dsAnaliseCausa"] = datasetAnaliseCritica.getValue(count, "dsAnaliseCausa");
+		row["dsAcoesExecutadas"] = datasetAnaliseCritica.getValue(count, "dsAcoesExecutadas");
+		row["dsEficacia"] = datasetAnaliseCritica.getValue(count, "dsEficacia");
+		
+		//dados do plano de acao
+		row["cdPlanoAcao"] = datasetAnaliseCritica.getValue(count, "cdPlanoAcao");
+		row["nmResponsavelPA"] = datasetAnaliseCritica.getValue(count, "nmResponsavelPA");
+		row["nmDataPA"] = datasetAnaliseCritica.getValue(count, "nmDataPA");	
+		row["nmAssunto"] = datasetAnaliseCritica.getValue(count, "nmAssunto");
+		row["nmParticipantes"] = datasetAnaliseCritica.getValue(count, "nmParticipantes");
+		row["nmPauta"] = datasetAnaliseCritica.getValue(count, "nmPauta");
+		row["nmDefinicoes"] = datasetAnaliseCritica.getValue(count, "nmDefinicoes");
+		row["statusPA"] = getStatus(datasetAnaliseCritica.getValue(count, "statusPA"));
+		
+		//dados da atividade do plano
+		row["cdAtividadePA"] = datasetAnaliseCritica.getValue(count, "cdAtividadePA");
+		row["nmOquCom"] = datasetAnaliseCritica.getValue(count, "nmOquCom");
+		row["nmResponsavelAtividade"] = datasetAnaliseCritica.getValue(count, "nmResponsavelAtividade");
+		row["nmPrazoDeConclusao"] = datasetAnaliseCritica.getValue(count, "nmPrazoDeConclusao");
+		row["dsAtividade"] = datasetAnaliseCritica.getValue(count, "dsAtividade");
+		row["statusAtividade"] = getStatus(datasetAnaliseCritica.getValue(count, "statusAtividade"));
+		count++;
+		return true;
+	}
+	return false;
+}]]></method>
+        </script-data-set>
+        <script-data-set name="dataset_areas" id="598">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">nmArea</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">nmArea</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">nmArea</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <method name="beforeOpen"><![CDATA[java.lang.System.out.println("dataset_areas.beforeOpen(): getting dataset");
+try {
+	var factory = DatasetFactory.getInstance(1);
+	java.lang.System.err.println("this.factory.getClass() " + factory);
+	var constraintsAreas = new Array();
+	constraintsAreas.push(constraintActive);
+		
+//	var sortingFields = new Array("cdOcorrencia");
+	dataset = factory.getDataset("ecm_kgq_areas", null, constraintsAreas, sortingFields);
+
+}
+catch (e) {
+	java.lang.System.err.println(">>dataset_area.beforeOpen: " + e);	
+}finally{
+}
+java.lang.System.out.println("dataset_areas.beforeOpen(): dataset OK");]]></method>
+            <property name="dataSource">ds_analise_critica</property>
+            <method name="fetch"><![CDATA[java.lang.System.out.println("dataset_areas.fecth: datasetAreas: " + datasetAreas);
+if (datasetAreas != null) {
+	java.lang.System.out.println("dataset_areas.fecth - count: "+count + " datasetAreas.rowsCount: " + datasetAreas.rowsCount);
+	if (count <	datasetAreas.rowsCount) {
+		row["nmArea"] = datasetAreas.getValue(count, "nmArea");		
+		count++;
+		return true;
+	}
+	return false;
+}
+]]></method>
+        </script-data-set>
+        <script-data-set name="dataset_areas_2" id="924">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">0</property>
+                    <property name="name">nmArea</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">nmArea</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">nmArea</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <method name="beforeOpen"><![CDATA[try{
+    var factory = DatasetFactory.getInstance(${WKCompany});
+    var constraints = new Array(); 
+    var sortingFields = new Array();
+    var i = 0; 
+    
+     dataset = factory.getDataset("ecm_kgq_areas", null, constraints, sortingFields);
+     
+    }catch (e) {
+}finally {
+}]]></method>
+            <property name="dataSource">ds_analise_critica</property>
+            <method name="fetch"><![CDATA[if (dataset != null) {
+    if (count <  dataset.rowsCount){
+        //monta o objeto da linha
+        row["nmArea"] = dataset.getValue(count, "nmArea");
+
+        //Atualiza o contador 
+        count++;
+        return true;
+    }
+}
+return false;
+    ]]></method>
+        </script-data-set>
+    </data-sets>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <page-header>
+                <image id="922">
+                    <property name="source">embed</property>
+                    <property name="imageName">ENGEFORM - Logotipo.png</property>
+                </image>
+            </page-header>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <table id="113">
+            <property name="marginTop">0pt</property>
+            <property name="marginBottom">10pt</property>
+            <property name="pageBreakAfter">auto</property>
+            <property name="pageBreakBefore">auto</property>
+            <property name="pageBreakInside">auto</property>
+            <property name="dataSet">dataset_analise_critica</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">cdOcorrencia</property>
+                    <text-property name="displayName">cdOcorrencia</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["cdOcorrencia"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">cdPlanoAcao</property>
+                    <text-property name="displayName">cdPlanoAcao</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["cdPlanoAcao"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">cdAtividadePA</property>
+                    <text-property name="displayName">cdAtividadePA</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["cdAtividadePA"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">dsOcorrencia</property>
+                    <text-property name="displayName">dsOcorrencia</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["dsOcorrencia"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">nmDefinicoes</property>
+                    <text-property name="displayName">nmDefinicoes</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nmDefinicoes"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">nmOquCom</property>
+                    <text-property name="displayName">nmOquCom</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nmOquCom"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">statusOcorrencia</property>
+                    <text-property name="displayName">statusOcorrencia</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["statusOcorrencia"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">dtRegistro</property>
+                    <text-property name="displayName">dtRegistro</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["dtRegistro"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">dtOcorrencia</property>
+                    <text-property name="displayName">dtOcorrencia</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["dtOcorrencia"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">nmTipoAcao</property>
+                    <text-property name="displayName">nmTipoAcao</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nmTipoAcao"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">nmTipoOcorrencia</property>
+                    <text-property name="displayName">nmTipoOcorrencia</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nmTipoOcorrencia"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">nmArea</property>
+                    <text-property name="displayName">nmArea</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nmArea"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">nmOrigem</property>
+                    <text-property name="displayName">nmOrigem</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nmOrigem"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">nmCriticidade</property>
+                    <text-property name="displayName">nmCriticidade</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nmCriticidade"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">fgContencao</property>
+                    <text-property name="displayName">fgContencao</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["fgContencao"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">fgOcorrenciaReincidente</property>
+                    <text-property name="displayName">fgOcorrenciaReincidente</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["fgOcorrenciaReincidente"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">cdOcorrenciaReincidente</property>
+                    <text-property name="displayName">cdOcorrenciaReincidente</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["cdOcorrenciaReincidente"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">dsContencao</property>
+                    <text-property name="displayName">dsContencao</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["dsContencao"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">dsAnaliseCausa</property>
+                    <text-property name="displayName">dsAnaliseCausa</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["dsAnaliseCausa"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">dsAcoesExecutadas</property>
+                    <text-property name="displayName">dsAcoesExecutadas</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["dsAcoesExecutadas"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">dsEficacia</property>
+                    <text-property name="displayName">dsEficacia</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["dsEficacia"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">nmResponsavelPA</property>
+                    <text-property name="displayName">nmResponsavelPA</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nmResponsavelPA"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">nmDataPA</property>
+                    <text-property name="displayName">nmDataPA</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nmDataPA"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">nmAssunto</property>
+                    <text-property name="displayName">nmAssunto</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nmAssunto"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">nmParticipantes</property>
+                    <text-property name="displayName">nmParticipantes</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nmParticipantes"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">statusPA</property>
+                    <text-property name="displayName">statusPA</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["statusPA"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">nmResponsavelAtividade</property>
+                    <text-property name="displayName">nmResponsavelAtividade</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nmResponsavelAtividade"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">nmPrazoDeConclusao</property>
+                    <text-property name="displayName">nmPrazoDeConclusao</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nmPrazoDeConclusao"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">dsAtividade</property>
+                    <text-property name="displayName">dsAtividade</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["dsAtividade"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">statusAtividade</property>
+                    <text-property name="displayName">statusAtividade</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["statusAtividade"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">nmPauta</property>
+                    <text-property name="displayName">nmPauta</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nmPauta"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <column id="140">
+                <property name="pageBreakAfter">auto</property>
+            </column>
+            <header>
+                <row id="114">
+                    <cell id="116">
+                        <label id="252">
+                            <property name="backgroundColor">#FFFFFF</property>
+                            <property name="fontSize">18pt</property>
+                            <property name="textAlign">center</property>
+                            <property name="display">block</property>
+                            <text-property name="text">Análise Crítica da Ocorrência</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <group id="164">
+                <property name="groupName">ocorrencia</property>
+                <property name="interval">none</property>
+                <property name="sortDirection">asc</property>
+                <expression name="keyExpr" type="javascript">row["cdOcorrencia"]</expression>
+                <structure name="toc">
+                    <expression name="expressionValue" type="javascript">row["cdOcorrencia"]</expression>
+                </structure>
+                <property name="repeatHeader">true</property>
+                <property name="hideDetail">false</property>
+                <property name="pageBreakAfter">auto</property>
+                <property name="pageBreakBefore">auto</property>
+                <property name="pageBreakInside">auto</property>
+                <header>
+                    <row id="165">
+                        <cell id="167">
+                            <label id="158">
+                                <property name="backgroundColor">#AECEFF</property>
+                                <property name="fontSize">16pt</property>
+                                <property name="fontWeight">bold</property>
+                                <property name="borderBottomColor">#000000</property>
+                                <property name="borderBottomStyle">solid</property>
+                                <property name="borderBottomWidth">thin</property>
+                                <property name="borderLeftColor">#000000</property>
+                                <property name="borderLeftStyle">solid</property>
+                                <property name="borderLeftWidth">thin</property>
+                                <property name="borderRightColor">#000000</property>
+                                <property name="borderRightStyle">solid</property>
+                                <property name="borderRightWidth">thin</property>
+                                <property name="borderTopColor">#000000</property>
+                                <property name="borderTopStyle">solid</property>
+                                <property name="borderTopWidth">thin</property>
+                                <property name="marginTop">20pt</property>
+                                <property name="marginBottom">2pt</property>
+                                <property name="textAlign">center</property>
+                                <text-property name="text">Dados da Ocorrência</text-property>
+                            </label>
+                            <table id="192">
+                                <property name="backgroundColor">#EBEBEB</property>
+                                <property name="marginBottom">2pt</property>
+                                <property name="pageBreakBefore">always</property>
+                                <structure name="toc"/>
+                                <column id="202"/>
+                                <column id="253">
+                                    <property name="repeat">1</property>
+                                </column>
+                                <column id="272">
+                                    <property name="repeat">1</property>
+                                </column>
+                                <column id="266">
+                                    <property name="repeat">1</property>
+                                </column>
+                                <column id="283">
+                                    <property name="repeat">1</property>
+                                </column>
+                                <column id="289">
+                                    <property name="repeat">1</property>
+                                </column>
+                                <header>
+                                    <row id="193">
+                                        <cell id="194">
+                                            <property name="borderBottomColor">#000000</property>
+                                            <property name="borderBottomStyle">solid</property>
+                                            <property name="borderBottomWidth">thin</property>
+                                            <property name="borderLeftColor">#000000</property>
+                                            <property name="borderLeftStyle">solid</property>
+                                            <property name="borderLeftWidth">thin</property>
+                                            <property name="borderRightColor">#000000</property>
+                                            <property name="borderRightStyle">solid</property>
+                                            <property name="borderRightWidth">thin</property>
+                                            <property name="borderTopColor">#000000</property>
+                                            <property name="borderTopStyle">solid</property>
+                                            <property name="borderTopWidth">thin</property>
+                                            <label id="212">
+                                                <property name="textAlign">center</property>
+                                                <text-property name="text">Número</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="254">
+                                            <property name="borderBottomColor">#000000</property>
+                                            <property name="borderBottomStyle">solid</property>
+                                            <property name="borderBottomWidth">thin</property>
+                                            <property name="borderLeftColor">#000000</property>
+                                            <property name="borderLeftStyle">solid</property>
+                                            <property name="borderLeftWidth">thin</property>
+                                            <property name="borderRightColor">#000000</property>
+                                            <property name="borderRightStyle">solid</property>
+                                            <property name="borderRightWidth">thin</property>
+                                            <property name="borderTopColor">#000000</property>
+                                            <property name="borderTopStyle">solid</property>
+                                            <property name="borderTopWidth">thin</property>
+                                            <label id="255">
+                                                <property name="textAlign">center</property>
+                                                <text-property name="text">Situação</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="267">
+                                            <property name="borderBottomColor">#000000</property>
+                                            <property name="borderBottomStyle">solid</property>
+                                            <property name="borderBottomWidth">thin</property>
+                                            <property name="borderLeftColor">#000000</property>
+                                            <property name="borderLeftStyle">solid</property>
+                                            <property name="borderLeftWidth">thin</property>
+                                            <property name="borderRightColor">#000000</property>
+                                            <property name="borderRightStyle">solid</property>
+                                            <property name="borderRightWidth">thin</property>
+                                            <property name="borderTopColor">#000000</property>
+                                            <property name="borderTopStyle">solid</property>
+                                            <property name="borderTopWidth">thin</property>
+                                            <label id="274">
+                                                <property name="textAlign">center</property>
+                                                <text-property name="text">Data de Registro</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="261">
+                                            <property name="borderBottomColor">#000000</property>
+                                            <property name="borderBottomStyle">solid</property>
+                                            <property name="borderBottomWidth">thin</property>
+                                            <property name="borderLeftColor">#000000</property>
+                                            <property name="borderLeftStyle">solid</property>
+                                            <property name="borderLeftWidth">thin</property>
+                                            <property name="borderRightColor">#000000</property>
+                                            <property name="borderRightStyle">solid</property>
+                                            <property name="borderRightWidth">thin</property>
+                                            <property name="borderTopColor">#000000</property>
+                                            <property name="borderTopStyle">solid</property>
+                                            <property name="borderTopWidth">thin</property>
+                                            <label id="276">
+                                                <property name="textAlign">center</property>
+                                                <text-property name="text">Data da Ocorrência</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="278">
+                                            <property name="borderBottomColor">#000000</property>
+                                            <property name="borderBottomStyle">solid</property>
+                                            <property name="borderBottomWidth">thin</property>
+                                            <property name="borderLeftColor">#000000</property>
+                                            <property name="borderLeftStyle">solid</property>
+                                            <property name="borderLeftWidth">thin</property>
+                                            <property name="borderRightColor">#000000</property>
+                                            <property name="borderRightStyle">solid</property>
+                                            <property name="borderRightWidth">thin</property>
+                                            <property name="borderTopColor">#000000</property>
+                                            <property name="borderTopStyle">solid</property>
+                                            <property name="borderTopWidth">thin</property>
+                                            <label id="314">
+                                                <property name="textAlign">center</property>
+                                                <text-property name="text">Tipo de Ação</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="284">
+                                            <property name="borderBottomColor">#000000</property>
+                                            <property name="borderBottomStyle">solid</property>
+                                            <property name="borderBottomWidth">thin</property>
+                                            <property name="borderLeftColor">#000000</property>
+                                            <property name="borderLeftStyle">solid</property>
+                                            <property name="borderLeftWidth">thin</property>
+                                            <property name="borderRightColor">#000000</property>
+                                            <property name="borderRightStyle">solid</property>
+                                            <property name="borderRightWidth">thin</property>
+                                            <property name="borderTopColor">#000000</property>
+                                            <property name="borderTopStyle">solid</property>
+                                            <property name="borderTopWidth">thin</property>
+                                            <label id="316">
+                                                <property name="textAlign">center</property>
+                                                <text-property name="text">Tipo de Ocorrência</text-property>
+                                            </label>
+                                        </cell>
+                                    </row>
+                                </header>
+                                <group id="204">
+                                    <property name="groupName">ocorrencia</property>
+                                    <property name="interval">none</property>
+                                    <property name="sortDirection">asc</property>
+                                    <expression name="keyExpr" type="javascript">row["cdOcorrencia"]</expression>
+                                    <structure name="toc">
+                                        <expression name="expressionValue" type="javascript">row["cdOcorrencia"]</expression>
+                                    </structure>
+                                    <property name="repeatHeader">true</property>
+                                    <property name="hideDetail">false</property>
+                                    <property name="pageBreakAfter">auto</property>
+                                    <property name="pageBreakBefore">auto</property>
+                                    <property name="pageBreakInside">auto</property>
+                                    <header>
+                                        <row id="205">
+                                            <cell id="206">
+                                                <property name="borderBottomColor">#000000</property>
+                                                <property name="borderBottomStyle">solid</property>
+                                                <property name="borderBottomWidth">thin</property>
+                                                <property name="borderLeftColor">#000000</property>
+                                                <property name="borderLeftStyle">solid</property>
+                                                <property name="borderLeftWidth">thin</property>
+                                                <property name="borderRightColor">#000000</property>
+                                                <property name="borderRightStyle">solid</property>
+                                                <property name="borderRightWidth">thin</property>
+                                                <property name="borderTopColor">#000000</property>
+                                                <property name="borderTopStyle">solid</property>
+                                                <property name="borderTopWidth">thin</property>
+                                                <data id="211">
+                                                    <property name="resultSetColumn">cdOcorrencia</property>
+                                                </data>
+                                            </cell>
+                                            <cell id="256">
+                                                <property name="borderBottomColor">#000000</property>
+                                                <property name="borderBottomStyle">solid</property>
+                                                <property name="borderBottomWidth">thin</property>
+                                                <property name="borderLeftColor">#000000</property>
+                                                <property name="borderLeftStyle">solid</property>
+                                                <property name="borderLeftWidth">thin</property>
+                                                <property name="borderRightColor">#000000</property>
+                                                <property name="borderRightStyle">solid</property>
+                                                <property name="borderRightWidth">thin</property>
+                                                <property name="borderTopColor">#000000</property>
+                                                <property name="borderTopStyle">solid</property>
+                                                <property name="borderTopWidth">thin</property>
+                                                <data id="273">
+                                                    <property name="whiteSpace">nowrap</property>
+                                                    <property name="resultSetColumn">statusOcorrencia</property>
+                                                </data>
+                                            </cell>
+                                            <cell id="268">
+                                                <property name="borderBottomColor">#000000</property>
+                                                <property name="borderBottomStyle">solid</property>
+                                                <property name="borderBottomWidth">thin</property>
+                                                <property name="borderLeftColor">#000000</property>
+                                                <property name="borderLeftStyle">solid</property>
+                                                <property name="borderLeftWidth">thin</property>
+                                                <property name="borderRightColor">#000000</property>
+                                                <property name="borderRightStyle">solid</property>
+                                                <property name="borderRightWidth">thin</property>
+                                                <property name="borderTopColor">#000000</property>
+                                                <property name="borderTopStyle">solid</property>
+                                                <property name="borderTopWidth">thin</property>
+                                                <data id="275">
+                                                    <property name="whiteSpace">nowrap</property>
+                                                    <property name="resultSetColumn">dtRegistro</property>
+                                                </data>
+                                            </cell>
+                                            <cell id="262">
+                                                <property name="borderBottomColor">#000000</property>
+                                                <property name="borderBottomStyle">solid</property>
+                                                <property name="borderBottomWidth">thin</property>
+                                                <property name="borderLeftColor">#000000</property>
+                                                <property name="borderLeftStyle">solid</property>
+                                                <property name="borderLeftWidth">thin</property>
+                                                <property name="borderRightColor">#000000</property>
+                                                <property name="borderRightStyle">solid</property>
+                                                <property name="borderRightWidth">thin</property>
+                                                <property name="borderTopColor">#000000</property>
+                                                <property name="borderTopStyle">solid</property>
+                                                <property name="borderTopWidth">thin</property>
+                                                <data id="277">
+                                                    <property name="whiteSpace">nowrap</property>
+                                                    <property name="resultSetColumn">dtOcorrencia</property>
+                                                </data>
+                                            </cell>
+                                            <cell id="279">
+                                                <property name="borderBottomColor">#000000</property>
+                                                <property name="borderBottomStyle">solid</property>
+                                                <property name="borderBottomWidth">thin</property>
+                                                <property name="borderLeftColor">#000000</property>
+                                                <property name="borderLeftStyle">solid</property>
+                                                <property name="borderLeftWidth">thin</property>
+                                                <property name="borderRightColor">#000000</property>
+                                                <property name="borderRightStyle">solid</property>
+                                                <property name="borderRightWidth">thin</property>
+                                                <property name="borderTopColor">#000000</property>
+                                                <property name="borderTopStyle">solid</property>
+                                                <property name="borderTopWidth">thin</property>
+                                                <data id="315">
+                                                    <property name="whiteSpace">nowrap</property>
+                                                    <property name="resultSetColumn">nmTipoAcao</property>
+                                                </data>
+                                            </cell>
+                                            <cell id="285">
+                                                <property name="borderBottomColor">#000000</property>
+                                                <property name="borderBottomStyle">solid</property>
+                                                <property name="borderBottomWidth">thin</property>
+                                                <property name="borderLeftColor">#000000</property>
+                                                <property name="borderLeftStyle">solid</property>
+                                                <property name="borderLeftWidth">thin</property>
+                                                <property name="borderRightColor">#000000</property>
+                                                <property name="borderRightStyle">solid</property>
+                                                <property name="borderRightWidth">thin</property>
+                                                <property name="borderTopColor">#000000</property>
+                                                <property name="borderTopStyle">solid</property>
+                                                <property name="borderTopWidth">thin</property>
+                                                <data id="317">
+                                                    <property name="whiteSpace">nowrap</property>
+                                                    <property name="resultSetColumn">nmTipoOcorrencia</property>
+                                                </data>
+                                            </cell>
+                                        </row>
+                                    </header>
+                                </group>
+                            </table>
+                            <table id="359">
+                                <property name="backgroundColor">#EBEBEB</property>
+                                <property name="marginTop">0pt</property>
+                                <property name="marginBottom">2pt</property>
+                                <property name="pageBreakBefore">always</property>
+                                <structure name="toc"/>
+                                <column id="439"/>
+                                <column id="440"/>
+                                <column id="442">
+                                    <property name="repeat">1</property>
+                                </column>
+                                <column id="443">
+                                    <property name="repeat">1</property>
+                                </column>
+                                <column id="444">
+                                    <property name="repeat">1</property>
+                                </column>
+                                <column id="445">
+                                    <property name="repeat">1</property>
+                                </column>
+                                <header>
+                                    <row id="360">
+                                        <cell id="361">
+                                            <property name="borderBottomColor">#000000</property>
+                                            <property name="borderBottomStyle">solid</property>
+                                            <property name="borderBottomWidth">thin</property>
+                                            <property name="borderLeftColor">#000000</property>
+                                            <property name="borderLeftStyle">solid</property>
+                                            <property name="borderLeftWidth">thin</property>
+                                            <property name="borderRightColor">#000000</property>
+                                            <property name="borderRightStyle">solid</property>
+                                            <property name="borderRightWidth">thin</property>
+                                            <property name="borderTopColor">#000000</property>
+                                            <property name="borderTopStyle">solid</property>
+                                            <property name="borderTopWidth">thin</property>
+                                            <label id="318">
+                                                <property name="textAlign">center</property>
+                                                <text-property name="text">Area</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="363">
+                                            <property name="borderBottomColor">#000000</property>
+                                            <property name="borderBottomStyle">solid</property>
+                                            <property name="borderBottomWidth">thin</property>
+                                            <property name="borderLeftColor">#000000</property>
+                                            <property name="borderLeftStyle">solid</property>
+                                            <property name="borderLeftWidth">thin</property>
+                                            <property name="borderRightColor">#000000</property>
+                                            <property name="borderRightStyle">solid</property>
+                                            <property name="borderRightWidth">thin</property>
+                                            <property name="borderTopColor">#000000</property>
+                                            <property name="borderTopStyle">solid</property>
+                                            <property name="borderTopWidth">thin</property>
+                                            <label id="320">
+                                                <property name="textAlign">center</property>
+                                                <text-property name="text">Origem</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="367">
+                                            <property name="borderBottomColor">#000000</property>
+                                            <property name="borderBottomStyle">solid</property>
+                                            <property name="borderBottomWidth">thin</property>
+                                            <property name="borderLeftColor">#000000</property>
+                                            <property name="borderLeftStyle">solid</property>
+                                            <property name="borderLeftWidth">thin</property>
+                                            <property name="borderRightColor">#000000</property>
+                                            <property name="borderRightStyle">solid</property>
+                                            <property name="borderRightWidth">thin</property>
+                                            <property name="borderTopColor">#000000</property>
+                                            <property name="borderTopStyle">solid</property>
+                                            <property name="borderTopWidth">thin</property>
+                                            <label id="478">
+                                                <property name="textAlign">center</property>
+                                                <text-property name="text">Precisa Contenção?</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="369">
+                                            <property name="borderBottomColor">#000000</property>
+                                            <property name="borderBottomStyle">solid</property>
+                                            <property name="borderBottomWidth">thin</property>
+                                            <property name="borderLeftColor">#000000</property>
+                                            <property name="borderLeftStyle">solid</property>
+                                            <property name="borderLeftWidth">thin</property>
+                                            <property name="borderRightColor">#000000</property>
+                                            <property name="borderRightStyle">solid</property>
+                                            <property name="borderRightWidth">thin</property>
+                                            <property name="borderTopColor">#000000</property>
+                                            <property name="borderTopStyle">solid</property>
+                                            <property name="borderTopWidth">thin</property>
+                                            <label id="480">
+                                                <property name="textAlign">center</property>
+                                                <text-property name="text">É Reincidente?</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="371">
+                                            <property name="borderBottomColor">#000000</property>
+                                            <property name="borderBottomStyle">solid</property>
+                                            <property name="borderBottomWidth">thin</property>
+                                            <property name="borderLeftColor">#000000</property>
+                                            <property name="borderLeftStyle">solid</property>
+                                            <property name="borderLeftWidth">thin</property>
+                                            <property name="borderRightColor">#000000</property>
+                                            <property name="borderRightStyle">solid</property>
+                                            <property name="borderRightWidth">thin</property>
+                                            <property name="borderTopColor">#000000</property>
+                                            <property name="borderTopStyle">solid</property>
+                                            <property name="borderTopWidth">thin</property>
+                                            <label id="482">
+                                                <property name="textAlign">center</property>
+                                                <text-property name="text">Número da Ocorrência Reincidente</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="373">
+                                            <property name="borderBottomColor">#000000</property>
+                                            <property name="borderBottomStyle">solid</property>
+                                            <property name="borderBottomWidth">thin</property>
+                                            <property name="borderLeftColor">#000000</property>
+                                            <property name="borderLeftStyle">solid</property>
+                                            <property name="borderLeftWidth">thin</property>
+                                            <property name="borderRightColor">#000000</property>
+                                            <property name="borderRightStyle">solid</property>
+                                            <property name="borderRightWidth">thin</property>
+                                            <property name="borderTopColor">#000000</property>
+                                            <property name="borderTopStyle">solid</property>
+                                            <property name="borderTopWidth">thin</property>
+                                            <label id="476">
+                                                <property name="textAlign">center</property>
+                                                <text-property name="text">Criticidade</text-property>
+                                            </label>
+                                        </cell>
+                                    </row>
+                                </header>
+                                <group id="381">
+                                    <property name="groupName">ocorrencia</property>
+                                    <property name="interval">none</property>
+                                    <property name="sortDirection">asc</property>
+                                    <expression name="keyExpr" type="javascript">row["cdOcorrencia"]</expression>
+                                    <structure name="toc">
+                                        <expression name="expressionValue" type="javascript">row["cdOcorrencia"]</expression>
+                                    </structure>
+                                    <property name="repeatHeader">true</property>
+                                    <property name="hideDetail">false</property>
+                                    <property name="pageBreakAfter">auto</property>
+                                    <property name="pageBreakBefore">auto</property>
+                                    <property name="pageBreakInside">auto</property>
+                                    <header>
+                                        <row id="382">
+                                            <cell id="383">
+                                                <property name="borderBottomColor">#000000</property>
+                                                <property name="borderBottomStyle">solid</property>
+                                                <property name="borderBottomWidth">thin</property>
+                                                <property name="borderLeftColor">#000000</property>
+                                                <property name="borderLeftStyle">solid</property>
+                                                <property name="borderLeftWidth">thin</property>
+                                                <property name="borderRightColor">#000000</property>
+                                                <property name="borderRightStyle">solid</property>
+                                                <property name="borderRightWidth">thin</property>
+                                                <property name="borderTopColor">#000000</property>
+                                                <property name="borderTopStyle">solid</property>
+                                                <property name="borderTopWidth">thin</property>
+                                                <data id="319">
+                                                    <property name="whiteSpace">nowrap</property>
+                                                    <property name="resultSetColumn">nmArea</property>
+                                                </data>
+                                            </cell>
+                                            <cell id="385">
+                                                <property name="borderBottomColor">#000000</property>
+                                                <property name="borderBottomStyle">solid</property>
+                                                <property name="borderBottomWidth">thin</property>
+                                                <property name="borderLeftColor">#000000</property>
+                                                <property name="borderLeftStyle">solid</property>
+                                                <property name="borderLeftWidth">thin</property>
+                                                <property name="borderRightColor">#000000</property>
+                                                <property name="borderRightStyle">solid</property>
+                                                <property name="borderRightWidth">thin</property>
+                                                <property name="borderTopColor">#000000</property>
+                                                <property name="borderTopStyle">solid</property>
+                                                <property name="borderTopWidth">thin</property>
+                                                <data id="321">
+                                                    <property name="whiteSpace">nowrap</property>
+                                                    <property name="resultSetColumn">nmOrigem</property>
+                                                </data>
+                                            </cell>
+                                            <cell id="389">
+                                                <property name="borderBottomColor">#000000</property>
+                                                <property name="borderBottomStyle">solid</property>
+                                                <property name="borderBottomWidth">thin</property>
+                                                <property name="borderLeftColor">#000000</property>
+                                                <property name="borderLeftStyle">solid</property>
+                                                <property name="borderLeftWidth">thin</property>
+                                                <property name="borderRightColor">#000000</property>
+                                                <property name="borderRightStyle">solid</property>
+                                                <property name="borderRightWidth">thin</property>
+                                                <property name="borderTopColor">#000000</property>
+                                                <property name="borderTopStyle">solid</property>
+                                                <property name="borderTopWidth">thin</property>
+                                                <data id="497">
+                                                    <property name="whiteSpace">nowrap</property>
+                                                    <property name="resultSetColumn">fgContencao</property>
+                                                </data>
+                                            </cell>
+                                            <cell id="391">
+                                                <property name="borderBottomColor">#000000</property>
+                                                <property name="borderBottomStyle">solid</property>
+                                                <property name="borderBottomWidth">thin</property>
+                                                <property name="borderLeftColor">#000000</property>
+                                                <property name="borderLeftStyle">solid</property>
+                                                <property name="borderLeftWidth">thin</property>
+                                                <property name="borderRightColor">#000000</property>
+                                                <property name="borderRightStyle">solid</property>
+                                                <property name="borderRightWidth">thin</property>
+                                                <property name="borderTopColor">#000000</property>
+                                                <property name="borderTopStyle">solid</property>
+                                                <property name="borderTopWidth">thin</property>
+                                                <data id="499">
+                                                    <property name="whiteSpace">nowrap</property>
+                                                    <property name="resultSetColumn">fgOcorrenciaReincidente</property>
+                                                </data>
+                                            </cell>
+                                            <cell id="393">
+                                                <property name="borderBottomColor">#000000</property>
+                                                <property name="borderBottomStyle">solid</property>
+                                                <property name="borderBottomWidth">thin</property>
+                                                <property name="borderLeftColor">#000000</property>
+                                                <property name="borderLeftStyle">solid</property>
+                                                <property name="borderLeftWidth">thin</property>
+                                                <property name="borderRightColor">#000000</property>
+                                                <property name="borderRightStyle">solid</property>
+                                                <property name="borderRightWidth">thin</property>
+                                                <property name="borderTopColor">#000000</property>
+                                                <property name="borderTopStyle">solid</property>
+                                                <property name="borderTopWidth">thin</property>
+                                                <data id="501">
+                                                    <property name="whiteSpace">nowrap</property>
+                                                    <property name="resultSetColumn">cdOcorrenciaReincidente</property>
+                                                </data>
+                                            </cell>
+                                            <cell id="395">
+                                                <property name="borderBottomColor">#000000</property>
+                                                <property name="borderBottomStyle">solid</property>
+                                                <property name="borderBottomWidth">thin</property>
+                                                <property name="borderLeftColor">#000000</property>
+                                                <property name="borderLeftStyle">solid</property>
+                                                <property name="borderLeftWidth">thin</property>
+                                                <property name="borderRightColor">#000000</property>
+                                                <property name="borderRightStyle">solid</property>
+                                                <property name="borderRightWidth">thin</property>
+                                                <property name="borderTopColor">#000000</property>
+                                                <property name="borderTopStyle">solid</property>
+                                                <property name="borderTopWidth">thin</property>
+                                                <data id="495">
+                                                    <property name="whiteSpace">nowrap</property>
+                                                    <property name="resultSetColumn">nmCriticidade</property>
+                                                </data>
+                                            </cell>
+                                        </row>
+                                    </header>
+                                </group>
+                            </table>
+                            <table id="473">
+                                <property name="backgroundColor">#EBEBEB</property>
+                                <property name="marginTop">0pt</property>
+                                <property name="marginBottom">2pt</property>
+                                <property name="pageBreakBefore">always</property>
+                                <structure name="toc"/>
+                                <column id="541"/>
+                                <header>
+                                    <row id="474">
+                                        <cell id="475">
+                                            <property name="borderBottomColor">#000000</property>
+                                            <property name="borderBottomStyle">solid</property>
+                                            <property name="borderBottomWidth">thin</property>
+                                            <property name="borderLeftColor">#000000</property>
+                                            <property name="borderLeftStyle">solid</property>
+                                            <property name="borderLeftWidth">thin</property>
+                                            <property name="borderRightColor">#000000</property>
+                                            <property name="borderRightStyle">solid</property>
+                                            <property name="borderRightWidth">thin</property>
+                                            <property name="borderTopColor">#000000</property>
+                                            <property name="borderTopStyle">solid</property>
+                                            <property name="borderTopWidth">thin</property>
+                                            <label id="213">
+                                                <property name="textAlign">left</property>
+                                                <text-property name="text">Descrição da Ocorrência</text-property>
+                                            </label>
+                                        </cell>
+                                    </row>
+                                </header>
+                                <group id="492">
+                                    <property name="groupName">ocorrencia</property>
+                                    <property name="interval">none</property>
+                                    <property name="sortDirection">asc</property>
+                                    <expression name="keyExpr" type="javascript">row["cdOcorrencia"]</expression>
+                                    <structure name="toc">
+                                        <expression name="expressionValue" type="javascript">row["cdOcorrencia"]</expression>
+                                    </structure>
+                                    <property name="repeatHeader">true</property>
+                                    <property name="hideDetail">false</property>
+                                    <property name="pageBreakAfter">auto</property>
+                                    <property name="pageBreakBefore">auto</property>
+                                    <property name="pageBreakInside">auto</property>
+                                    <header>
+                                        <row id="493">
+                                            <cell id="494">
+                                                <property name="borderBottomColor">#000000</property>
+                                                <property name="borderBottomStyle">solid</property>
+                                                <property name="borderBottomWidth">thin</property>
+                                                <property name="borderLeftColor">#000000</property>
+                                                <property name="borderLeftStyle">solid</property>
+                                                <property name="borderLeftWidth">thin</property>
+                                                <property name="borderRightColor">#000000</property>
+                                                <property name="borderRightStyle">solid</property>
+                                                <property name="borderRightWidth">thin</property>
+                                                <property name="borderTopColor">#000000</property>
+                                                <property name="borderTopStyle">solid</property>
+                                                <property name="borderTopWidth">thin</property>
+                                                <data id="191">
+                                                    <property name="whiteSpace">nowrap</property>
+                                                    <property name="resultSetColumn">dsOcorrencia</property>
+                                                </data>
+                                            </cell>
+                                        </row>
+                                    </header>
+                                </group>
+                            </table>
+                            <table id="627">
+                                <property name="backgroundColor">#EBEBEB</property>
+                                <property name="marginTop">0pt</property>
+                                <property name="marginBottom">2pt</property>
+                                <property name="pageBreakBefore">always</property>
+                                <structure name="toc"/>
+                                <column id="652"/>
+                                <header>
+                                    <row id="628">
+                                        <cell id="631">
+                                            <property name="borderBottomColor">#000000</property>
+                                            <property name="borderBottomStyle">solid</property>
+                                            <property name="borderBottomWidth">thin</property>
+                                            <property name="borderLeftColor">#000000</property>
+                                            <property name="borderLeftStyle">solid</property>
+                                            <property name="borderLeftWidth">thin</property>
+                                            <property name="borderRightColor">#000000</property>
+                                            <property name="borderRightStyle">solid</property>
+                                            <property name="borderRightWidth">thin</property>
+                                            <property name="borderTopColor">#000000</property>
+                                            <property name="borderTopStyle">solid</property>
+                                            <property name="borderTopWidth">thin</property>
+                                            <label id="632">
+                                                <property name="textAlign">left</property>
+                                                <text-property name="text">Descrição da Contenção</text-property>
+                                            </label>
+                                        </cell>
+                                    </row>
+                                </header>
+                                <group id="639">
+                                    <property name="groupName">ocorrencia</property>
+                                    <property name="interval">none</property>
+                                    <property name="sortDirection">asc</property>
+                                    <expression name="keyExpr" type="javascript">row["cdOcorrencia"]</expression>
+                                    <structure name="toc">
+                                        <expression name="expressionValue" type="javascript">row["cdOcorrencia"]</expression>
+                                    </structure>
+                                    <property name="repeatHeader">true</property>
+                                    <property name="hideDetail">false</property>
+                                    <property name="pageBreakAfter">auto</property>
+                                    <property name="pageBreakBefore">auto</property>
+                                    <property name="pageBreakInside">auto</property>
+                                    <header>
+                                        <row id="640">
+                                            <cell id="643">
+                                                <property name="borderBottomColor">#000000</property>
+                                                <property name="borderBottomStyle">solid</property>
+                                                <property name="borderBottomWidth">thin</property>
+                                                <property name="borderLeftColor">#000000</property>
+                                                <property name="borderLeftStyle">solid</property>
+                                                <property name="borderLeftWidth">thin</property>
+                                                <property name="borderRightColor">#000000</property>
+                                                <property name="borderRightStyle">solid</property>
+                                                <property name="borderRightWidth">thin</property>
+                                                <property name="borderTopColor">#000000</property>
+                                                <property name="borderTopStyle">solid</property>
+                                                <property name="borderTopWidth">thin</property>
+                                                <data id="644">
+                                                    <property name="whiteSpace">nowrap</property>
+                                                    <property name="resultSetColumn">dsContencao</property>
+                                                </data>
+                                            </cell>
+                                        </row>
+                                    </header>
+                                </group>
+                            </table>
+                            <table id="656">
+                                <property name="backgroundColor">#EBEBEB</property>
+                                <property name="marginTop">0pt</property>
+                                <property name="marginBottom">2pt</property>
+                                <property name="pageBreakBefore">always</property>
+                                <structure name="toc"/>
+                                <column id="682">
+                                    <property name="repeat">1</property>
+                                </column>
+                                <header>
+                                    <row id="657">
+                                        <cell id="662">
+                                            <property name="borderBottomColor">#000000</property>
+                                            <property name="borderBottomStyle">solid</property>
+                                            <property name="borderBottomWidth">thin</property>
+                                            <property name="borderLeftColor">#000000</property>
+                                            <property name="borderLeftStyle">solid</property>
+                                            <property name="borderLeftWidth">thin</property>
+                                            <property name="borderRightColor">#000000</property>
+                                            <property name="borderRightStyle">solid</property>
+                                            <property name="borderRightWidth">thin</property>
+                                            <property name="borderTopColor">#000000</property>
+                                            <property name="borderTopStyle">solid</property>
+                                            <property name="borderTopWidth">thin</property>
+                                            <label id="663">
+                                                <property name="textAlign">left</property>
+                                                <text-property name="text">Descrição da Análise de Causa</text-property>
+                                            </label>
+                                        </cell>
+                                    </row>
+                                </header>
+                                <group id="668">
+                                    <property name="groupName">ocorrencia</property>
+                                    <property name="interval">none</property>
+                                    <property name="sortDirection">asc</property>
+                                    <expression name="keyExpr" type="javascript">row["cdOcorrencia"]</expression>
+                                    <structure name="toc">
+                                        <expression name="expressionValue" type="javascript">row["cdOcorrencia"]</expression>
+                                    </structure>
+                                    <property name="repeatHeader">true</property>
+                                    <property name="hideDetail">false</property>
+                                    <property name="pageBreakAfter">auto</property>
+                                    <property name="pageBreakBefore">auto</property>
+                                    <property name="pageBreakInside">auto</property>
+                                    <header>
+                                        <row id="669">
+                                            <cell id="674">
+                                                <property name="borderBottomColor">#000000</property>
+                                                <property name="borderBottomStyle">solid</property>
+                                                <property name="borderBottomWidth">thin</property>
+                                                <property name="borderLeftColor">#000000</property>
+                                                <property name="borderLeftStyle">solid</property>
+                                                <property name="borderLeftWidth">thin</property>
+                                                <property name="borderRightColor">#000000</property>
+                                                <property name="borderRightStyle">solid</property>
+                                                <property name="borderRightWidth">thin</property>
+                                                <property name="borderTopColor">#000000</property>
+                                                <property name="borderTopStyle">solid</property>
+                                                <property name="borderTopWidth">thin</property>
+                                                <data id="675">
+                                                    <property name="whiteSpace">nowrap</property>
+                                                    <property name="resultSetColumn">dsAnaliseCausa</property>
+                                                </data>
+                                            </cell>
+                                        </row>
+                                    </header>
+                                </group>
+                            </table>
+                            <table id="685">
+                                <property name="backgroundColor">#EBEBEB</property>
+                                <property name="marginTop">0pt</property>
+                                <property name="marginBottom">2pt</property>
+                                <property name="pageBreakBefore">always</property>
+                                <structure name="toc"/>
+                                <column id="712">
+                                    <property name="repeat">1</property>
+                                </column>
+                                <header>
+                                    <row id="686">
+                                        <cell id="693">
+                                            <property name="borderBottomColor">#000000</property>
+                                            <property name="borderBottomStyle">solid</property>
+                                            <property name="borderBottomWidth">thin</property>
+                                            <property name="borderLeftColor">#000000</property>
+                                            <property name="borderLeftStyle">solid</property>
+                                            <property name="borderLeftWidth">thin</property>
+                                            <property name="borderRightColor">#000000</property>
+                                            <property name="borderRightStyle">solid</property>
+                                            <property name="borderRightWidth">thin</property>
+                                            <property name="borderTopColor">#000000</property>
+                                            <property name="borderTopStyle">solid</property>
+                                            <property name="borderTopWidth">thin</property>
+                                            <label id="694">
+                                                <property name="textAlign">left</property>
+                                                <text-property name="text">Descrição das Ações Executadas</text-property>
+                                            </label>
+                                        </cell>
+                                    </row>
+                                </header>
+                                <group id="697">
+                                    <property name="groupName">ocorrencia</property>
+                                    <property name="interval">none</property>
+                                    <property name="sortDirection">asc</property>
+                                    <expression name="keyExpr" type="javascript">row["cdOcorrencia"]</expression>
+                                    <structure name="toc">
+                                        <expression name="expressionValue" type="javascript">row["cdOcorrencia"]</expression>
+                                    </structure>
+                                    <property name="repeatHeader">true</property>
+                                    <property name="hideDetail">false</property>
+                                    <property name="pageBreakAfter">auto</property>
+                                    <property name="pageBreakBefore">auto</property>
+                                    <property name="pageBreakInside">auto</property>
+                                    <header>
+                                        <row id="698">
+                                            <cell id="705">
+                                                <property name="borderBottomColor">#000000</property>
+                                                <property name="borderBottomStyle">solid</property>
+                                                <property name="borderBottomWidth">thin</property>
+                                                <property name="borderLeftColor">#000000</property>
+                                                <property name="borderLeftStyle">solid</property>
+                                                <property name="borderLeftWidth">thin</property>
+                                                <property name="borderRightColor">#000000</property>
+                                                <property name="borderRightStyle">solid</property>
+                                                <property name="borderRightWidth">thin</property>
+                                                <property name="borderTopColor">#000000</property>
+                                                <property name="borderTopStyle">solid</property>
+                                                <property name="borderTopWidth">thin</property>
+                                                <data id="706">
+                                                    <property name="whiteSpace">nowrap</property>
+                                                    <property name="resultSetColumn">dsAcoesExecutadas</property>
+                                                </data>
+                                            </cell>
+                                        </row>
+                                    </header>
+                                </group>
+                            </table>
+                            <table id="714">
+                                <property name="backgroundColor">#EBEBEB</property>
+                                <property name="marginTop">0pt</property>
+                                <property name="marginBottom">2pt</property>
+                                <property name="pageBreakBefore">always</property>
+                                <structure name="toc"/>
+                                <column id="742">
+                                    <property name="repeat">1</property>
+                                </column>
+                                <header>
+                                    <row id="715">
+                                        <cell id="724">
+                                            <property name="borderBottomColor">#000000</property>
+                                            <property name="borderBottomStyle">solid</property>
+                                            <property name="borderBottomWidth">thin</property>
+                                            <property name="borderLeftColor">#000000</property>
+                                            <property name="borderLeftStyle">solid</property>
+                                            <property name="borderLeftWidth">thin</property>
+                                            <property name="borderRightColor">#000000</property>
+                                            <property name="borderRightStyle">solid</property>
+                                            <property name="borderRightWidth">thin</property>
+                                            <property name="borderTopColor">#000000</property>
+                                            <property name="borderTopStyle">solid</property>
+                                            <property name="borderTopWidth">thin</property>
+                                            <label id="725">
+                                                <property name="textAlign">left</property>
+                                                <text-property name="text">Descrição da Eficácia</text-property>
+                                            </label>
+                                        </cell>
+                                    </row>
+                                </header>
+                                <group id="726">
+                                    <property name="groupName">ocorrencia</property>
+                                    <property name="interval">none</property>
+                                    <property name="sortDirection">asc</property>
+                                    <expression name="keyExpr" type="javascript">row["cdOcorrencia"]</expression>
+                                    <structure name="toc">
+                                        <expression name="expressionValue" type="javascript">row["cdOcorrencia"]</expression>
+                                    </structure>
+                                    <property name="repeatHeader">true</property>
+                                    <property name="hideDetail">false</property>
+                                    <property name="pageBreakAfter">auto</property>
+                                    <property name="pageBreakBefore">auto</property>
+                                    <property name="pageBreakInside">auto</property>
+                                    <header>
+                                        <row id="727">
+                                            <cell id="736">
+                                                <property name="borderBottomColor">#000000</property>
+                                                <property name="borderBottomStyle">solid</property>
+                                                <property name="borderBottomWidth">thin</property>
+                                                <property name="borderLeftColor">#000000</property>
+                                                <property name="borderLeftStyle">solid</property>
+                                                <property name="borderLeftWidth">thin</property>
+                                                <property name="borderRightColor">#000000</property>
+                                                <property name="borderRightStyle">solid</property>
+                                                <property name="borderRightWidth">thin</property>
+                                                <property name="borderTopColor">#000000</property>
+                                                <property name="borderTopStyle">solid</property>
+                                                <property name="borderTopWidth">thin</property>
+                                                <data id="737">
+                                                    <property name="whiteSpace">nowrap</property>
+                                                    <property name="resultSetColumn">dsEficacia</property>
+                                                </data>
+                                            </cell>
+                                        </row>
+                                    </header>
+                                </group>
+                            </table>
+                        </cell>
+                    </row>
+                </header>
+            </group>
+            <group id="176">
+                <property name="groupName">planoacao</property>
+                <property name="interval">none</property>
+                <property name="sortDirection">asc</property>
+                <expression name="keyExpr" type="javascript">row["cdPlanoAcao"]</expression>
+                <structure name="toc">
+                    <expression name="expressionValue" type="javascript">row["cdPlanoAcao"]</expression>
+                </structure>
+                <property name="repeatHeader">true</property>
+                <property name="hideDetail">false</property>
+                <property name="pageBreakAfter">auto</property>
+                <property name="pageBreakBefore">auto</property>
+                <property name="pageBreakInside">auto</property>
+                <header>
+                    <row id="177">
+                        <list-property name="visibility">
+                            <structure>
+                                <property name="format">all</property>
+                                <expression name="valueExpr" type="javascript">row["cdPlanoAcao"].equals("");</expression>
+                            </structure>
+                        </list-property>
+                        <cell id="179">
+                            <label id="188">
+                                <property name="backgroundColor">#AECEFF</property>
+                                <property name="fontSize">12pt</property>
+                                <property name="fontWeight">bold</property>
+                                <property name="borderBottomColor">#000000</property>
+                                <property name="borderBottomStyle">solid</property>
+                                <property name="borderBottomWidth">thin</property>
+                                <property name="borderLeftColor">#000000</property>
+                                <property name="borderLeftStyle">solid</property>
+                                <property name="borderLeftWidth">thin</property>
+                                <property name="borderRightColor">#000000</property>
+                                <property name="borderRightStyle">solid</property>
+                                <property name="borderRightWidth">thin</property>
+                                <property name="borderTopColor">#000000</property>
+                                <property name="borderTopStyle">solid</property>
+                                <property name="borderTopWidth">thin</property>
+                                <property name="marginTop">10pt</property>
+                                <property name="marginBottom">2pt</property>
+                                <property name="textAlign">center</property>
+                                <text-property name="text">Plano de Ação</text-property>
+                            </label>
+                            <table id="214">
+                                <property name="backgroundColor">#EBEBEB</property>
+                                <property name="marginTop">0pt</property>
+                                <property name="marginBottom">2pt</property>
+                                <column id="224"/>
+                                <column id="225"/>
+                                <column id="552"/>
+                                <column id="555"/>
+                                <column id="862"/>
+                                <header>
+                                    <row id="215">
+                                        <cell id="216">
+                                            <property name="borderBottomColor">#000000</property>
+                                            <property name="borderBottomStyle">solid</property>
+                                            <property name="borderBottomWidth">thin</property>
+                                            <property name="borderLeftColor">#000000</property>
+                                            <property name="borderLeftStyle">solid</property>
+                                            <property name="borderLeftWidth">thin</property>
+                                            <property name="borderRightColor">#000000</property>
+                                            <property name="borderRightStyle">solid</property>
+                                            <property name="borderRightWidth">thin</property>
+                                            <property name="borderTopColor">#000000</property>
+                                            <property name="borderTopStyle">solid</property>
+                                            <property name="borderTopWidth">thin</property>
+                                            <label id="236">
+                                                <property name="textAlign">center</property>
+                                                <text-property name="text">Número</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="217">
+                                            <property name="borderBottomColor">#000000</property>
+                                            <property name="borderBottomStyle">solid</property>
+                                            <property name="borderBottomWidth">thin</property>
+                                            <property name="borderLeftColor">#000000</property>
+                                            <property name="borderLeftStyle">solid</property>
+                                            <property name="borderLeftWidth">thin</property>
+                                            <property name="borderRightColor">#000000</property>
+                                            <property name="borderRightStyle">solid</property>
+                                            <property name="borderRightWidth">thin</property>
+                                            <property name="borderTopColor">#000000</property>
+                                            <property name="borderTopStyle">solid</property>
+                                            <property name="borderTopWidth">thin</property>
+                                            <label id="836">
+                                                <property name="textAlign">center</property>
+                                                <text-property name="text">Situação</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="550">
+                                            <property name="borderBottomColor">#000000</property>
+                                            <property name="borderBottomStyle">solid</property>
+                                            <property name="borderBottomWidth">thin</property>
+                                            <property name="borderLeftColor">#000000</property>
+                                            <property name="borderLeftStyle">solid</property>
+                                            <property name="borderLeftWidth">thin</property>
+                                            <property name="borderRightColor">#000000</property>
+                                            <property name="borderRightStyle">solid</property>
+                                            <property name="borderRightWidth">thin</property>
+                                            <property name="borderTopColor">#000000</property>
+                                            <property name="borderTopStyle">solid</property>
+                                            <property name="borderTopWidth">thin</property>
+                                            <label id="565">
+                                                <property name="textAlign">center</property>
+                                                <text-property name="text">Responsável</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="553">
+                                            <property name="borderBottomColor">#000000</property>
+                                            <property name="borderBottomStyle">solid</property>
+                                            <property name="borderBottomWidth">thin</property>
+                                            <property name="borderLeftColor">#000000</property>
+                                            <property name="borderLeftStyle">solid</property>
+                                            <property name="borderLeftWidth">thin</property>
+                                            <property name="borderRightColor">#000000</property>
+                                            <property name="borderRightStyle">solid</property>
+                                            <property name="borderRightWidth">thin</property>
+                                            <property name="borderTopColor">#000000</property>
+                                            <property name="borderTopStyle">solid</property>
+                                            <property name="borderTopWidth">thin</property>
+                                            <label id="567">
+                                                <property name="textAlign">center</property>
+                                                <text-property name="text">Data de início</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="860">
+                                            <property name="borderBottomColor">#000000</property>
+                                            <property name="borderBottomStyle">solid</property>
+                                            <property name="borderBottomWidth">thin</property>
+                                            <property name="borderLeftColor">#000000</property>
+                                            <property name="borderLeftStyle">solid</property>
+                                            <property name="borderLeftWidth">thin</property>
+                                            <property name="borderRightColor">#000000</property>
+                                            <property name="borderRightStyle">solid</property>
+                                            <property name="borderRightWidth">thin</property>
+                                            <property name="borderTopColor">#000000</property>
+                                            <property name="borderTopStyle">solid</property>
+                                            <property name="borderTopWidth">thin</property>
+                                            <label id="569">
+                                                <property name="textAlign">center</property>
+                                                <text-property name="text">Assunto</text-property>
+                                            </label>
+                                        </cell>
+                                    </row>
+                                </header>
+                                <group id="226">
+                                    <property name="groupName">planoacao</property>
+                                    <property name="interval">none</property>
+                                    <property name="sortDirection">asc</property>
+                                    <expression name="keyExpr" type="javascript">row["cdPlanoAcao"]</expression>
+                                    <structure name="toc">
+                                        <expression name="expressionValue" type="javascript">row["cdPlanoAcao"]</expression>
+                                    </structure>
+                                    <property name="repeatHeader">true</property>
+                                    <property name="hideDetail">false</property>
+                                    <property name="pageBreakAfter">auto</property>
+                                    <property name="pageBreakBefore">auto</property>
+                                    <property name="pageBreakInside">auto</property>
+                                    <header>
+                                        <row id="227">
+                                            <cell id="228">
+                                                <property name="borderBottomColor">#000000</property>
+                                                <property name="borderBottomStyle">solid</property>
+                                                <property name="borderBottomWidth">thin</property>
+                                                <property name="borderLeftColor">#000000</property>
+                                                <property name="borderLeftStyle">solid</property>
+                                                <property name="borderLeftWidth">thin</property>
+                                                <property name="borderRightColor">#000000</property>
+                                                <property name="borderRightStyle">solid</property>
+                                                <property name="borderRightWidth">thin</property>
+                                                <property name="borderTopColor">#000000</property>
+                                                <property name="borderTopStyle">solid</property>
+                                                <property name="borderTopWidth">thin</property>
+                                                <data id="233">
+                                                    <property name="resultSetColumn">cdPlanoAcao</property>
+                                                </data>
+                                            </cell>
+                                            <cell id="229">
+                                                <property name="borderBottomColor">#000000</property>
+                                                <property name="borderBottomStyle">solid</property>
+                                                <property name="borderBottomWidth">thin</property>
+                                                <property name="borderLeftColor">#000000</property>
+                                                <property name="borderLeftStyle">solid</property>
+                                                <property name="borderLeftWidth">thin</property>
+                                                <property name="borderRightColor">#000000</property>
+                                                <property name="borderRightStyle">solid</property>
+                                                <property name="borderRightWidth">thin</property>
+                                                <property name="borderTopColor">#000000</property>
+                                                <property name="borderTopStyle">solid</property>
+                                                <property name="borderTopWidth">thin</property>
+                                                <data id="852">
+                                                    <property name="whiteSpace">nowrap</property>
+                                                    <property name="resultSetColumn">statusPA</property>
+                                                </data>
+                                            </cell>
+                                            <cell id="551">
+                                                <property name="borderBottomColor">#000000</property>
+                                                <property name="borderBottomStyle">solid</property>
+                                                <property name="borderBottomWidth">thin</property>
+                                                <property name="borderLeftColor">#000000</property>
+                                                <property name="borderLeftStyle">solid</property>
+                                                <property name="borderLeftWidth">thin</property>
+                                                <property name="borderRightColor">#000000</property>
+                                                <property name="borderRightStyle">solid</property>
+                                                <property name="borderRightWidth">thin</property>
+                                                <property name="borderTopColor">#000000</property>
+                                                <property name="borderTopStyle">solid</property>
+                                                <property name="borderTopWidth">thin</property>
+                                                <data id="566">
+                                                    <property name="whiteSpace">nowrap</property>
+                                                    <property name="resultSetColumn">nmResponsavelPA</property>
+                                                </data>
+                                            </cell>
+                                            <cell id="554">
+                                                <property name="borderBottomColor">#000000</property>
+                                                <property name="borderBottomStyle">solid</property>
+                                                <property name="borderBottomWidth">thin</property>
+                                                <property name="borderLeftColor">#000000</property>
+                                                <property name="borderLeftStyle">solid</property>
+                                                <property name="borderLeftWidth">thin</property>
+                                                <property name="borderRightColor">#000000</property>
+                                                <property name="borderRightStyle">solid</property>
+                                                <property name="borderRightWidth">thin</property>
+                                                <property name="borderTopColor">#000000</property>
+                                                <property name="borderTopStyle">solid</property>
+                                                <property name="borderTopWidth">thin</property>
+                                                <data id="568">
+                                                    <property name="whiteSpace">nowrap</property>
+                                                    <property name="resultSetColumn">nmDataPA</property>
+                                                </data>
+                                            </cell>
+                                            <cell id="861">
+                                                <property name="borderBottomColor">#000000</property>
+                                                <property name="borderBottomStyle">solid</property>
+                                                <property name="borderBottomWidth">thin</property>
+                                                <property name="borderLeftColor">#000000</property>
+                                                <property name="borderLeftStyle">solid</property>
+                                                <property name="borderLeftWidth">thin</property>
+                                                <property name="borderRightColor">#000000</property>
+                                                <property name="borderRightStyle">solid</property>
+                                                <property name="borderRightWidth">thin</property>
+                                                <property name="borderTopColor">#000000</property>
+                                                <property name="borderTopStyle">solid</property>
+                                                <property name="borderTopWidth">thin</property>
+                                                <data id="570">
+                                                    <property name="whiteSpace">nowrap</property>
+                                                    <property name="resultSetColumn">nmAssunto</property>
+                                                </data>
+                                            </cell>
+                                        </row>
+                                    </header>
+                                </group>
+                            </table>
+                            <table id="743">
+                                <property name="backgroundColor">#EBEBEB</property>
+                                <property name="marginTop">0pt</property>
+                                <property name="marginBottom">2pt</property>
+                                <column id="779"/>
+                                <header>
+                                    <row id="744">
+                                        <cell id="753">
+                                            <property name="borderBottomColor">#000000</property>
+                                            <property name="borderBottomStyle">solid</property>
+                                            <property name="borderBottomWidth">thin</property>
+                                            <property name="borderLeftColor">#000000</property>
+                                            <property name="borderLeftStyle">solid</property>
+                                            <property name="borderLeftWidth">thin</property>
+                                            <property name="borderRightColor">#000000</property>
+                                            <property name="borderRightStyle">solid</property>
+                                            <property name="borderRightWidth">thin</property>
+                                            <property name="borderTopColor">#000000</property>
+                                            <property name="borderTopStyle">solid</property>
+                                            <property name="borderTopWidth">thin</property>
+                                            <label id="754">
+                                                <property name="textAlign">left</property>
+                                                <text-property name="text">Participantes</text-property>
+                                            </label>
+                                        </cell>
+                                    </row>
+                                </header>
+                                <group id="759">
+                                    <property name="groupName">planoacao</property>
+                                    <property name="interval">none</property>
+                                    <property name="sortDirection">asc</property>
+                                    <expression name="keyExpr" type="javascript">row["cdPlanoAcao"]</expression>
+                                    <structure name="toc">
+                                        <expression name="expressionValue" type="javascript">row["cdPlanoAcao"]</expression>
+                                    </structure>
+                                    <property name="repeatHeader">true</property>
+                                    <property name="hideDetail">false</property>
+                                    <property name="pageBreakAfter">auto</property>
+                                    <property name="pageBreakBefore">auto</property>
+                                    <property name="pageBreakInside">auto</property>
+                                    <header>
+                                        <row id="760">
+                                            <cell id="769">
+                                                <property name="borderBottomColor">#000000</property>
+                                                <property name="borderBottomStyle">solid</property>
+                                                <property name="borderBottomWidth">thin</property>
+                                                <property name="borderLeftColor">#000000</property>
+                                                <property name="borderLeftStyle">solid</property>
+                                                <property name="borderLeftWidth">thin</property>
+                                                <property name="borderRightColor">#000000</property>
+                                                <property name="borderRightStyle">solid</property>
+                                                <property name="borderRightWidth">thin</property>
+                                                <property name="borderTopColor">#000000</property>
+                                                <property name="borderTopStyle">solid</property>
+                                                <property name="borderTopWidth">thin</property>
+                                                <data id="770">
+                                                    <property name="whiteSpace">nowrap</property>
+                                                    <property name="resultSetColumn">nmParticipantes</property>
+                                                </data>
+                                            </cell>
+                                        </row>
+                                    </header>
+                                </group>
+                            </table>
+                            <table id="782">
+                                <property name="backgroundColor">#EBEBEB</property>
+                                <property name="marginTop">0pt</property>
+                                <property name="marginBottom">2pt</property>
+                                <column id="819"/>
+                                <header>
+                                    <row id="783">
+                                        <cell id="794">
+                                            <property name="borderBottomColor">#000000</property>
+                                            <property name="borderBottomStyle">solid</property>
+                                            <property name="borderBottomWidth">thin</property>
+                                            <property name="borderLeftColor">#000000</property>
+                                            <property name="borderLeftStyle">solid</property>
+                                            <property name="borderLeftWidth">thin</property>
+                                            <property name="borderRightColor">#000000</property>
+                                            <property name="borderRightStyle">solid</property>
+                                            <property name="borderRightWidth">thin</property>
+                                            <property name="borderTopColor">#000000</property>
+                                            <property name="borderTopStyle">solid</property>
+                                            <property name="borderTopWidth">thin</property>
+                                            <label id="872">
+                                                <property name="textAlign">left</property>
+                                                <text-property name="text">Pauta</text-property>
+                                            </label>
+                                        </cell>
+                                    </row>
+                                </header>
+                                <group id="798">
+                                    <property name="groupName">planoacao</property>
+                                    <property name="interval">none</property>
+                                    <property name="sortDirection">asc</property>
+                                    <expression name="keyExpr" type="javascript">row["cdPlanoAcao"]</expression>
+                                    <structure name="toc">
+                                        <expression name="expressionValue" type="javascript">row["cdPlanoAcao"]</expression>
+                                    </structure>
+                                    <property name="repeatHeader">true</property>
+                                    <property name="hideDetail">false</property>
+                                    <property name="pageBreakAfter">auto</property>
+                                    <property name="pageBreakBefore">auto</property>
+                                    <property name="pageBreakInside">auto</property>
+                                    <header>
+                                        <row id="799">
+                                            <cell id="810">
+                                                <property name="borderBottomColor">#000000</property>
+                                                <property name="borderBottomStyle">solid</property>
+                                                <property name="borderBottomWidth">thin</property>
+                                                <property name="borderLeftColor">#000000</property>
+                                                <property name="borderLeftStyle">solid</property>
+                                                <property name="borderLeftWidth">thin</property>
+                                                <property name="borderRightColor">#000000</property>
+                                                <property name="borderRightStyle">solid</property>
+                                                <property name="borderRightWidth">thin</property>
+                                                <property name="borderTopColor">#000000</property>
+                                                <property name="borderTopStyle">solid</property>
+                                                <property name="borderTopWidth">thin</property>
+                                                <data id="873">
+                                                    <property name="whiteSpace">nowrap</property>
+                                                    <property name="resultSetColumn">nmPauta</property>
+                                                </data>
+                                            </cell>
+                                        </row>
+                                    </header>
+                                </group>
+                            </table>
+                            <table id="863">
+                                <property name="backgroundColor">#EBEBEB</property>
+                                <property name="marginTop">0pt</property>
+                                <property name="marginBottom">2pt</property>
+                                <column id="871"/>
+                                <header>
+                                    <row id="864">
+                                        <cell id="865">
+                                            <property name="borderBottomColor">#000000</property>
+                                            <property name="borderBottomStyle">solid</property>
+                                            <property name="borderBottomWidth">thin</property>
+                                            <property name="borderLeftColor">#000000</property>
+                                            <property name="borderLeftStyle">solid</property>
+                                            <property name="borderLeftWidth">thin</property>
+                                            <property name="borderRightColor">#000000</property>
+                                            <property name="borderRightStyle">solid</property>
+                                            <property name="borderRightWidth">thin</property>
+                                            <property name="borderTopColor">#000000</property>
+                                            <property name="borderTopStyle">solid</property>
+                                            <property name="borderTopWidth">thin</property>
+                                            <label id="866">
+                                                <property name="textAlign">left</property>
+                                                <text-property name="text">Definições</text-property>
+                                            </label>
+                                        </cell>
+                                    </row>
+                                </header>
+                                <group id="867">
+                                    <property name="groupName">planoacao</property>
+                                    <property name="interval">none</property>
+                                    <property name="sortDirection">asc</property>
+                                    <expression name="keyExpr" type="javascript">row["cdPlanoAcao"]</expression>
+                                    <structure name="toc">
+                                        <expression name="expressionValue" type="javascript">row["cdPlanoAcao"]</expression>
+                                    </structure>
+                                    <property name="repeatHeader">true</property>
+                                    <property name="hideDetail">false</property>
+                                    <property name="pageBreakAfter">auto</property>
+                                    <property name="pageBreakBefore">auto</property>
+                                    <property name="pageBreakInside">auto</property>
+                                    <header>
+                                        <row id="868">
+                                            <cell id="869">
+                                                <property name="borderBottomColor">#000000</property>
+                                                <property name="borderBottomStyle">solid</property>
+                                                <property name="borderBottomWidth">thin</property>
+                                                <property name="borderLeftColor">#000000</property>
+                                                <property name="borderLeftStyle">solid</property>
+                                                <property name="borderLeftWidth">thin</property>
+                                                <property name="borderRightColor">#000000</property>
+                                                <property name="borderRightStyle">solid</property>
+                                                <property name="borderRightWidth">thin</property>
+                                                <property name="borderTopColor">#000000</property>
+                                                <property name="borderTopStyle">solid</property>
+                                                <property name="borderTopWidth">thin</property>
+                                                <data id="870">
+                                                    <property name="whiteSpace">nowrap</property>
+                                                    <property name="resultSetColumn">nmDefinicoes</property>
+                                                </data>
+                                            </cell>
+                                        </row>
+                                    </header>
+                                </group>
+                            </table>
+                            <label id="189">
+                                <property name="backgroundColor">#AECEFF</property>
+                                <property name="fontSize">12pt</property>
+                                <property name="fontWeight">bold</property>
+                                <property name="borderBottomColor">#000000</property>
+                                <property name="borderBottomStyle">solid</property>
+                                <property name="borderBottomWidth">thin</property>
+                                <property name="borderLeftColor">#000000</property>
+                                <property name="borderLeftStyle">solid</property>
+                                <property name="borderLeftWidth">thin</property>
+                                <property name="borderRightColor">#000000</property>
+                                <property name="borderRightStyle">solid</property>
+                                <property name="borderRightWidth">thin</property>
+                                <property name="borderTopColor">#000000</property>
+                                <property name="borderTopStyle">solid</property>
+                                <property name="borderTopWidth">thin</property>
+                                <property name="marginTop">10pt</property>
+                                <property name="marginBottom">2pt</property>
+                                <property name="textAlign">center</property>
+                                <text-property name="text">Atividades do Plano</text-property>
+                            </label>
+                        </cell>
+                    </row>
+                </header>
+            </group>
+            <detail>
+                <row id="119">
+                    <list-property name="visibility">
+                        <structure>
+                            <property name="format">all</property>
+                            <expression name="valueExpr" type="javascript">row["cdAtividadePA"].equals("");</expression>
+                        </structure>
+                    </list-property>
+                    <cell id="121">
+                        <table id="237">
+                            <property name="backgroundColor">#EBEBEB</property>
+                            <property name="marginBottom">2pt</property>
+                            <property name="pageBreakAfter">auto</property>
+                            <property name="pageBreakBefore">auto</property>
+                            <column id="247"/>
+                            <column id="577"/>
+                            <column id="580"/>
+                            <column id="592"/>
+                            <header>
+                                <row id="238">
+                                    <cell id="239">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="251">
+                                            <property name="textAlign">center</property>
+                                            <text-property name="text">Número</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="575">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="593">
+                                            <property name="textAlign">center</property>
+                                            <text-property name="text">Situação</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="578">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="584">
+                                            <property name="textAlign">center</property>
+                                            <text-property name="text">Responsável</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="590">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="586">
+                                            <property name="textAlign">center</property>
+                                            <text-property name="text">Prazo de Conclusão</text-property>
+                                        </label>
+                                    </cell>
+                                </row>
+                            </header>
+                            <detail>
+                                <row id="241">
+                                    <cell id="242">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <data id="163">
+                                            <property name="whiteSpace">nowrap</property>
+                                            <property name="resultSetColumn">cdAtividadePA</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="576">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <data id="594">
+                                            <property name="whiteSpace">nowrap</property>
+                                            <property name="resultSetColumn">statusAtividade</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="579">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <data id="585">
+                                            <property name="whiteSpace">nowrap</property>
+                                            <property name="resultSetColumn">nmResponsavelAtividade</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="591">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <data id="587">
+                                            <property name="whiteSpace">nowrap</property>
+                                            <property name="resultSetColumn">nmPrazoDeConclusao</property>
+                                        </data>
+                                    </cell>
+                                </row>
+                            </detail>
+                        </table>
+                        <table id="874">
+                            <property name="backgroundColor">#EBEBEB</property>
+                            <property name="marginBottom">2pt</property>
+                            <property name="pageBreakAfter">auto</property>
+                            <property name="pageBreakBefore">auto</property>
+                            <column id="902"/>
+                            <header>
+                                <row id="875">
+                                    <cell id="878">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="879">
+                                            <property name="textAlign">left</property>
+                                            <text-property name="text">O que? Como?</text-property>
+                                        </label>
+                                    </cell>
+                                </row>
+                            </header>
+                            <detail>
+                                <row id="888">
+                                    <cell id="891">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <data id="892">
+                                            <property name="whiteSpace">nowrap</property>
+                                            <property name="resultSetColumn">nmOquCom</property>
+                                        </data>
+                                    </cell>
+                                </row>
+                            </detail>
+                        </table>
+                        <table id="907">
+                            <property name="backgroundColor">#EBEBEB</property>
+                            <property name="marginBottom">2pt</property>
+                            <property name="pageBreakAfter">always</property>
+                            <property name="pageBreakBefore">auto</property>
+                            <column id="919"/>
+                            <header>
+                                <row id="908">
+                                    <cell id="911">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <label id="912">
+                                            <property name="textAlign">left</property>
+                                            <text-property name="text">Descrição da Atividade</text-property>
+                                        </label>
+                                    </cell>
+                                </row>
+                            </header>
+                            <detail>
+                                <row id="913">
+                                    <cell id="916">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">thin</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">thin</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">thin</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">thin</property>
+                                        <data id="917">
+                                            <property name="whiteSpace">nowrap</property>
+                                            <property name="resultSetColumn">dsAtividade</property>
+                                        </data>
+                                    </cell>
+                                </row>
+                            </detail>
+                        </table>
+                    </cell>
+                </row>
+            </detail>
+        </table>
+    </body>
+    <list-property name="images">
+        <structure>
+            <property name="name">ENGEFORM - Logotipo.png</property>
+            <property name="type">image/png</property>
+            <property name="data">
+                iVBORw0KGgoAAAANSUhEUgAAAHAAAAAoCAIAAACpX+mGAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+                YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAuPSURBVGhD7ZvXVxtJFof1b+/L7tkw3hl7x2OCsREZDMZg
+                k03OBkRGBAkEQoggJBASKGdpvqoLbXbwPsxBTyv1qdNUV1fdqvrdWLeFKZspxGPpTLqQy6oKj1zZbD53
+                f2VyuT+Uhzel8vfHCAARQCUT2Ug4AWj5XCGdUi0m/tAKoPRIxDOZTI5KNBpVuBZyjwpIG4/6ZUlcsuXH
+                e5eWAkgpgHKFVAo4CxTB0ERTPq9eZHlSEKsrn89mMqlMNvGoxO/rtJdUUSA87N0AJJMSWB/gEtAK6XTW
+                lAe8bLa+saJcnomAmEBTNpuORELPpFUeDgKpVAKxNWEN4okyoEVQ0EQyApgAms7l42URez4CmNp8IWVK
+                pcOU55MrUyCIQjpNsXgwX0iU4Xg+AgAajd0qCS0D+nw0oXAvoZlsNJG8KwrFEieikQwrpwS0JY5FUbaP
+                oisbiqdH84tCscSJ4OVV2JRKx66uPSWORVG2f3vnJ7ZHQnPZXNJ/43WdHB67HCfuQ9eJw3lsc53sX/vP
+                7ftbl77jTesiU1p3LB6v89hlv/Cc7B/sHLsOzs6Pe/u6eLW88u3Ascsj7UNfe2mpfvsb967u9pXVBRrd
+                p0eQpVDhkUbZw+zchNd3xlgaL72njsM9ytX1BY/MAln6rG9YeMXAH5ax8aH3tVX1De/oWVH5nyOnnWLf
+                32Y4pDY2lyenRhqbamW64ZH+/0WHlVB6ej9BraW1fnFp1nm8z2ZdbpvjyHpyaj8+2ZuYZC5Fx7q9An3f
+                1bnXd37iZmuHgeAVKQ6O8ZzlyYmQikpTdFqFQoVon6gqSVDF3enahcrZhaNQIE2AYMtb1W1kdIBXLF0e
+                sR4sy2A47IlEoXBP0BhFo3Biy7rK21Q6SnlcSaY4daT3bFv0OTyyUSdm/mFZWJx5W/PGQFPv4r9KOhNb
+                XVusq68BdMD9w1vjEeIsb3tnHWrmurcyKXvHMuJtqKQzkcWlaREUWJ7OKAWnSCKJu8o9cZbnTzIZJ+kp
+                okqhayDo4zwKxXDED7k92wZUDg63AFTacWcsFHCRBV7t7G4ApaAwONRDCyszKLAagrNI9IYjGRwKBC+p
+                jI7164FrrFjYxv0u5GdULk8uJxOLhyzLSkIvvWfG6lleKBzgVTwRDkeC3Ofmp+iDVIpMULBg0h8dpEJh
+                1PrGMt2mZ8Y01wOgo5KZybtQ+DqeYOUh6rTc3vmQvvaORrbMmgVHgBZenl+4RFZYQyIRAzHuoVCIBFNK
+                XyofKlDKO5BlHchw24emp2aFuZkAELO5RCgMOkpI0aDmljoETQ5eNAJoa1sDSgriInT+m4st6/L4xGD/
+                QFdXd1tf/6dvC5M9vR+ZApOiaSoRODzaZez72uqad5V19e8+dra1tDbQJ3jLvHjOO8ru3lb354+tbY28
+                pXR++vDzL/8aGOzBZAGfAHrg2PvU1T70tW97Z0NJkNa8m4Cvp7erf+ALixekwHFmdrS5pXZufpytsQbt
+                ppNX12c0bm5ZqGdz5N5j4UhAeIyCNzaZp6cnAQr4SInGYjFJjEoemQyeSt9JUi8ejwrqbrcLQL8O938d
+                7sMI9g98FnDhHosAtbvQzdm5C7ZDB9vBfpZXFkT+ERkexyeGWYGWdxVJoLkf2ptQJWwcpar69ZuKV2LX
+                sBXwIBZHOtLUP3/5yJ6BrKu7o6//c3tHC318VxeSd6A4Dm3g+JjZzS31oKx2lE0wKT52ema8sur1i3//
+                Y3hk4F4rNdBLlnmIM51wGpXq/tzx17/9pfNTm//mkhajHfuA4ZY+NJ6eOSELKVg7MTlisSxq+UucnZ0F
+                g+jWfSb0Ph/KM+9IiVJJkyDNpjEH0WiYnB4MgfMosmCK0GnrieSfbGysoXHQBcGFhfnFpTkGMiWjAGJp
+                SeGbTivrARa4KXCseVfBQkGWDWCkMPzQxPBDE03nzkSYGhaNJCZTUWRq/tu0ofLCP3TtyLnvPD5wn+Ie
+                caFHg0O9Nvu2YRM8l6fIb0Xlr29rKnr7uqHDKOCgsrZuAQ4mgn+ixbBwanrUur12e4cSKGWisru3yfJs
+                dqv0BFA6GFoCR/f2dth4JBJZXl72eDwawFQyyfZ1ghlZlQcuKoKsGAHZA2VqeoyNXftho/rAgghPTEx4
+                POeS27fb7Zub6zBD+DYw0Le4qHhIC2+xgGwMRUbcUMPNrdULjxsBR46UXXbgzZRwGbppOC7wxdXSx3Pp
+                1nqqvNbTgpXAjourpFz7PTAMTw0o+D28H68gBYXNrRVcqKiRSJxRgFul2zPxhcVZlBqDA8PE+DL828K0
+                MJ5RGBbkSdmQm+uRka/n5woEwNXbV5cJdKWGTYhGWVbh+vp6bGzMYrFYrZtraysw9kHllY2ng9fr7enp
+                AUcZCJegK5zAzQ0PDzMcE0Ndt2Qmp0ZfvnqByGAZBDvKns0K2dW1JUMrEb2V1cW19aUlyxx7IFrA4GiV
+                PzfwAprg7RUSjZ/FRQDfwOAXAjh2S/tNwIvyEhthUn7+5Z+YLNiA/xQmEUJBUPgn8KFkhmhLI4aOGc11
+                NXAd3HXnOK4M1kIEfMEULaHd5XL29fX4fD72iCUVKBSg6lud/saUSipRxRA4na7m5uanTglzCSGAw3C0
+                trYihgJZIBCIxxXQAujQ0FBHR4ff76euDXQOxlRXV1ZVVWxt4SWU7N/eBvb3bUyBPSLmoAVZ5i3Ws9ZM
+                11+xs03N5obG99p2K30UXJAU5A678aWnE3TaO5qxJHPzk+Iq0VAKjy9f/cRwol1RZLmPjg0yFgTFD9/d
+                BVdWLPPzsxcXZ1qfAD3HGpqbG2tqqp3OQ92Sgez0zEhvXycOijoTaWQTRCAYer8fTFSYJBqpAAVKvh6D
+                piGnXu/V+vr6zs6OzbY7Nzezs2OdmlKhJRLEBBIomM3m0dHRZJIpFaAylkcuhJfObrebCZhJ8GLRrPXy
+                8oKzhLRgiejGnRb5eHB15UWECemxYhQCL4J2kVBgAlBwITwE7sfMhgEdH1uQVt4iFdw5KSDmGEEiEMNE
+                QJY4FKzRbsEuGLwZHOyvq6tdXkZLcrIqUMYlVFa+YdeKzYU02BEMtLbVEQYYlofYDtvNMh4DGg6HkTZT
+                JBJD2Y3vneCCWD1YhBzeCRBxAgzGCWj1VDtvamowm9+HQrfaPIfguYBCfWJCGVw62O3YRyV6otToCw6K
+                InEMMY0C1Ma6VcipWJWMaAVU4bREhQcOFeRyXNGZMVU4whHTPAbUXFfV2PSOmMzrc0sfIxRHpqSFU59E
+                acg1E4mnYj3EsD+9+DvBGQ5QHJe48qbmOmy9chgqJIiMTyo7QFQnEZ4cVYguaGSgsv46qkd61ElJhAv3
+                xLd47e7TWlWz4TBbUlERRDlaMZhjjzZGKqaTLTkc+yrA1j1jMQLgVCDgn5m9Pyl1dnYQPxEn6KhIDmBs
+                JhKJ3hLGYj0FUERPWyWUWp0LiLpZ903Aw9KBUgn7qYODAO2gTLz9oV0Fp0apNVe+rXmNBM1/mwA4Bgoz
+                5KTA6fnIqY6M0p+IHeEiGGLZCP7Y+Nff3rysb3jPcQsbqsMmtcLZuUmO0dQxFPlCbGpGDYe+cAhjreRd
+                E8TUsmvECNyIOwGBr55ZBO2pxSy3/FkEtIDroydx358dXO7/FAEJYFQ+FFtbBuj5CIhvMIEmdvf55MoU
+                xNGZdEag/F2+CD90kGDGlEgRBJQBLQKgOsWXVhJaVvmi2CtiO+ynidCy/MuRogAquUrl5Qm8i0KxxIlI
+                BkvFoRx1ShyLomyfk5IK7DkpkX0qCsUSJ0LGkhyIiR/YkxzRebjvl06/G78tNz6F3n8Q/WGi9/+98Xs2
+                WjKQOjulLr4pkaTXv6nnC0zGxE/tVe5OPiw9/MaeLvorHok1uZMwJyml76VZBIT7okCR1CU4gqYklMks
+                U1Q+NJnIUeN/Q/gPEXKjRqr40f/NPP3XktJs+Q6J+ucPPnMkc/zrjAAKjEjn72F6AR5zuyluAAAAAElF
+                TkSuQmCC
+</property>
+        </structure>
+    </list-property>
+</report>

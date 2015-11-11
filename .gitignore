@@ -1,0 +1,6 @@
+.metadata/*
+.metadata
+.metadata/.log
+.metadata/.plugins
+.recomemnders
+.recomemnders/*

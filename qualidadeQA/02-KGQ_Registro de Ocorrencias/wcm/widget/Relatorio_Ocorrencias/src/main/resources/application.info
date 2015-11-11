@@ -1,0 +1,22 @@
+application.type=widget
+application.code=Relatorio_Ocorrencias
+application.title=Relat&#xF3;rio de Ocorr&#xEA;ncias
+application.description=Gest&#xE3;o da Qualidade - Ocorr&#xEA;ncias
+application.category=Fluig Store
+application.renderer=freemarker
+application.uiwidget=true
+developer.code=TOTVS
+developer.name=TOTVS S.A.
+developer.url=http://www.fluig.com
+view.file=view.ftl
+edit.file=edit.ftl
+
+application.resource.js.1=/resources/js/Relatorio_Ocorrencias.js
+application.resource.js.2=/resources/js/jquery.multiple.select.js
+application.resource.js.3=/resources/js/highcharts.js
+application.resource.js.4=/resources/js/exporting.js
+
+application.resource.component.1=datatable
+
+application.resource.css.5=/resources/css/multiple-select.css
+application.resource.css.6=/resources/css/Relatorio_Ocorrencias.css

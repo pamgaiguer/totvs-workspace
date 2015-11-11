@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta content="pt-br" http-equiv="Content-Language" />
+		<meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type" />
+		<title>Gest&atilde;o de Auditoria</title>
+		<style type="text/css">
+			body {
+				font-family: Verdana, Geneva, Tahoma, sans-serif;	
+			    background-color: #ddd; /* Background color */
+			    color: #222;            /* Foreground color used for text */
+			    font-family: Helvetica; 
+			    font-size: 14px;
+			    margin: 0;              /* Amount of negative space around the outside of the body */
+			    padding: 0;             /* Amount of negative space around the inside of the body */	
+				min-width:300px;
+			}
+			h1 {
+			    margin: 0;
+			    padding: 0;
+			    background-color: #ccc;
+			    border-bottom: 1px solid #666;
+			    color: #222;
+			    display: block;
+			    font-size: 20px;
+			    font-weight: bold;
+			    padding: 10px 0;
+			    text-align: center;
+			    text-decoration: none;    
+			    text-shadow: 0px 1px 0px #fff;
+			    background-image: -webkit-gradient(linear, left top, left bottom, from(#ccc), to(#999));    
+			}
+			ul {
+			    list-style: none;
+			    margin: 10px;
+			    padding: 0;
+			}
+			ul li {
+			    background-color: #FFFFFF;
+			    border: 1px solid #999999;
+			    color: #222222;
+			    display: block;
+			    font-size: 17px;
+			    font-weight: bold;
+			    margin-bottom: -1px;
+			    padding: 12px 10px;
+			    text-decoration: none;
+			}
+			ul li:first-child {
+			    -webkit-border-top-left-radius: 8px;
+			    -webkit-border-top-right-radius: 8px;
+			}
+			ul li:last-child {
+			    -webkit-border-bottom-left-radius: 8px;
+			    -webkit-border-bottom-right-radius: 8px;
+			    position:relative;
+			}
+			.mylabel {
+				width: 32%;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				-o-text-overflow: ellipsis;
+				white-space: nowrap;
+				display:inline-block;
+				position:relative;
+				float:left;
+				line-height:32px;
+			}
+			.input-selection {
+				width: 100%;
+				float: left;
+				margin-top: 5px;
+			}
+			.input-textarea {
+				width: 100%;
+				height: 50px;
+			}
+			input[type=text] { 
+				width: 59%; 
+				font-family: Verdana, Geneva, Tahoma, sans-serif;	
+				font-size: 18px;
+				background-color: #E8E8E8;
+				position:relative;
+				float:left;
+			} 
+			ul li span {
+				width: 59%; 
+				overflow: hidden;
+				text-overflow: ellipsis;
+				-o-text-overflow: ellipsis;
+				white-space: nowrap;
+				display:inline-block;
+				position:relative;
+				float:left;
+				line-height:32px;
+				background: #e6e6e6;
+				border: 1px solid #cccccc;
+				padding-right: 3px;
+				padding-left: 3px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<form  method="post" action="">
+			<h1>Gest&atilde;o de Auditoria</h1>
+			<ul>
+				<li><div class='mylabel'>hiddenAtivAuto </div><input name='hiddenAtivAuto' type='text' placeholder='hiddenAtivAuto' /><div style='clear:both; line-height: 1px'>&nbsp;</div></li><li><div class='mylabel'>nrSolicitacao </div><input name='nrSolicitacao' type='text' placeholder='nrSolicitacao' /><div style='clear:both; line-height: 1px'>&nbsp;</div></li><li><div class='mylabel'>nmMatricResponsavel </div><input name='nmMatricResponsavel' type='text' placeholder='nmMatricResponsavel' /><div style='clear:both; line-height: 1px'>&nbsp;</div></li><li><div class='mylabel'>nmResponsavel </div><input name='nmResponsavel' type='text' placeholder='nmResponsavel' /><div style='clear:both; line-height: 1px'>&nbsp;</div></li><li><div class='mylabel'>nmMatricSolicitante </div><input name='nmMatricSolicitante' type='text' placeholder='nmMatricSolicitante' /><div style='clear:both; line-height: 1px'>&nbsp;</div></li><li><div class='mylabel'>nmSolicitante </div><input name='nmSolicitante' type='text' placeholder='nmSolicitante' /><div style='clear:both; line-height: 1px'>&nbsp;</div></li><li><div class='mylabel'>nmArea </div><input name='nmArea' type='text' placeholder='nmArea' /><div style='clear:both; line-height: 1px'>&nbsp;</div></li><li><div class='mylabel'>dtData </div><input name='dtData' type='text' placeholder='dtData' /><div style='clear:both; line-height: 1px'>&nbsp;</div></li><li><div class='mylabel'>fgTipoAuditoria </div><label class='input-selection'><input type='radio' name='fgTipoAuditoria' value='fgTipoAuditInt'/>fgTipoAuditInt</label><label class='input-selection'><input type='radio' name='fgTipoAuditoria' value='fgTipoAuditExt'/>fgTipoAuditExt</label><div style='clear:both; line-height: 1px'>&nbsp;</div></li><li><div class='mylabel'>dtDataInicioAudit </div><input name='dtDataInicioAudit' type='text' placeholder='dtDataInicioAudit' /><div style='clear:both; line-height: 1px'>&nbsp;</div></li><li><div class='mylabel'>dtDataInvertInicioAudit </div><input name='dtDataInvertInicioAudit' type='text' placeholder='dtDataInvertInicioAudit' /><div style='clear:both; line-height: 1px'>&nbsp;</div></li><li><div class='mylabel'>dtDataFimAudit </div><input name='dtDataFimAudit' type='text' placeholder='dtDataFimAudit' /><div style='clear:both; line-height: 1px'>&nbsp;</div></li><li><div class='mylabel'>dtDataInvertFimAudit </div><input name='dtDataInvertFimAudit' type='text' placeholder='dtDataInvertFimAudit' /><div style='clear:both; line-height: 1px'>&nbsp;</div></li><li><div class='mylabel'>hiddenIndex </div><input name='hiddenIndex' type='text' placeholder='hiddenIndex' /><div style='clear:both; line-height: 1px'>&nbsp;</div></li><li><div class='mylabel'>dsObjetivoAuditoria </div><textarea name='dsObjetivoAuditoria' type='text' placeholder='dsObjetivoAuditoria' class='input-textarea'></textarea><div style='clear:both; line-height: 1px'>&nbsp;</div></li><li><div class='mylabel'>dsComunicado </div><textarea name='dsComunicado' type='text' placeholder='dsComunicado' class='input-textarea'></textarea><div style='clear:both; line-height: 1px'>&nbsp;</div></li><li><div class='mylabel'>hiddenLineCount </div><input name='hiddenLineCount' type='text' placeholder='hiddenLineCount' /><div style='clear:both; line-height: 1px'>&nbsp;</div></li><li><div class='mylabel'>lineCount </div><input name='lineCount' type='text' placeholder='lineCount' /><div style='clear:both; line-height: 1px'>&nbsp;</div></li><li><div class='mylabel'>nmMatricRespQualidade </div><input name='nmMatricRespQualidade' type='text' placeholder='nmMatricRespQualidade' /><div style='clear:both; line-height: 1px'>&nbsp;</div></li><li><div class='mylabel'>nmRespQualidade </div><input name='nmRespQualidade' type='text' placeholder='nmRespQualidade' /><div style='clear:both; line-height: 1px'>&nbsp;</div></li><li><div class='mylabel'>dsObservacoesQualidade </div><textarea name='dsObservacoesQualidade' type='text' placeholder='dsObservacoesQualidade' class='input-textarea'></textarea><div style='clear:both; line-height: 1px'>&nbsp;</div></li><li><div class='mylabel'>status </div><input name='status' type='text' placeholder='status' /><div style='clear:both; line-height: 1px'>&nbsp;</div></li>
+			</ul>
+		</form>
+	</body>
+</html>

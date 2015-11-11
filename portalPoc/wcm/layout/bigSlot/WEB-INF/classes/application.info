@@ -1,0 +1,17 @@
+application.type=layout
+application.code=bigSlot
+application.title=bigSlot
+application.description=bigSlot
+application.category=SYSTEM
+application.renderer=freemarker
+developer.code=fluigStore
+developer.name=FluigStore
+developer.url=http://www.fluig.com
+layout.defaultSlot=SlotA
+layout.file=layout.ftl
+locale.file.base.name=bigSlot
+slot.SlotMenu=menu
+slot.SlotLogin=sociallogin
+application.icon=icon.png
+application.tenant.code=1
+application.resource.css.1=/resources/css/wcm_layoutfixed.css

@@ -1,0 +1,1 @@
+var mySimpleCalendar = FLUIGC.calendar('#notaCalendario');

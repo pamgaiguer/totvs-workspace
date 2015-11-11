@@ -1,0 +1,217 @@
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> <!--   para acessar com a versão mais nova do IE-->
+	<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- torna responsivo nos navegadores -->
+	<title>Coleta de Receita de Remédio Controlado</title>
+
+	<link rel="stylesheet" type="text/css" href="/portal/resources/style-guide/css/fluig-style-guide.min.css">
+	
+	<script src="http://poc.fluig.com:8084/webdesk/vcXMLRPC-mobile.js"></script>
+	
+	<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
+	<script src="/portal/resources/js/jquery/jquery.js"></script>
+	<script src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+	<script src="jquery.maskMoney.min.js"></script>
+	
+</head>
+
+<style type="text/css">
+	table {
+		width: 100% !important;
+		max-width: 100% !important;
+	}
+
+	h1 img { max-height: 50px; max-width: 250px; float: right; padding: 0 0 10px 0; }
+	#titulo {color: #333;}
+</style>
+
+<body>
+<div id="container" class="fluig-style-guide container">
+	<form role="form" class="form-horizontal">
+		<h1 align="center" id="titulo">Coleta de Receita de Remédio Controlado <img src="img/logo.png" ></h1>
+		<div class="panel panel-success">
+			<div class="panel-body">
+				
+				<!-- Grupo DADOS DA SOLICITAÇÃO __ 0 -->
+				<fieldset id="dadosDoRemedio_FieldSet">
+					<legend>Dados do Remédio Controlado</legend>
+					<div class="form-group">
+						<label class="col-sm-1 ">Nome do Remédio:</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="nomeRemedio" name="nomeRemedio">
+						</div>
+						<label class="col-sm-1">MS:</label>
+						<div class="col-sm-2">
+							<input type="text" class="form-control" id="numMS" name="numMS">
+						</div>
+						<label for="produto" class="col-sm-1">Marca:</label>
+						<div class="col-sm-3">
+							<select class="form-control input-sm" id="marca" name="marca">
+								<option value="0" selected="selected">Selecionar</option>
+								<option value="medley" >Medley</option>
+								<option value="germedGenerico">Germed Generico</option>
+								<option value="EMS">EMS</option>
+								<option value="ache">Aché</option>
+								<option value="bayer">Bayer</option>
+           					</select>
+						</div>
+					</div>
+					<div class="row">
+						<label class="col-sm-1 control-label">Valor:</label>
+						<div class="col-sm-2">
+							<input type="text" class="form-control" id="valor" name="valor">
+						</div>
+					</div>
+				</fieldset>
+				<br><br>
+				
+				<!-- Grupo DADOS DO CLIENTE __ 1 -->
+				<fieldset id="dadosDoCliente_FieldSet">
+					<legend>Dados do Cliente</legend>
+					<div class="form-group">
+						<label class="col-sm-1">CPF do Cliente:</label>
+						<div class="col-sm-2">
+							<input type="text" class="form-control" id="cpfCliente" name="cpfCliente">
+						</div>
+						<label class="col-sm-1 ">Nome do Cliente:</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="nomeCliente" name="nomeCredenciado">
+						</div>
+						<label class="col-sm-1 ">Cód. da Carterinha do Cliente:</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" id="codCarteiraCliente" name="codCarteiraCliente">
+						</div>
+					</div>
+				</fieldset>
+				<br><br>
+				
+				<!-- Grupo DADOS DA COLETA DA RECEITA__ 2 -->
+				<fieldset id="dadosDaColeta_FieldSet">
+					<legend>Dados da Coleta</legend>
+					<div class="form-group row">
+						<label class="col-sm-1">Coleta Agendada:</label>
+						<div class="col-sm-2">
+							<div class="input-group date" id="MY_SELECTOR1">
+					        	<input type="text" class="form-control" id="dtAgendada" name="dtAgendada">
+				        		<span class="input-group-addon">
+				            		<span class="fluigicon-calendar fluigicon"></span>
+				        		</span>
+					    	</div>
+  						</div>
+					    <label class="col-sm-1 ">O.S.:</label>
+						<div class="col-sm-2">
+							<input type="text" class="form-control" id="numOS" name="numOS" readonly>
+						</div>
+						<label class="col-sm-1 ">Receita Coletada?</label>
+						<div class="col-md-2">
+							<label>
+								<input type="radio" name="receitaColetada" value="sim" id="receitaColetadaSim" checked="checked"> Sim
+							</label>
+							<label>
+								<input type="radio" name="receitaColetada" value="nao" id="receitaColetadaNao"> Não
+							</label>
+						</div>
+					</div>
+				</fieldset>
+				<br><br>
+				
+				<!-- Grupo ANALISE DE INCONSISTÊNCIA__3 -->
+				<fieldset id="dadosDaReceita_FieldSet">
+					<legend>Dados da Receita</legend>
+					<div class="form-group">
+						<label class="col-sm-2 ">Upload da Receita Realizado?*</label>
+						<div class="col-md-2">
+							<label>
+								<input type="radio" name="uploadReceita" value="sim" id="uploadReceitaSim"> Sim
+							</label>
+							<label>
+								<input type="radio" name="uploadReceita" value="nao" id="uploadReceitaNao" checked="checked"> Não
+							</label>
+						</div>
+					</div>
+				</fieldset>
+				<br><br>
+				
+				<!-- Grupo ANALISE DE INCONSISTÊNCIA__3 -->
+				<!--  
+				<fieldset id="reagendamento_FieldSet">
+					<legend>Reagendamento</legend>
+					<div class="form-group">
+						<label class="col-sm-2 ">Re-agendamento da Coleta:</label>
+					    <div class="col-sm-2">
+						    <div class="input-group date" id="MY_SELECTOR2">
+						        <input type="text" class="form-control" id="dtReagColeta" name="dtReagColeta">
+						        <span class="input-group-addon">
+						            <span class="fluigicon-calendar fluigicon"></span>
+						        </span>
+						    </div>
+						</div>
+					</div>
+				</fieldset>
+				<br><br>
+				-->		
+															
+			</div> <!-- fechando a div Panel Body -->
+		</div> <!-- fechando a div Panel Success -->
+	</form> <!-- fechando o form-horizontal -->
+</div> <!-- fechando o Fluig Style Guide -->
+</body>
+
+
+
+<script>
+		
+/*---------------------------------------------------------------------------
+ * REGRA PARA CAMPOS DO TIPO VALOR 
+ ---------------------------------------------------------------------------*/
+function bindMasks() {
+	try {
+		$('#valor').maskMoney({thousands:'.',decimal: ',', allowZero: true});
+	} catch (e) {
+		alert(e);
+	}
+};
+
+
+
+/*--------------------------------------------------------------
+ * RODA A FUNÇÃO ABAIXO QUANDO O DOCUMENTO .html ESTIVER PRONTO
+----------------------------------------------------------------*/
+$(function() {
+	try {
+		
+		var numOS;
+		
+		//VALOR FORMATADO
+		bindMasks();
+				
+		
+		//DATA FORMATADA
+		if ( GetStatusPage() != "VIEW"){
+		
+			var calendarConfig = {
+			    pickDate: true,
+			    pickTime: false
+			};
+			
+			var onlyDate = FLUIGC.calendar('#MY_SELECTOR1', calendarConfig);
+			var onlyDate = FLUIGC.calendar('#MY_SELECTOR2', calendarConfig);
+		}
+		
+		
+		//REGRA PARA GERAR NÚMERO ALEATÓRIO NO NÚMERO DO ATENDIMENTO
+		if($('#numOS').val() == ""){
+			numOS = parent.moment().format("YYYYMMDDHHmmss");
+			$('#numOS').val(numOS);
+		}
+		
+	} catch (e) {
+		alert("Erro ao carregar pag.: " + e);
+	}
+});
+	
+
+</script>	
+</html>

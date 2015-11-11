@@ -1,0 +1,98 @@
+<html>
+	<head>
+		<script language="javascript" type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+		<script language="javascript" type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+		<script language="javascript" type="text/javascript" src="js/bootstrap.min.js"></script>
+		
+		<script language="javascript" type="text/javascript" src="custom.js"></script>					
+		<!--<script language="javascript" type="text/javascript" src="/kitecm/js/brava.js"></script>-->
+		
+		<link rel="stylesheet" type="text/css" href="/kitecm/css/style.css"/>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/custom.css"/>    
+	</head>
+	<body id="KitGestaoQualidade" onload="window.parent.document.getElementById('workflowView-cardViewer').style.border='none'; init()">
+		<div class="container">
+	    	<div id="logo">
+				<img src="img/fluig.png" width="83px" height="83px">
+			</div>
+			<h2 style="padding-bottom: 20px !important">i18n.translate("titulo")</h2>
+			<form name="formRD" id="formRD" action="" method="post" class="form-horizontal">
+				<fieldset>
+			  		<legend>i18n.translate("legend_info_geral")</legend>
+				  	<div class="form-group">
+				    	<label for="nmMatricSolicitante" class="col-sm-2 control-label">i18n.translate("matri_resp")</label>
+				    	<div class="col-sm-5">
+				      		<input type="text" class="form-control" name="nmMatricSolicitante" id="nmMatricSolicitante" readonly="true">
+				    	</div>
+				    	<label for="dtData" class="col-sm-1 control-label">i18n.translate("data_solic")</label>
+				    	<div class="col-sm-3">
+				      		<input type="text" class="form-control" name="dtData" id="dtData" readonly="true">
+				    	</div>
+				    </div>
+				    <div class="form-group">
+				    	<label for="nmSolicitante" class="col-sm-2 control-label">i18n.translate("resp")</label>
+				    	<div class="col-sm-5">
+				      		<input type="text" class="form-control" name="nmSolicitante" id="nmSolicitante" readonly="true">
+				    	</div>
+				  	</div>
+				  	<div class="form-group">
+						<label for="fgFoodStamps" class="col-sm-2 control-label">i18n.translate("tipo_solic")</label>
+						<div class="col-sm-8">
+						  	<label for="fgTipoSolicitacaoElab" class="radio-inline">
+						    	<input type="radio" id="fgTipoSolicitacaoElab" name="fgTipoSolicitacao" value="fgTipoSolicElab" >
+						    	i18n.translate("tp_elaborar")
+						  	</label>
+						  	<label for="fgTipoSolicitacaoRevis" class="radio-inline">
+						    	<input type="radio" id="fgTipoSolicitacaoRevis" name="fgTipoSolicitacao" value="fgTipoSolicRevis" >
+						    	i18n.translate("tp_revisar")
+						    	
+						  	</label>
+						</div>
+					</div>
+					<div class="form-group">
+				    	<label for="dsMotivo" class="col-sm-2 control-label">i18n.translate("motivo")</label>
+				    	<div class="col-sm-5">
+				      		<textarea class="form-control" rows="3" cols="5" id="dsMotivo" name="dsMotivo"></textarea>
+				    	</div>
+				  	</div>
+				  	<div class="form-group" id="rev_doc">
+				    	<label for="nmDocumento" class="col-sm-2 control-label">i18n.translate("Documento")</label>
+				    	<div class="input-group col-sm-5" style="padding-left: 15px !important;">
+				      		<input type="text" class="form-control" name="nmDocumento" id="nmDocumento" readonly="true">
+				      		<a style="width: 10px !important;" href="#" class="input-group-addon" id="addDocument" name="addDocument" title="Selecionar documento" onClick="zoomDocumentos()"><i class="glyphicon glyphicon-search"></i></a>
+				      		<a style="width: 10px !important;" href="#" class="input-group-addon" id="clearFieldDocument" name="clearFieldDocument" title="Limpar" onClick="document.getElementById('nmDocumento').value = ''; document.getElementById('nmVersao').value = ''"><i class="glyphicon glyphicon-remove"></i></a>
+				    	</div>
+				  	</div>
+				  	<div class="form-group" id="rev_doc_ver">
+				    	<label for="nmVersao" class="col-sm-2 control-label">i18n.translate("versao")</label>
+				    	<div class="col-sm-5">
+				      		<input type="text" class="form-control" name="nmVersao" id="nmVersao" readonly="true">
+				    	</div>
+				  	</div>
+				  	<div class="form-group">
+				  		<label class="col-sm-2 control-label"></label>
+						<div class="checkbox col-sm-3">
+							<label for="fgNecessitaCapacit">
+						    	<input type="checkbox" name="fgNecessitaCapacit" id="fgNecessitaCapacit"> 
+						    	i18n.translate("capacitar")
+						    </label>
+					    </div>
+						<div class="checkbox col-sm-4">
+							<label for="fgDistCopControl">
+						    	<input type="checkbox" name="fgDistCopControl" id="fgDistCopControl"> 
+						    	i18n.translate("copia_contr")
+						    </label>
+					    </div>
+					</div>
+				  	<div class="form-group">
+				    	<label for="dsComentTriagem" class="col-sm-2 control-label">i18n.translate("triagem")</label>
+				    	<div class="col-sm-5">
+				      		<textarea class="form-control" rows="3" cols="5" id="dsComentTriagem" name="dsComentTriagem"></textarea>
+				    	</div>
+				  	</div>
+				</fieldset>
+			</form>
+		<div>
+	</body>
+</html>

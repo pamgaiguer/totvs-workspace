@@ -1,0 +1,481 @@
+<list>
+  <ProcessDefinition>
+    <processDefinitionPK>
+      <companyId>1</companyId>
+      <processId>ecm_kgq_apa</processId>
+    </processDefinitionPK>
+    <processDescription>Atividade do Plano de Ação</processDescription>
+    <instruction>Elaboração das atividades cadastradas no plano de ação.</instruction>
+    <active>true</active>
+    <publicProcess>false</publicProcess>
+    <volumeId>Default</volumeId>
+    <categoryId>Kit Gestão da Qualidade</categoryId>
+    <managerEngineAllocationId></managerEngineAllocationId>
+    <managerEngineAllocationConfiguration></managerEngineAllocationConfiguration>
+    <snapshotFrequency>0</snapshotFrequency>
+    <baseDay>0</baseDay>
+    <baseMonth>0</baseMonth>
+    <periodId>Default</periodId>
+    <uniqueCardVersion>false</uniqueCardVersion>
+    <keyWord></keyWord>
+  </ProcessDefinition>
+  <ProcessDefinitionVersion>
+    <processDefinitionVersionPK>
+      <companyId>1</companyId>
+      <processId>Atividade do Plano de Ação</processId>
+      <version>1</version>
+    </processDefinitionVersionPK>
+    <versionDescription>Nova Versão.</versionDescription>
+    <formId>12</formId>
+    <editionMode>true</editionMode>
+    <updateAttachmentsVersion>false</updateAttachmentsVersion>
+    <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
+    <active>true</active>
+    <blockedVersion>false</blockedVersion>
+    <counterSign>false</counterSign>
+    <openInstances>0</openInstances>
+    <bpmnVersion>1</bpmnVersion>
+    <processStates/>
+    <favorito>false</favorito>
+    <inheritFormSecurity>false</inheritFormSecurity>
+    <mobileReady>false</mobileReady>
+  </ProcessDefinitionVersion>
+  <list>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>1</version>
+        <sequence>1</sequence>
+      </processStatePK>
+      <stateName>Tomar Conhecimento</stateName>
+      <stateDescription>Tomar Conhecimento</stateDescription>
+      <instruction>Iniciar o preenchimento do formulário do subprocesso de “Atividades do Plano de Ação&quot; após tomar conhecimento pelo responsável do processo de “Plano de Ação&quot;. &#xd;
+&#xd;
+Obs.: Sem a finalização deste subprocesso não será permitido encerrar o processo do “Plano de Ação&quot;.</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>true</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>70</positionX>
+      <positionY>61</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId>Default</periodId>
+      <stateType>0</stateType>
+      <bpmnType>10</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>1</version>
+        <sequence>2</sequence>
+      </processStatePK>
+      <stateName>Executar atividade</stateName>
+      <stateDescription>Executar atividade</stateDescription>
+      <instruction>Realizar a execução das atividades cadastradas já preenchidas anteriormente no processo do “Plano de Ação&quot;. &#xd;
+&#xd;
+Obs.: Sem a finalização deste subprocesso não será permitido encerrar o processo do “Plano de Ação&quot;.</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;hiddenMatResponsavel&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>278</positionX>
+      <positionY>44</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId>Default</periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>1</version>
+        <sequence>4</sequence>
+      </processStatePK>
+      <stateName>Notificar responsável</stateName>
+      <stateDescription>Notificar responsável</stateDescription>
+      <instruction>Efetuar notificação de conclusão das “Atividades do Plano de Ação&quot; ao responsável por este subprocesso. &#xd;
+&#xd;
+Obs.: Sem a finalização deste subprocesso não será permitido encerrar o processo do “Plano de Ação&quot;.</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;hiddenMatResponsavel&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>466</positionX>
+      <positionY>44</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId>Default</periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>1</version>
+        <sequence>7</sequence>
+      </processStatePK>
+      <stateName>Fim</stateName>
+      <stateDescription>Fim</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>644</positionX>
+      <positionY>61</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>60</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+  </list>
+  <list/>
+  <list>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>1</version>
+        <linkSequence>1</linkSequence>
+      </processLinkPK>
+      <actionLabel>Executar atividade gerada</actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>1</initialStateSequence>
+      <finalStateSequence>2</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>1</version>
+        <linkSequence>9</linkSequence>
+      </processLinkPK>
+      <actionLabel>Finalizar</actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>4</initialStateSequence>
+      <finalStateSequence>7</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>1</version>
+        <linkSequence>10</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>2</initialStateSequence>
+      <finalStateSequence>4</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <type>0</type>
+    </ProcessLink>
+  </list>
+  <list/>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterCancelProcess</eventId>
+        <processId>ecm_kgq_apa</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterCancelProcess(colleagueId,processId){
+	log.info(&quot;================= AFTER CANCEL PROCESS ====================&quot;);
+	hAPI.setCardValue(&quot;status&quot;, &quot;cancelado&quot;);
+	log.info(&quot;Cancelando atividade do plano de acao....&quot;);
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>beforeCancelProcess</eventId>
+        <processId>ecm_kgq_apa</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function beforeCancelProcess(colleagueId,processId){&#xd;
+	log.info(&quot;================= BEFORE CANCEL PROCESS ====================&quot;);&#xd;
+	hAPI.setCardValue(&quot;status&quot;, &quot;CANCELADO&quot;);&#xd;
+	log.info(&quot;CANCELADO atividade do plano de acao....&quot;);&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterProcessFinish</eventId>
+        <processId>ecm_kgq_apa</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterProcessFinish(processId){
+	log.info(&quot;================= AFTER PROCESS FINISH ====================&quot;);
+	hAPI.setCardValue(&quot;status&quot;, &quot;finalizado&quot;);
+	log.info(&quot;Finalizando atividade do plano de acao....&quot;);
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterProcessCreate</eventId>
+        <processId>ecm_kgq_apa</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterProcessCreate(processId){
+	log.info(&quot;================= AFTER PROCESS CREATE ====================&quot;);
+	hAPI.setCardValue(&quot;status&quot;, &quot;ativo&quot;);
+	hAPI.setCardValue(&quot;cdAtividadePA&quot;, processId);
+	log.info(&quot;Iniciando atividade do plano de acao....&quot;);
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterStateEntry</eventId>
+        <processId>ecm_kgq_apa</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterStateEntry(sequenceId){
+    var THREAD_SEQUENCE = 0;
+    var ULTIMO_SEGUNDO = 86399;
+   
+    log.info (&quot;=========================== afterStateEntry() =============================&quot;);
+   
+    var dataPrazoForm = hAPI.getCardValue(&quot;nmPrazoDeConclusao&quot;);
+    log.info(&quot;received dataPrazoFrom &quot;+dataPrazoForm);
+    var responsavel   = hAPI.getCardValue(&quot;hiddenMatResponsavel&quot;);
+    log.info(&quot;received responsavel &quot;+responsavel);
+    var codigoSolicitacao = getValue(&quot;WKNumProces&quot;);
+    log.info(&quot;received codigoSolicitacao &quot;+codigoSolicitacao);
+
+    var arrayData = dataPrazoForm.split(&quot;/&quot;, 3);
+   
+    var dataPrazo = java.util.Calendar.getInstance();
+   
+    dataPrazo.set(java.util.Calendar.DAY_OF_MONTH, new java.lang.Integer(arrayData[0]));
+    dataPrazo.set(java.util.Calendar.MONTH, new java.lang.Integer(arrayData[1]) -1);
+    dataPrazo.set(java.util.Calendar.YEAR, new java.lang.Integer(arrayData[2]));
+   
+    log.info(&quot;PETER 1 &quot; + codigoSolicitacao);
+    log.info(&quot;PETER 2 &quot; + THREAD_SEQUENCE);
+    log.info(&quot;PETER 3 &quot; + responsavel);
+    log.info(&quot;PETER 4 &quot; + dataPrazo.getTime());
+    log.info(&quot;PETER 5 &quot; + ULTIMO_SEGUNDO);
+    
+    
+    try {   
+        hAPI.setDueDate(codigoSolicitacao, THREAD_SEQUENCE, responsavel, dataPrazo.getTime(), ULTIMO_SEGUNDO);
+    } catch (e) {
+        log.info (&quot;================== afterStateEntry deu erro ===&gt; &quot; + e);
+    }
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>needEffectiveness</eventId>
+        <processId>ecm_kgq_apa</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function needEffectiveness(){
+	var checked = hAPI.getCardValue(&quot;fgVerifEficacia&quot;)==&quot;on&quot;;
+	log.info(&quot;================ PRECISA ANALISE DE EFICACIA?  &quot; + checked + &quot; ==================&quot;);
+	return checked;
+}</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
+  <list/>
+  <list>
+    <SwimLane>
+      <color>B3CDFF</color>
+      <height>146</height>
+      <width>858</width>
+      <positionX>0</positionX>
+      <positionY>4</positionY>
+      <stateName>Executor</stateName>
+      <type>2</type>
+      <parentSequence>0</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>1</version>
+        <sequence>1</sequence>
+      </swimLanePK>
+    </SwimLane>
+  </list>
+  <list>
+    <ProcessComponGraf>
+      <componType>1</componType>
+      <positionX>140</positionX>
+      <positionY>10</positionY>
+      <processComponGrafPK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>1</version>
+        <componGrafSequence>1</componGrafSequence>
+      </processComponGrafPK>
+      <stateName>Tomar conhecimento</stateName>
+    </ProcessComponGraf>
+    <ProcessComponGraf>
+      <componType>1</componType>
+      <positionX>712</positionX>
+      <positionY>16</positionY>
+      <processComponGrafPK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>1</version>
+        <componGrafSequence>2</componGrafSequence>
+      </processComponGrafPK>
+      <stateName>Fim</stateName>
+    </ProcessComponGraf>
+  </list>
+  <list>
+    <ProcessLinkAssoc>
+      <processLinkAssocPK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>1</version>
+        <linkSequence>2</linkSequence>
+      </processLinkAssocPK>
+      <initialStateSequence>2</initialStateSequence>
+      <finalStateSequence>7</finalStateSequence>
+    </ProcessLinkAssoc>
+    <ProcessLinkAssoc>
+      <processLinkAssocPK>
+        <companyId>1</companyId>
+        <processId>ecm_kgq_apa</processId>
+        <version>1</version>
+        <linkSequence>11</linkSequence>
+      </processLinkAssocPK>
+      <initialStateSequence>1</initialStateSequence>
+      <finalStateSequence>1</finalStateSequence>
+    </ProcessLinkAssoc>
+  </list>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+</list>

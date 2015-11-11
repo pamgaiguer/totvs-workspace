@@ -1,0 +1,146 @@
+<html>
+	<head>
+		<title>Plano de A&ccedil;&atilde;o</title>
+		<script src="/webdesk/vcXMLRPC.js"></script>
+        <script src="/kitecm-1.0.7/js/utils.js"></script>
+        <script src="/kitecm-1.0.7/js/datepicker.js"></script>
+        <script src="js/jquery-1.11.1.min.js"></script>
+		<!--<script src="/kitecm/js/brava.js"></script>-->
+		<script src="js/bootstrap.min.js"></script>
+		<script src="custom.js"></script>					
+		<link rel="stylesheet" type="text/css" href="/kitecm/css/style.css"/>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/custom.css"/>
+	</head>
+	<body id="KitGestaoQualidade" onload="window.parent.document.getElementById('workflowView-cardViewer').style.border='none'; init();">
+		<div class="container">
+	    	<div id="logo">
+				<img src="img/fluig.png" width="83px" height="83px">
+			</div>
+			<h2 style="padding-bottom: 20px !important">i18n.translate("titulo")</h2>
+			<form name="formPA" id="formPA" action="" method="post" role="form" class="form-horizontal">
+				<input type="hidden" name="hiddenLinhasGrid" id="hiddenLinhasGrid" />
+				<fieldset>
+			  		<legend>i18n.translate("legend_ocor")</legend>
+			  		<div class="form-group">
+				    	<label for="cdOcorrencia" class="col-sm-2 control-label">i18n.translate("Num_ocor")</label>
+				    	<div class="input-group col-sm-5" style="padding-left: 15px !important;">
+				      		<input type="text" class="form-control" name="cdOcorrencia" id="cdOcorrencia" readonly="true">
+				      		<a style="width: 10px !important;" href="#" class="input-group-addon" id="goToOccurrence" name="goToOccurrence" title="Exibir dados da ocorr&ecirc;ncia" onClick="openOccurrence()"><i class="glyphicon glyphicon-arrow-right"></i></a>
+				    	</div>
+				  	</div>
+				  	<div class="form-group">
+				  		<label for="cdOcorrencia" class="col-sm-2 control-label">i18n.translate("Resp_ocor")</label>
+				    	<div class="col-sm-5">
+				      		<input type="text" class="form-control" name="nmResponsavelOcorrencia" id="nmResponsavelOcorrencia" readonly="true">
+				    	</div>
+				    </div>
+				</fieldset>
+				<fieldset>
+			  		<legend>i18n.translate("legend_plano_acao")</legend>
+			  		<div class="form-group">
+				    	<label for="cdPlanoAcao" class="col-sm-2 control-label">i18n.translate("cod_PA")</label>
+				    	<div class="col-sm-3">
+				      		<input type="text" class="form-control" name="cdPlanoAcao" id="cdPlanoAcao" readonly="true">
+				    	</div>
+				    	<label for="nmResponsavelPA" class="col-sm-2 control-label">i18n.translate("responsavel_PA")</label>
+				    	<div class="col-sm-5">
+				      		<input type="text" class="form-control" name="nmResponsavelPA" id="nmResponsavelPA" readonly="true">
+				      		<input type="hidden" id="hiddenMatResponsavel" name="hiddenMatResponsavel" value=""/>
+				    	</div>
+				  	</div>
+				  	<div class="form-group">
+				    	<label for="nmDataPA" class="col-sm-2 control-label">i18n.translate("data_PA")</label>
+				    	<div class="col-sm-3">
+				      		<input type="text" class="form-control" name="nmDataPA" id="nmDataPA" readonly="true">
+				    	</div>
+				    	<label for="nmAssunto" class="col-sm-2 control-label">i18n.translate("assunto")</label>
+				    	<div class="col-sm-5">
+				      		<select id="" name="nmAssunto"  dataset="ecm_kgq_assuntos" datasetkey="nmAssunto" datasetvalue="nmAssunto" class="form-control form-control-inline"></select>
+							<input type="hidden" value="valorHidden" id="hiddenIndex" name="hiddenIndex"/>
+				    	</div>
+				  	</div>
+				</fieldset>
+				<fieldset>
+			  		<legend>i18n.translate("legend_ata_reuniao")</legend>
+			  		<div class="form-group">
+				    	<label for="nmParticipantes" class="col-sm-2 control-label">i18n.translate("particip")</label>
+				    	<div class="input-group col-sm-8" style="padding-left: 15px !important;">
+				      		<textarea rows="3" cols="8" class="form-control" name="nmParticipantes" id="nmParticipantes" readonly="true"></textarea>
+				      		<a style="width: 10px !important;" href="#" class="input-group-addon" id="addParticipantes" name="addParticipantes" title="Selecionar participantes" onClick="openZoomParticipantes()"><i class="glyphicon glyphicon-search"></i></a>
+				      		<a style="width: 10px !important;" href="#" class="input-group-addon" id="limpaParticipantes" name="limpaParticipantes" title="Limpar" onClick="clearField('nmParticipantes')"><i class="glyphicon glyphicon-remove"></i></a>
+				    	</div>
+				  	</div>
+				  	<div class="form-group">
+				    	<label for="nmPauta" class="col-sm-2 control-label">i18n.translate("pauta")</label>
+				    	<div class="col-sm-8">
+				      		<textarea rows="3" cols="8" class="form-control" name="nmPauta" id="nmPauta"></textarea>
+				    	</div>
+				  	</div>
+				  	<div class="form-group">
+				    	<label for="nmDefinicoes" class="col-sm-2 control-label">i18n.translate("definicoes")</label>
+				    	<div class="col-sm-8">
+				      		<textarea rows="3" cols="8" class="form-control" name="nmDefinicoes" id="nmDefinicoes"></textarea>
+				    	</div>
+				  	</div>
+				</fieldset>
+				<fieldset>
+			  		<legend>i18n.translate("legend_APA")</legend>
+
+			  		<button type="button" name="btIncluir" id="btIncluir" value="Adicionar" onclick="wdkAddChild('ativPlano');" class="btn btn-primary">Adicionar Nova Atividade</button>
+					<input type="hidden" name="status" id="status" value="" />
+					<br/>
+					<br/>
+					<br/>
+			  		<div class="table-responsive">
+				  		<table name ="ativPlano" id="ativPlano" tablename="ativPlano" noaddbutton="true" deleteicon="/kitecm/img/lixeira.gif" cellspacing="1" class="table table-striped" border="1">
+							<thead>
+								<tr>
+									<th>i18n.translate("oque_como")</th>
+									<th>i18n.translate("resp_ativ_pa")</th>
+									<th>i18n.translate("dt_ini")</th>
+									<th>i18n.translate("dt_fim")</th>
+									<th>i18n.translate("dt_real")</th>
+									<th>i18n.translate("status")</th>
+								</tr>
+							</thead>
+							<tr>
+								<td>
+									<textarea style="width: 220px" id="nmOqueComo" name="nmOqueComo" rows="3" cols="5" class="form-control"></textarea>
+								</td>
+								<td>
+									<div class="input-group input-group-sm">
+								      <input id="nmResponsavelAtiv" name="nmResponsavelAtiv" type="text" readonly="true" class="form-control" style="min-width: 150px !important" />
+								      <a href="#Bot" class="input-group-addon" id="addRespPA" name="addRespPA" title="Selecionar respons&aacute;vel" onclick="openZoomResponsavel(this)"><i class="glyphicon glyphicon-search"></i></a>
+								      <a href="#Bot" class="input-group-addon" id="btClearRespPA" name="btClearRespPA" title="Limpar" onClick="clearInputFromTable(this, 'nmResponsavelAtiv___')"><i class="glyphicon glyphicon-remove"></i></a>
+								    </div>
+									<input type="hidden" id="hiddenIndexMat" name="hiddenIndexMat" value="" />
+								</td>
+								<td>
+									<div class="input-group input-group-sm">
+										<input id="nmDtInicial" name="nmDtInicial" type="text" readonly="true" class="form-control" style="min-width: 150px !important" />
+										<a href="#Bot" class="input-group-addon" id="btCalendar" name="btCalendar" title="Selecionar data" onClick="selectDate(this, false, true)"><i class="glyphicon glyphicon-calendar"></i></a>
+										<a href="#Bot" class="input-group-addon" id="btClearPrazoConclusao" name="btClearPrazoConclusao" title="Selecionar data" onClick="clearInputFromTable(this, 'nmDtInicial___')"><i class="glyphicon glyphicon-remove"></i></a>
+									</div>
+								</td>
+								<td>
+									<div class="input-group input-group-sm">
+										<input id="nmPrazoConclusao1" name="nmDtFinalPrev"  type="text" readonly="true" class="form-control" style="min-width: 150px !important" />
+										<a href="#Bot" class="input-group-addon" id="btCalendar1" name="btCalendar1" title="Selecionar data" onClick="selectDatePrev(this, false, true)"><i class="glyphicon glyphicon-calendar"></i></a>
+										<a href="#Bot" class="input-group-addon" id="btClearPrazoConclusao1" name="btClearPrazoConclusao1" title="Limpar" onClick="clearInputFromTable(this, 'nmDtFinalPrev___')"><i class="glyphicon glyphicon-remove"></i></a>
+									</div>
+								</td>
+								<td >
+									<input id="nmDtFinalReal" name="nmDtFinalReal" type="text" readonly="true" class="form-control input-sm" style="min-width: 150px !important" />
+								</td>
+								<td>
+									<input type="text" id="nmStatus" name="nmStatus" readonly="true" class="form-control input-sm" style="min-width: 150px !important"/>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</body>
+</html>

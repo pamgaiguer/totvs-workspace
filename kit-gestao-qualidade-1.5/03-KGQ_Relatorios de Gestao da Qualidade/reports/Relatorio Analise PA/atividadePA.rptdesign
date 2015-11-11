@@ -1,0 +1,694 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.2.2.v201301221637 Build &lt;4.2.2.v20130206-1509></property>
+    <property name="units">in</property>
+    <method name="initialize"><![CDATA[importPackage(Packages.com.datasul.technology.webdesk.dataset.service);
+importPackage(Packages.com.datasul.technology.webdesk.dataset);
+importPackage(Packages.com.datasul.technology.webdesk.search.controller);
+
+var factory = null;
+
+var count = 0;
+var dataset = null;
+
+var count2 = 0;
+var dataset2 = null;
+
+var count3 = 0;]]></method>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="layoutPreference">auto layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <data-sources>
+        <script-data-source name="dsAtividade" id="7"/>
+    </data-sources>
+    <data-sets>
+        <script-data-set name="ecm_kgq_apa" id="8">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">active</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">activity</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">usuarioAtualAtiv</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">cdSolicitacao</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">idPA</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">nmResponsavelPA</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">nmOquCom</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">nmResponsavel</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">nmPrazoDeConclusao</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">dsAtividade</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">active</property>
+                </structure>
+                <structure>
+                    <property name="columnName">activity</property>
+                </structure>
+                <structure>
+                    <property name="columnName">usuarioAtualAtiv</property>
+                </structure>
+                <structure>
+                    <property name="columnName">cdSolicitacao</property>
+                </structure>
+                <structure>
+                    <property name="columnName">idPA</property>
+                </structure>
+                <structure>
+                    <property name="columnName">nmResponsavelPA</property>
+                </structure>
+                <structure>
+                    <property name="columnName">nmOquCom</property>
+                </structure>
+                <structure>
+                    <property name="columnName">nmResponsavel</property>
+                </structure>
+                <structure>
+                    <property name="columnName">nmPrazoDeConclusao</property>
+                </structure>
+                <structure>
+                    <property name="columnName">dsAtividade</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">active</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">activity</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">usuarioAtualAtiv</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">cdSolicitacao</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">idPA</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">nmResponsavelPA</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">nmOquCom</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">nmResponsavel</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">nmPrazoDeConclusao</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">dsAtividade</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <method name="beforeOpen"><![CDATA[try {
+	factory = DatasetFactory.getInstance(${WKCompany});
+	var constraints = new Array();
+	var c1 = factory.createConstraint("metadata#active", true, true, ConstraintType.MUST);
+	constraints.push(c1);
+	
+	var sortingFields = new Array("cdAtividadePA");
+	dataset = factory.getDataset("ecm_kgq_atividadepa", null, constraints, sortingFields);
+}
+
+catch (e) {
+}
+
+finally {
+}]]></method>
+            <property name="dataSource">dsAtividade</property>
+            <method name="fetch"><![CDATA[if (dataset != null) {
+	if (count <	dataset.rowsCount) {
+
+		var codigo = dataset.getValue(count, "cdAtividadePA");
+		var codigoSolicit = parseInt(codigo);
+		row["cdSolicitacao"] = codigoSolicit;
+		row["idPA"] = dataset.getValue(count, "idPA");
+		row["nmResponsavelPA"] = dataset.getValue(count, "nmResponsavelPA");
+		row["nmOquCom"] = dataset.getValue(count, "nmOquCom");
+		row["nmResponsavel"] = dataset.getValue(count, "nmResponsavel");
+		row["nmPrazoDeConclusao"] = dataset.getValue(count, "nmPrazoDeConclusao");
+		row["dsAtividade"] = dataset.getValue(count, "dsAtividade");
+
+		var constraintsProcessHistory = new Array();
+		var coProcessHistory = factory.createConstraint("processHistoryPK.processInstanceId", codigoSolicit, codigoSolicit, ConstraintType.MUST);
+		constraintsProcessHistory.push(coProcessHistory);
+		dataset2 = factory.getDataset("processHistory", null, constraintsProcessHistory, null);
+		var linhasDataset = dataset2.rowsCount;
+		var count2 = linhasDataset - 1;
+		if (count2 < 0) {
+			row["active"] = "Finalizado";
+		} else {
+			var cancelado = dataset.getValue(count, "state");
+			
+			//Se nÃ£o estiver cancelado o processo, ele procura o estado dele, ao achar a linha pega a ultima linha do processo
+			if (cancelado != "cancelado") {
+				var ativo = dataset2.getValue(count2, "active");
+				if (ativo == false) {
+					row["active"] = "Finalizado";
+				} else {
+					row["active"] = "Em andamento";
+					
+					//Como o processo esta em andamento, retorna o nome da atividade que se encontra
+					var numAtividadeAtual = dataset2.getValue(count2, "stateSequence");
+					var constraints3 = new Array();
+					var co3 = factory.createConstraint("processStatePK.processId", "ecm_kgq_apa", "ecm_kgq_apa", ConstraintType.MUST);
+					constraints3.push(co3);
+					var con3 = factory.createConstraint("processStatePK.sequence", numAtividadeAtual, numAtividadeAtual, ConstraintType.MUST);
+					constraints3.push(con3);
+					var dataset3 = factory.getDataset("processState", null, constraints3, null);
+					var nomeAtividadeAtual = dataset3.getValue(0, "stateDescription");
+					row["activity"] = nomeAtividadeAtual;
+					
+					//Como esta em andamento, retorna a matrÃ­cula do usuÃ¡rio responsÃ¡vel pela atividade atual
+					var constraints4 = new Array();
+					var co4 = factory.createConstraint("active", true, true, ConstraintType.MUST);
+					var con4 = factory.createConstraint("processTaskPK.processInstanceId", codigoSolicit, codigoSolicit, ConstraintType.MUST);
+					constraints4.push(co4);
+					constraints4.push(con4);
+					var dataset4 = factory.getDataset("processTask", null, constraints4, null);
+					var responsavelAtivAtual = dataset4.getValue(0, "processTaskPK.colleagueId");
+					
+					//Converte a matrÃ­cula pro nome do usuÃ¡rio
+					var co5 = factory.createConstraint("colleaguePK.colleagueId", responsavelAtivAtual, responsavelAtivAtual, ConstraintType.MUST);
+					var constraints5 = new Array(co5);
+					var dataset5 = factory.getDataset("colleague", null, constraints5, null);
+					var nomeUsuario = dataset5.getValue(0, "colleagueName");
+					row["usuarioAtualAtiv"] = nomeUsuario;
+				}
+			}
+			 else {
+			 	if (cancelado == "ativo") { cancelado = "Em andamento"; }
+			 	else if (cancelado == "cancelado") { cancelado = "Cancelado"; }
+			 	else if (cancelado == "finalizado") { cancelado = "Finalizado"; }
+				row["active"] = cancelado;
+			}
+		}
+		if (row["activity"] == null) {
+			row["activity"] = "-";
+		}
+		
+		if (row["usuarioAtualAtiv"] == null) {
+			row["usuarioAtualAtiv"] = "-";
+		}
+		count++;
+		return true;
+	}
+	return false;
+}]]></method>
+        </script-data-set>
+    </data-sets>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="type">custom</property>
+            <property name="height">3000px</property>
+            <property name="width">3000px</property>
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <table id="9">
+            <property name="marginTop">5px</property>
+            <property name="marginLeft">5px</property>
+            <property name="marginBottom">5px</property>
+            <property name="marginRight">5px</property>
+            <property name="width">12.5in</property>
+            <property name="dataSet">ecm_kgq_apa</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">cdSolicitacao</property>
+                    <text-property name="displayName">cdSolicitacao</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["cdSolicitacao"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">active</property>
+                    <text-property name="displayName">active</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["active"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">nmResponsavel</property>
+                    <text-property name="displayName">nmResponsavel</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nmResponsavel"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">activity</property>
+                    <text-property name="displayName">activity</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["activity"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">usuarioAtualAtiv</property>
+                    <text-property name="displayName">usuarioAtualAtiv</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["usuarioAtualAtiv"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">idPA</property>
+                    <text-property name="displayName">idPA</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["idPA"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">nmResponsavelPA</property>
+                    <text-property name="displayName">nmResponsavelPA</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nmResponsavelPA"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">nmOquCom</property>
+                    <text-property name="displayName">nmOquCom</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nmOquCom"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">nmPrazoDeConclusao</property>
+                    <text-property name="displayName">nmPrazoDeConclusao</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nmPrazoDeConclusao"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">dsAtividade</property>
+                    <text-property name="displayName">dsAtividade</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["dsAtividade"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <column id="43"/>
+            <column id="44"/>
+            <column id="45"/>
+            <column id="46"/>
+            <column id="47"/>
+            <column id="48">
+                <property name="width">1.125in</property>
+            </column>
+            <column id="49">
+                <property name="width">1.3854166666666667in</property>
+            </column>
+            <column id="50">
+                <property name="width">1.5208333333333333in</property>
+            </column>
+            <column id="51">
+                <property name="width">1.5833333333333333in</property>
+            </column>
+            <column id="52">
+                <property name="width">1.9791666666666667in</property>
+            </column>
+            <header>
+                <row id="10">
+                    <property name="fontWeight">bold</property>
+                    <cell id="11">
+                        <property name="paddingTop">5px</property>
+                        <property name="paddingLeft">5px</property>
+                        <property name="paddingBottom">5px</property>
+                        <property name="paddingRight">5px</property>
+                        <property name="textAlign">center</property>
+                        <label id="53">
+                            <text-property name="text">Solicitação</text-property>
+                        </label>
+                    </cell>
+                    <cell id="12">
+                        <property name="paddingTop">5px</property>
+                        <property name="paddingLeft">5px</property>
+                        <property name="paddingBottom">5px</property>
+                        <property name="paddingRight">5px</property>
+                        <property name="textAlign">center</property>
+                        <label id="55">
+                            <text-property name="text">Status</text-property>
+                        </label>
+                    </cell>
+                    <cell id="13">
+                        <property name="paddingTop">5px</property>
+                        <property name="paddingLeft">5px</property>
+                        <property name="paddingBottom">5px</property>
+                        <property name="paddingRight">5px</property>
+                        <property name="textAlign">center</property>
+                        <label id="57">
+                            <text-property name="text">Usuário Abertura</text-property>
+                        </label>
+                    </cell>
+                    <cell id="14">
+                        <property name="paddingTop">5px</property>
+                        <property name="paddingLeft">5px</property>
+                        <property name="paddingBottom">5px</property>
+                        <property name="paddingRight">5px</property>
+                        <property name="textAlign">center</property>
+                        <label id="59">
+                            <text-property name="text">Atividade Atual</text-property>
+                        </label>
+                    </cell>
+                    <cell id="15">
+                        <property name="paddingTop">5px</property>
+                        <property name="paddingLeft">5px</property>
+                        <property name="paddingBottom">5px</property>
+                        <property name="paddingRight">5px</property>
+                        <property name="textAlign">center</property>
+                        <label id="61">
+                            <text-property name="text">Responsável pela Atividade</text-property>
+                        </label>
+                    </cell>
+                    <cell id="16">
+                        <property name="paddingTop">5px</property>
+                        <property name="paddingLeft">5px</property>
+                        <property name="paddingBottom">5px</property>
+                        <property name="paddingRight">5px</property>
+                        <property name="textAlign">center</property>
+                        <label id="63">
+                            <text-property name="text">Código Plano de Ação</text-property>
+                        </label>
+                    </cell>
+                    <cell id="17">
+                        <property name="paddingTop">5px</property>
+                        <property name="paddingLeft">5px</property>
+                        <property name="paddingBottom">5px</property>
+                        <property name="paddingRight">5px</property>
+                        <property name="textAlign">center</property>
+                        <label id="65">
+                            <text-property name="text">Responsável Plano de Ação</text-property>
+                        </label>
+                    </cell>
+                    <cell id="18">
+                        <property name="paddingTop">5px</property>
+                        <property name="paddingLeft">5px</property>
+                        <property name="paddingBottom">5px</property>
+                        <property name="paddingRight">5px</property>
+                        <property name="textAlign">center</property>
+                        <label id="67">
+                            <text-property name="text">O que / Como</text-property>
+                        </label>
+                    </cell>
+                    <cell id="19">
+                        <property name="paddingTop">5px</property>
+                        <property name="paddingLeft">5px</property>
+                        <property name="paddingBottom">5px</property>
+                        <property name="paddingRight">5px</property>
+                        <property name="textAlign">center</property>
+                        <label id="69">
+                            <text-property name="text">Prazo de conclusão</text-property>
+                        </label>
+                    </cell>
+                    <cell id="20">
+                        <property name="paddingTop">5px</property>
+                        <property name="paddingLeft">5px</property>
+                        <property name="paddingBottom">5px</property>
+                        <property name="paddingRight">5px</property>
+                        <property name="textAlign">center</property>
+                        <label id="71">
+                            <text-property name="text">Descrição Atividade</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="21">
+                    <cell id="22">
+                        <property name="paddingTop">5px</property>
+                        <property name="paddingLeft">5px</property>
+                        <property name="paddingBottom">5px</property>
+                        <property name="paddingRight">5px</property>
+                        <property name="textAlign">center</property>
+                        <data id="54">
+                            <property name="whiteSpace">nowrap</property>
+                            <property name="resultSetColumn">cdSolicitacao</property>
+                        </data>
+                    </cell>
+                    <cell id="23">
+                        <property name="paddingTop">5px</property>
+                        <property name="paddingLeft">5px</property>
+                        <property name="paddingBottom">5px</property>
+                        <property name="paddingRight">5px</property>
+                        <property name="textAlign">center</property>
+                        <data id="56">
+                            <property name="whiteSpace">nowrap</property>
+                            <property name="resultSetColumn">active</property>
+                        </data>
+                    </cell>
+                    <cell id="24">
+                        <property name="paddingTop">5px</property>
+                        <property name="paddingLeft">5px</property>
+                        <property name="paddingBottom">5px</property>
+                        <property name="paddingRight">5px</property>
+                        <property name="textAlign">center</property>
+                        <data id="58">
+                            <property name="whiteSpace">nowrap</property>
+                            <property name="resultSetColumn">nmResponsavel</property>
+                        </data>
+                    </cell>
+                    <cell id="25">
+                        <property name="paddingTop">5px</property>
+                        <property name="paddingLeft">5px</property>
+                        <property name="paddingBottom">5px</property>
+                        <property name="paddingRight">5px</property>
+                        <property name="textAlign">center</property>
+                        <data id="60">
+                            <property name="whiteSpace">nowrap</property>
+                            <property name="resultSetColumn">activity</property>
+                        </data>
+                    </cell>
+                    <cell id="26">
+                        <property name="paddingTop">5px</property>
+                        <property name="paddingLeft">5px</property>
+                        <property name="paddingBottom">5px</property>
+                        <property name="paddingRight">5px</property>
+                        <property name="textAlign">center</property>
+                        <data id="62">
+                            <property name="whiteSpace">nowrap</property>
+                            <property name="resultSetColumn">usuarioAtualAtiv</property>
+                        </data>
+                    </cell>
+                    <cell id="27">
+                        <property name="paddingTop">5px</property>
+                        <property name="paddingLeft">5px</property>
+                        <property name="paddingBottom">5px</property>
+                        <property name="paddingRight">5px</property>
+                        <property name="textAlign">center</property>
+                        <data id="64">
+                            <property name="whiteSpace">nowrap</property>
+                            <property name="resultSetColumn">idPA</property>
+                        </data>
+                    </cell>
+                    <cell id="28">
+                        <property name="paddingTop">5px</property>
+                        <property name="paddingLeft">5px</property>
+                        <property name="paddingBottom">5px</property>
+                        <property name="paddingRight">5px</property>
+                        <property name="textAlign">center</property>
+                        <data id="66">
+                            <property name="whiteSpace">nowrap</property>
+                            <property name="resultSetColumn">nmResponsavelPA</property>
+                        </data>
+                    </cell>
+                    <cell id="29">
+                        <property name="paddingTop">5px</property>
+                        <property name="paddingLeft">5px</property>
+                        <property name="paddingBottom">5px</property>
+                        <property name="paddingRight">5px</property>
+                        <property name="textAlign">center</property>
+                        <data id="68">
+                            <property name="whiteSpace">nowrap</property>
+                            <property name="resultSetColumn">nmOquCom</property>
+                        </data>
+                    </cell>
+                    <cell id="30">
+                        <property name="paddingTop">5px</property>
+                        <property name="paddingLeft">5px</property>
+                        <property name="paddingBottom">5px</property>
+                        <property name="paddingRight">5px</property>
+                        <property name="textAlign">center</property>
+                        <data id="70">
+                            <property name="whiteSpace">nowrap</property>
+                            <property name="resultSetColumn">nmPrazoDeConclusao</property>
+                        </data>
+                    </cell>
+                    <cell id="31">
+                        <property name="paddingTop">5px</property>
+                        <property name="paddingLeft">5px</property>
+                        <property name="paddingBottom">5px</property>
+                        <property name="paddingRight">5px</property>
+                        <property name="textAlign">center</property>
+                        <data id="72">
+                            <property name="whiteSpace">nowrap</property>
+                            <property name="resultSetColumn">dsAtividade</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="32">
+                    <cell id="33">
+                        <property name="paddingTop">5px</property>
+                        <property name="paddingLeft">5px</property>
+                        <property name="paddingBottom">5px</property>
+                        <property name="paddingRight">5px</property>
+                        <property name="textAlign">center</property>
+                    </cell>
+                    <cell id="34">
+                        <property name="paddingTop">5px</property>
+                        <property name="paddingLeft">5px</property>
+                        <property name="paddingBottom">5px</property>
+                        <property name="paddingRight">5px</property>
+                        <property name="textAlign">center</property>
+                    </cell>
+                    <cell id="35">
+                        <property name="paddingTop">5px</property>
+                        <property name="paddingLeft">5px</property>
+                        <property name="paddingBottom">5px</property>
+                        <property name="paddingRight">5px</property>
+                        <property name="textAlign">center</property>
+                    </cell>
+                    <cell id="36">
+                        <property name="paddingTop">5px</property>
+                        <property name="paddingLeft">5px</property>
+                        <property name="paddingBottom">5px</property>
+                        <property name="paddingRight">5px</property>
+                        <property name="textAlign">center</property>
+                    </cell>
+                    <cell id="37">
+                        <property name="paddingTop">5px</property>
+                        <property name="paddingLeft">5px</property>
+                        <property name="paddingBottom">5px</property>
+                        <property name="paddingRight">5px</property>
+                        <property name="textAlign">center</property>
+                    </cell>
+                    <cell id="38">
+                        <property name="paddingTop">5px</property>
+                        <property name="paddingLeft">5px</property>
+                        <property name="paddingBottom">5px</property>
+                        <property name="paddingRight">5px</property>
+                        <property name="textAlign">center</property>
+                    </cell>
+                    <cell id="39">
+                        <property name="paddingTop">5px</property>
+                        <property name="paddingLeft">5px</property>
+                        <property name="paddingBottom">5px</property>
+                        <property name="paddingRight">5px</property>
+                        <property name="textAlign">center</property>
+                    </cell>
+                    <cell id="40">
+                        <property name="paddingTop">5px</property>
+                        <property name="paddingLeft">5px</property>
+                        <property name="paddingBottom">5px</property>
+                        <property name="paddingRight">5px</property>
+                        <property name="textAlign">center</property>
+                    </cell>
+                    <cell id="41">
+                        <property name="paddingTop">5px</property>
+                        <property name="paddingLeft">5px</property>
+                        <property name="paddingBottom">5px</property>
+                        <property name="paddingRight">5px</property>
+                        <property name="textAlign">center</property>
+                    </cell>
+                    <cell id="42">
+                        <property name="paddingTop">5px</property>
+                        <property name="paddingLeft">5px</property>
+                        <property name="paddingBottom">5px</property>
+                        <property name="paddingRight">5px</property>
+                        <property name="textAlign">center</property>
+                    </cell>
+                </row>
+            </footer>
+        </table>
+    </body>
+</report>

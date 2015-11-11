@@ -1,0 +1,265 @@
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> <!--   para acessar com a versão mais nova do IE-->
+	<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- torna responsivo nos navegadores -->
+	<title>Programa de Benefício de Medicamento</title>
+
+	<link rel="stylesheet" type="text/css" href="/portal/resources/style-guide/css/fluig-style-guide.min.css">
+	
+	<script src="http://poc.fluig.com:8084/webdesk/vcXMLRPC-mobile.js"></script>
+	
+	<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
+	<script src="/portal/resources/js/jquery/jquery.js"></script>
+	<script src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+	
+</head>
+
+<style type="text/css">
+	table {
+		width: 100% !important;
+		max-width: 100% !important;
+	}
+
+	h1 img { max-height: 50px; max-width: 250px; float: right; padding: 0 0 10px 0; }
+	#titulo {color: #333;}
+</style>
+
+<body>
+<div id="container" class="fluig-style-guide container">
+	<form role="form" class="form-horizontal">
+		<h1 align="center" id="titulo">Programa de Benefício de Medicamento <img src="img/logo.png" ></h1>
+		<div class="panel panel-success">
+			<div class="panel-body">
+				
+				<!-- Grupo DADOS DA SOLICITAÇÃO __ 0 -->
+				<fieldset id="dadosDaSolicitacao_FieldSet">
+					<legend>Solicitação</legend>
+					<div class="form-group">
+						<label class="col-sm-1">CPF do Cliente:</label>
+						<div class="col-sm-2">
+							<input type="text" class="form-control" id="cpfCliente" name="cpfCliente">
+						</div>
+						<label class="col-sm-1 ">Nome do Cliente:</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="nomeCliente" name="nomeCredenciado">
+						</div>
+						<label class="col-sm-1 ">Cód. da Carterinha do Cliente:</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" id="codCarteiraCliente" name="codCarteiraCliente">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-1">Tipo do PBM:</label>
+						<div class="col-sm-2">
+							<select class="form-control input-sm" id="tipoPBM" name="tipoPBM">
+								<option value="0" selected="selected">Selecionar</option>
+								<option value="orizon">Orizon</option>
+								<option value="vidalink">Vidalink</option>
+								<option value="epharma">E-Pharma</option>
+							</select>
+						</div>
+						<label class="col-md-1 ">Tipo de Profissão:</label>
+						<div class="checkbox col-sm-1">
+				        	<label>
+				        		<input type="checkbox" id="tipoProfADM" name="tipoProfADM"> CRM
+				        	</label>
+				    		</div>
+						<div class="checkbox col-sm-1">
+							<label>
+								<input type="checkbox" id="tipoProfCRO" name="tipoProfCRO"> CRO
+							</label>
+					 	</div>
+					 	<div class="checkbox col-sm-1">
+							<label>
+								<input type="checkbox" id="tipoProfCRV" name="tipoProfCRV"> CRV
+							</label>
+					 	</div>
+						<label class="col-sm-1 control-label">Código do Remédio:</label>
+						<div class="col-sm-2">
+							<input type="text" class="form-control" id="codRemedio" name="codRemedio">
+						</div>
+						<div class="col-sm-2">
+							<button type="button" id="btnPesquisaRemedio" name="btnPesquisaRemedio" data-loading-text="Loading..." class="btn btn-primary" onClick="pesquisaGuia('botao',null);">
+								Pesquisar
+							</button>
+						</div>
+					</div>
+					<br><br>
+					
+					<div class="form-group">
+						<div class="col-md-12">
+							<div class="table-responsive">
+								<table class="table table-bordered" id="tabelaMedicamentos" tablename="tabelaMedicamentos" noaddbutton="true" nodeletebutton="true">
+									<thead>
+										<tr>
+											<th>Cod. Remédio</th>
+											<th width="35%">Nome</th> 
+											<th width="15%">Valor</th>
+											<th width="15%">Desconto(%)</th>
+											<th width="15%">Valor com Desconto</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr class="hide">
+											<td colspan="5"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					
+					<input type="hidden" id="valores_chaves" name="valores_chaves"/>
+					<input type="hidden" id="numProcesso" name="numProcesso"/> 
+					 
+				</fieldset>
+				<br><br>
+																
+			</div> <!-- fechando a div Panel Body -->
+		</div> <!-- fechando a div Panel Success -->
+	</form> <!-- fechando o form-horizontal -->
+</div> <!-- fechando o Fluig Style Guide -->
+</body>
+
+
+
+<script>
+		
+	/*-------------------------------------------------------------------
+	 * FUNCAO PARA PESQUISAR A GUIA COM A CHAVE INFORMADA NO FORMULARIO 
+	 --------------------------------------------------------------------*/
+	function pesquisaGuia(tipo, chave){
+		var codRemedio;
+		var myLoading = FLUIGC.loading('#container');
+			
+		
+		if (tipo == "botao"){
+			codRemedio =  $('#codRemedio').val();
+		}else{
+			codRemedio =  chave;
+		}
+			
+		/*--------------------------------------------------------------------------------------
+		 * Acessando o dataset "Cadastro de Guia" para retornar todos campos da guia pesquisada
+		---------------------------------------------------------------------------------------*/
+		
+		var constraintDs_CadastroMedicamento1 = DatasetFactory.createConstraint('metadata#active', 'true', 'true', ConstraintType.MUST);
+		var constraintDs_CadastroMedicamento2 = DatasetFactory.createConstraint('codigo', codRemedio, codRemedio, ConstraintType.MUST);
+		var datasetDs_CadastroMedicamento = DatasetFactory.getDataset('ds_CadastroMedicamento', null, new Array(constraintDs_CadastroMedicamento1, constraintDs_CadastroMedicamento2), null);
+
+		
+		/*-------------------------------------------------------------------
+		 * Validando a guia com informações inconsistentes 
+		-------------------------------------------------------------------*/
+		if (datasetDs_CadastroMedicamento.values.length != 0){
+		
+			myLoading.show();
+			
+			/*-------------------------------------------------------------------
+			 * Preenchimento dos campos da guia 
+			 -------------------------------------------------------------------*/
+			 
+			setTimeout(function(){
+			
+				var $form = $("form");
+			
+				var $tbody = $("table#tabelaMedicamentos tbody"); // pega o tbody da table de destino ($tbody representa um elemento HTML)
+				
+				var valores = [{
+					"codigo": datasetDs_CadastroMedicamento.values[0].codigo,
+					"nome": datasetDs_CadastroMedicamento.values[0].nome,
+					"valor": datasetDs_CadastroMedicamento.values[0].valor,
+					"desconto": datasetDs_CadastroMedicamento.values[0].desconto,
+					"vlrComDesconto": datasetDs_CadastroMedicamento.values[0].vlrComDesconto
+					
+				}];
+						
+				var createTableContent = function($tbody, datasetValues) {
+					$.each(datasetValues, function(key, valor) {
+						var $tr = $("<tr>");
+						
+						var $td1 = $("<td>", {"text":valor.codigo, "data-codigo":valor.codigo});
+						var $td2 = $("<td>", {"text":valor.nome});
+						var $td3 = $("<td>", {"text":valor.valor});
+						var $td4 = $("<td>", {"text":valor.desconto});
+						var $td5 = $("<td>", {"text":valor.vlrComDesconto});
+						
+						
+						$tr
+						.append($td1)
+						.append($td2)
+						.append($td3)
+						.append($td4)
+						.append($td5);
+						
+						
+						$tbody.append($tr);
+						
+						/*-------------------------------------------------------------------
+			 			 * Criar os elementos que terão as chaves 
+			 			-------------------------------------------------------------------*/
+						if (tipo == "botao"){
+							if($('#valores_chaves').val() == ""){
+								$('#valores_chaves').val(valor.codigo);
+							}else{
+								chaveAtual = $('#valores_chaves').val();
+								virgula = ",";
+								chaveAtualizada = chaveAtual + virgula + valor.codigo;
+								$('#valores_chaves').val(chaveAtualizada);
+							}
+						
+							$('#numChave').val(""); //Limpa o campo "numChave"
+							
+						}
+							
+					});
+				};
+				
+				createTableContent($tbody, valores); //criar o conteúdo na tabela
+							
+				myLoading.hide(); //tela de aguardando
+			
+			}, 2000);
+		
+		}else{
+			parent.WCMC.messageWarn("Não existe medicamento com este código!");
+		}
+	}
+	
+	
+	
+	
+	/*--------------------------------------------------------------
+	*	RODA A FUNCAO ABAIXO QUANDO O DOCUMENTO .html ESTIVER PRONTO
+	----------------------------------------------------------------*/
+	
+	$(function() {
+		try {
+			
+			/*--------------------------------------------------------------
+			 *	PESQUISAR AS CHAVES SELECIONADAS E ADICIONAR NA TABELA
+			----------------------------------------------------------------*/
+			if ($('#valores_chaves').val() != ""){
+				
+				var listaChave = $('#valores_chaves').val().split(); //criação do array para separar as chaves
+				var tamanhoListaChave = $('#valores_chaves').val().split(",").length; //tamanho do array
+				var chave;
+				
+				for (i = 0; i < tamanhoListaChave; i++) { 
+    				chave = $('#valores_chaves').val().split(",")[i]; //valor do item do array
+    				pesquisaGuia('funcao', chave);
+				}			
+				
+			}	
+						
+		} catch (e) {
+			alert("Erro ao carregar pag.: " + e);
+		}
+	
+	}); // fecha function();
+	
+
+</script>	
+</html>

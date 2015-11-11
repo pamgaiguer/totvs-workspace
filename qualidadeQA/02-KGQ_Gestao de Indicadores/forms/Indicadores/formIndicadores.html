@@ -1,0 +1,177 @@
+<html>
+	<head>
+		<title>
+			Indicadores SGI
+		</title>
+		<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+		<script language="javascript" type="text/javascript" src="/kitecm-1.0.7/js/utils.js"></script>
+		<script language="javascript" type="text/javascript" src="/kitecm-1.0.7/js/datepicker.js"></script>
+		<script language="javascript" type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+		<script language="javascript" type="text/javascript" src="js/bootstrap.min.js"></script>
+		<!--<script language="javascript" type="text/javascript" src="/kitecm/js/brava.js"></script>-->
+		<script language="javascript" type="text/javascript" src="js/custom.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="/kitecm/css/style.css"/>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/custom.css"/>
+	</head>
+	<body id="KitGestaoQualidade" onload="window.parent.document.getElementById('workflowView-cardViewer').style.border='none'; init()">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<div id="logo">
+						<img src="img/fluig.png" width="83px" height="83px">
+					</div>
+					<h2 style="padding-bottom: 20px !important">i18n.translate("titulo")</h2>
+					
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<form name="form" role="form" class="form-horizontal">
+						<fieldset>
+					  		<legend>i18n.translate("legend_ind")</legend>
+						  	<div class="form-group">
+						    	<label for="name" class="col-sm-2 control-label">i18n.translate("nome")</label>
+						    	<div class="col-sm-4">
+						      		<input type="text" class="form-control" name="name" id="name" maxlength="150">
+						    	</div>
+						  	</div>
+						<fieldset>
+						<fieldset>
+					  		<legend>i18n.translate("legend_det_ind")</legend>
+						  	<div class="form-group">
+						    	<label for="description" class="col-sm-2 control-label">i18n.translate("desc")</label>
+						    	<div class="col-sm-4">
+						      		<textarea class="form-control" rows="3" cols="8" name="description" id="description"></textarea>
+						    	</div>
+						  	</div>
+						  	<div class="form-group">
+						    	<label for="formulaDescription" class="col-sm-2 control-label">i18n.translate("desc_form")</label>
+						    	<div class="col-sm-4">
+						      		<textarea class="form-control" rows="3" cols="8" name="formulaDescription" id="formulaDescription"></textarea>
+						    	</div>
+						  	</div>
+						  	<div class="form-group">
+						    	<label for="periodicity" class="col-sm-2 control-label">i18n.translate("period")</label>
+						    	<div class="col-sm-4">
+						      		<select name="periodicity" id="periodicity" class="form-control">
+										<option value="0">Diário</option>
+										<option value="1">Semanal</option>
+										<option value="2">Quinzenal</option>
+										<option value="3">Mensal</option>
+										<option value="4">Bimestral</option>
+										<option value="5">Trimestral</option>
+										<option value="6">Semestral</option>
+										<option value="7">Anual</option>
+									</select>
+						    	</div>
+						    	<label for="goalType" class="col-sm-1 control-label">i18n.translate("tp_meta")</label>
+						    	<div class="col-sm-4">
+						      		<select name="goalType" class="form-control">
+										<option value="0">Valor</option>
+										<option value="1">Percentual</option>
+									</select>
+						    	</div>
+						  	</div>
+						  	<div class="form-group">
+						    	<label for="goal" class="col-sm-2 control-label">i18n.translate("meta")</label>
+						    	<div class="col-sm-4">
+						      		<input class="form-control" name="goal" id="goal" maxlength="16" onkeypress="mascaraValor(this);">
+						    	</div>
+						  	</div>
+						  	<div class="form-group">
+						    	<label for="bestGoal" class="col-sm-2 control-label">i18n.translate("melhor_meta")</label>
+						    	<div class="col-sm-4">
+						      		<select name="bestGoal" class="form-control">
+										<option value="0">Maior ou igual a meta</option>
+										<option value="1">Menor ou igual a meta</option>
+									</select>
+						    	</div>
+						  	</div>
+						  	<div class="row">
+								<div class="col-sm-5">
+									<div class="form-group">
+								  		<label for="startDate" class="col-sm-5 control-label">i18n.translate("dt_vigencia")</label>
+								    	<div class="input-group col-sm-7" style="padding-left: 7px !important;">
+								      		<input name="startDate" id="startDate" class="form-control" type="text" readonly="true" />
+								      		<a style="width: 10px !important;" href="#Bot" class="input-group-addon" id="btStartDate" name="btStartDate" title="Selecionar data" onclick="displayDatePicker(startDate, 'dmy');"><i class="glyphicon glyphicon-calendar"></i></a>
+								      		<a style="width: 10px !important;" href="#Bot" class="input-group-addon" id="btClearStartDate" name="btClearStartDate" title="Limpar" onClick="clearFields(new Array('startDate'))"><i class="glyphicon glyphicon-remove"></i></a>
+								    	</div>
+									</div>
+								</div>
+					  			<div class="col-sm-6">
+					  				<div class="form-group">
+								    	<label for="dtOcorrencia" class="col-sm-1 control-label">i18n.translate("ate")</label>
+								    	<div class="input-group col-sm-6" style="padding-left: 15px !important;">
+								      		<input name="finishDate" id="finishDate" class="form-control" type="text" readonly="true" />
+								      		<a style="width: 10px !important;" href="#Bot" class="input-group-addon" id="btFinishDate" name="btFinishDate" title="Selecionar data" onclick="displayDatePicker(finishDate, 'dmy');"><i class="glyphicon glyphicon-calendar"></i></a>
+								      		<a style="width: 10px !important;" href="#Bot" class="input-group-addon" id="btClearFinishDate" name="btClearFinishDate" title="Limpar" onClick="clearFields(new Array('finishDate'))"><i class="glyphicon glyphicon-remove"></i></a>
+								    	</div>
+								    </div>
+							  	</div>
+						  	</div>
+						  	<div class="form-group">
+						    	<label for="txtAppointmentUserName" class="col-sm-2 control-label">i18n.translate("matri_apur")</label>
+						    	<div class="col-sm-4">
+						      		<input class="form-control" name="txtAppointmentUserId" id="txtAppointmentUserId" readonly="true">
+						    	</div>
+						    	<label for="txtAppointmentUserName" class="col-sm-1 control-label">i18n.translate("usu_apur")</label>
+						    	<div class="input-group col-sm-4" style="padding-left: 15px !important;">
+						      		<input class="form-control" name="txtAppointmentUserName" id="txtAppointmentUserName" readonly="true">
+						      		<a style="width: 10px !important;" href="#Bot" class="input-group-addon" id="imgAppointmentUser" name="imgAppointmentUser" title="Selecionar usuário apurador" onclick="openZoomUsuarioApurador();"><i class="glyphicon glyphicon-search"></i></a>
+						      		<a style="width: 10px !important;" href="#Bot" class="input-group-addon" id="btClearUser" name="btClearUser" title="Limpar" onclick="clearFields(new Array('txtAppointmentUserId', 'txtAppointmentUserName'))"><i class="glyphicon glyphicon-remove"></i></a>
+						    	</div>
+						    </div>
+						  	<div class="form-group">
+						    	<label for="txtIndicatorManagerName" class="col-sm-2 control-label">i18n.translate("matr_gest_ind")</label>
+						    	<div class="col-sm-4">
+						      		<input class="form-control" name="txtIndicatorManagerId" id="txtIndicatorManagerId" readonly="true">
+						    	</div>
+						    	<label for="txtAppointmentUserName" class="col-sm-1 control-label">i18n.translate("gest_ind")</label>
+						    	<div class="input-group col-sm-4" style="padding-left: 15px !important;">
+						      		<input class="form-control" name="txtIndicatorManagerName" id="txtIndicatorManagerName" readonly="true">
+						      		<a style="width: 10px !important;" href="#Bot" class="input-group-addon" id="imgIndicatorManagerName" name="imgIndicatorManagerName" title="Selecionar usuário apurador" onclick="openZoomGestorIndicador()"><i class="glyphicon glyphicon-search"></i></a>
+						      		<a style="width: 10px !important;" href="#Bot" class="input-group-addon" id="btClearIndicator" name="btClearIndicator" title="Limpar" onclick="clearFields(new Array('txtIndicatorManagerId', 'txtIndicatorManagerName'))"><i class="glyphicon glyphicon-remove"></i></a>
+						    	</div>
+						    </div>
+						    <input type="hidden" name="CodeRequest" id="CodeRequest" size="10" maxlength="20">
+							<input type="hidden" name="index_campo" id="index_campo" size="3" maxlength="10">
+							<input type="hidden" name="validaFilhos" id="validaFilhos" size="10" maxlength="20" value="">
+						<fieldset>
+						<table name ="tabIndicadores" id="tabIndicadores" tablename="tabIndicadores" noaddbutton="true" customFnDelete="customDelete(this)" class="table table-striped" border="1">
+							<thead>
+								<tr>
+									<th>i18n.translate("prazo_apur")</th>
+									<th>i18n.translate("vl_apur")</th>
+									<th>i18n.translate("meta_ind")</th>
+									<th>i18n.translate("num_oco")</th>
+									<th>i18n.translate("obs")</th>
+								</tr>
+							</thead>
+							 <tbody>
+								<tr>
+									<td class="col-xs-2">
+										<input type="text" name="data_indicador" id="data_indicador" class="form-control input-sm">
+									</td>
+									<td>
+										<input type="text" name="appointmentValue" id="appointmentValue" class="form-control" onKeyDown="Mascara(this,Valor);" onKeyPress="Mascara(this,Valor);" onKeyUp="Mascara(this,Valor);">
+									</td>
+									<td>
+										<input type="text" name="goalLine" id="goalLine" class="form-control" id="goalLine">					
+									</td>
+									<td class="col-xs-2">
+										<input type="text" name="occurrenceNumber" id="occurrenceNumber" class="form-control">
+									</td >
+									<td>
+										<textarea class="form-control" rows="3" cols="8" name="obs" id="obs"></textarea>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</form>
+				</div>
+			</div>
+		</div>		
+	</body>
+</html>

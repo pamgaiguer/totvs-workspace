@@ -1,0 +1,165 @@
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> <!--   para acessar com a versão mais nova do IE-->
+	<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- torna responsivo nos navegadores -->
+	<title>Troca e Devolução de Produto</title>
+
+	<link rel="stylesheet" type="text/css" href="/portal/resources/style-guide/css/fluig-style-guide.min.css">
+	
+	<script src="http://poc.fluig.com:8089/webdesk/vcXMLRPC-mobile.js"></script>
+	
+	<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
+	<script src="/portal/resources/js/jquery/jquery.js"></script>
+	<script src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+	<script src="jquery.maskMoney.min.js"></script>
+	
+</head>
+
+<style type="text/css">
+	table {
+		width: 100% !important;
+		max-width: 100% !important;
+	}
+
+	h1 img { max-height: 50px; max-width: 250px; float: right; padding: 0 0 10px 0; }
+	#titulo {color: #333;}
+</style>
+
+<body>
+<div id="container" class="fluig-style-guide container">
+	<form role="form" class="form-horizontal">
+		<h1 align="center" id="titulo">Troca e Devolução de Produto <img src="img/logo.png" ></h1>
+		<div class="panel panel-success">
+			<div class="panel-body">
+				
+				<!-- Grupo DADOS DA SOLICITAÇÃO __ 0 -->
+				<fieldset id="dadosDaSolicitacao_FieldSet">
+					<legend>Solicitação</legend>
+					<div class="form-group">
+						<label class="col-sm-1">CPF do Cliente:</label>
+						<div class="col-sm-2">
+							<input type="text" class="form-control" id="cpfCliente" name="cpfCliente">
+						</div>
+						<label class="col-sm-1 ">Nome do Cliente:</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="nomeCliente" name="nomeCredenciado">
+						</div>
+						<label class="col-sm-1 ">Número da Nota/Pedido:</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" id="numNotaPed" name="numNotaPed">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 ">Tipo de Operação:</label>
+						<div class="col-md-2">
+							<label>
+								<input type="radio" id="tipoOperacaoTroca" name="tipoOperacao" value="troca" checked="checked">Troca</label>
+							<label>
+								<input type="radio" id="tipoOperacaoDevol" name="tipoOperacao" value="devolucao" >Devolução</label>
+						</div>
+						<label class="col-md-1 ">Número de Atendimento:</label>
+						<div class="col-sm-2">
+							<input type="text" class="form-control" id="numAtend" name="numAtend" readonly>
+						</div>
+						<label class="col-sm-1">Status do Pedido:</label>
+						<div class="col-sm-2">
+							<input type="text" class="form-control" id="statusPedido" name="statusPedido" readonly>
+						</div>
+					</div>
+					 
+				</fieldset>
+				<br><br>
+				
+				<!-- Grupo VALIDACAO E RECEBIMENTO__ 1 -->
+				<fieldset id="analiseDoPedido_FieldSet">
+					<legend>Análise do Pedido</legend>
+					<div class="form-group row">
+						<label class="col-sm-2 ">Pedido Aceito?*</label>
+						<div class="col-md-2">
+							<label>
+								<input type="radio" name="pedidoAceito" value="sim" id="pedidoAceitoSim" > Sim
+							</label>
+							<label>
+								<input type="radio" name="pedidoAceito" value="nao" id="pedidoAceitoNao" checked="checked"> Não
+							</label>
+						</div>
+					</div>
+					<div class="form-group" >
+						<div id="grupoSetor" >
+							<label class="col-sm-2 ">Produto será encaminhando para qual setor?*</label>
+							<div class="col-md-2">
+								<label>
+									<input type="radio" name="setor" value="loja" id="setorLoja" checked="checked"> Loja
+								</label>
+								<label>
+									<input type="radio" name="setor" value="cd" id="setorCD"> CD
+								</label>
+							</div>
+						</div>
+					</div>
+					
+					
+				</fieldset>
+																
+			</div> <!-- fechando a div Panel Body -->
+		</div> <!-- fechando a div Panel Success -->
+	</form> <!-- fechando o form-horizontal -->
+</div> <!-- fechando o Fluig Style Guide -->
+</body>
+
+
+
+<script>
+		
+	
+	
+	
+	
+	/*--------------------------------------------------------------
+	*	RODA A FUNCAO ABAIXO QUANDO O DOCUMENTO .html ESTIVER PRONTO
+	----------------------------------------------------------------*/
+	
+	$(function() {
+		try {
+			
+			var numAtend;
+			var statusPedido;
+			
+			//REGRA PARA "PEDIDO ACEITO" MOSTRA O GRUPO SETOR
+			if($('#pedidoAceitoSim:checked').val() == 'sim'){
+				$('#grupoSetor').show();
+			}else if($('#pedidoAceitoNao:checked').val() == 'nao'){
+				$('#grupoSetor').hide();
+			}
+			
+			$('#pedidoAceitoSim').change(function(){
+				$('#grupoSetor').show();
+			});
+	
+			$('#pedidoAceitoNao').click(function(){
+				$('#grupoSetor').hide();
+			});
+			
+			
+			//REGRA PARA GERAR NÚMERO ALEATÓRIO NO NÚMERO DO ATENDIMENTO
+			if($('#numAtend').val() == ""){
+				numAtend = parent.moment().format("HHmmssSS");
+				$('#numAtend').val(numAtend);
+			}
+			
+			if($('#statusPedido').val() == ""){
+				statusPedido = "Em Andamento";
+				$('#statusPedido').val(statusPedido);
+			}
+						
+		} catch (e) {
+			alert("Erro ao carregar pag.: " + e);
+		}
+	
+	}); // fecha function();
+	
+
+</script>	
+</html>
