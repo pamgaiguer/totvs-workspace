@@ -1,0 +1,49 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="http://style.fluig.com/css/fluig-style-guide.min.css"/>
+</head>
+<body>
+  <div class="fluig-style-guide">
+    <div class="container">
+      <form name="form" role="form">
+
+        <div class="form-group">
+          <label for="clientName">Nome do cliente</label>
+          <input type="text" class="form-control" id="clientName" name="clientName" placeholder="Nome do cliente">
+        </div>
+
+        <div class="form-group">
+          <label for="cardsNeeded">Cards necessários no ambiente</label>
+          <label class="checkbox-inline">
+            <input type="checkbox" id="idp" name="idp" value="0"> Identity
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" id="bpm" name="bpm" value="1"> BPM
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" id="ecm" name="ecm" value="2"> ECM
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" id="analytics" name="analytics" value="3"> Analytics
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" id="social" name="social" value="4"> Social
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" id="wcm" name="wcm" value="5"> WCM
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" id="lms" name="lms" value="6"> LMS
+          </label>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+  <script src="/portal/resources/js/jquery/jquery.js"></script>
+  <script src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+  <script src="/portal/resources/js/mustache/mustache.min.js"></script>
+  <script src="http://style.fluig.com/js/fluig-style-guide.min.js" charset="utf-8"></script>
+</body>
+</html>
