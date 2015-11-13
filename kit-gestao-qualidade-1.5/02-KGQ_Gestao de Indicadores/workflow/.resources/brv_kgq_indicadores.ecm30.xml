@@ -23,10 +23,10 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Indicadores</processId>
-      <version>3</version>
+      <version>1</version>
     </processDefinitionVersionPK>
     <versionDescription>Nova Versão.</versionDescription>
-    <formId>14</formId>
+    <formId>47</formId>
     <editionMode>true</editionMode>
     <updateAttachmentsVersion>false</updateAttachmentsVersion>
     <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
@@ -445,7 +445,7 @@
         <companyId>1</companyId>
         <processId>brv_kgq_indicadores</processId>
         <expressionOrder>1</expressionOrder>
-        <version>3</version>
+        <version>1</version>
         <sequence>14</sequence>
       </conditionProcessStatePK>
       <condition>true</condition>
@@ -458,7 +458,7 @@
         <companyId>1</companyId>
         <processId>brv_kgq_indicadores</processId>
         <expressionOrder>1</expressionOrder>
-        <version>3</version>
+        <version>1</version>
         <sequence>18</sequence>
       </conditionProcessStatePK>
       <condition>true</condition>
@@ -1049,7 +1049,7 @@ function AddDate(differenceType,date,amount){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>brv_kgq_indicadores</processId>
-        <version>3</version>
+        <version>1</version>
         <linkSequence>2</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1060,7 +1060,7 @@ function AddDate(differenceType,date,amount){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>brv_kgq_indicadores</processId>
-        <version>3</version>
+        <version>1</version>
         <linkSequence>2</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1071,7 +1071,7 @@ function AddDate(differenceType,date,amount){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>brv_kgq_indicadores</processId>
-        <version>3</version>
+        <version>1</version>
         <linkSequence>3</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1082,7 +1082,7 @@ function AddDate(differenceType,date,amount){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>brv_kgq_indicadores</processId>
-        <version>3</version>
+        <version>1</version>
         <linkSequence>5</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1093,7 +1093,7 @@ function AddDate(differenceType,date,amount){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>brv_kgq_indicadores</processId>
-        <version>3</version>
+        <version>1</version>
         <linkSequence>5</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1104,7 +1104,7 @@ function AddDate(differenceType,date,amount){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>brv_kgq_indicadores</processId>
-        <version>3</version>
+        <version>1</version>
         <linkSequence>5</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
@@ -1115,7 +1115,7 @@ function AddDate(differenceType,date,amount){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>brv_kgq_indicadores</processId>
-        <version>3</version>
+        <version>1</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1126,7 +1126,7 @@ function AddDate(differenceType,date,amount){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>brv_kgq_indicadores</processId>
-        <version>3</version>
+        <version>1</version>
         <linkSequence>11</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1137,7 +1137,7 @@ function AddDate(differenceType,date,amount){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>brv_kgq_indicadores</processId>
-        <version>3</version>
+        <version>1</version>
         <linkSequence>11</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>

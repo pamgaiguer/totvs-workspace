@@ -13,14 +13,14 @@
 			<div class="fluig-style-guide" style="margin-bottom:50px">
 				<div class="row">
 					<div class="col-sm-12 col-md-8">
-						<div class="row">
+						<div class="row">											
 							<div class="col-xs-12 editable-slot">
 								<@wcm.renderSlot id="SlotA" editableSlot="true" decorator="false"/>
 							</div>
 							
 							<div class="col-xs-12 editable-slot">
 								<@wcm.renderSlot id="SlotB" editableSlot="true" decorator="false"/>
-							</div>
+							</div>							
 						</div>
 					</div>
 					
@@ -43,7 +43,7 @@
 					</div>
 				</div>
             </div>
-            <@wcm.footer layoutuserlabel="wcm.layoutdefault.user" />
+<!--             <@wcm.footer layoutuserlabel="wcm.layoutdefault.user" /> -->
         </div>
     </div>
 </div>
