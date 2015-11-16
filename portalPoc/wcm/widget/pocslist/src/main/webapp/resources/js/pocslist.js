@@ -70,10 +70,11 @@ var pocslist = SuperWidget.extend({
     	
     	for (var i in ds) {
     		var e = ds[i];
-    		var btn = $("<div>").append($("<button>", {
+    		var btn = $("<div>").append($("<a>", {
 				"type": "button",
 				"class": "btn btn-default",
-				"text": "Solicitar POC"
+				"text": "Solicitar POC",
+				"href": "http://spod1536:8080/portal/p/dev/pageworkflowview?processID=hc_solicitacao_demanda"
 			})[0]);
     		
     		pocs.push({
@@ -83,7 +84,7 @@ var pocslist = SuperWidget.extend({
     			"foldergallery": e.foldergallery,
     			"startdate": e.startdate,
     			"enddate": e.enddate,
-    			"startprocess": '<button type="button" class="btn btn-success" data-solicitar>Solicitar</button>',
+    			"startprocess": '<a class="btn btn-success" data-solicitar>Solicitar</a>',
     			"folderdata": _this.getDocumentList(e.foldergallery)
     		});
     	}

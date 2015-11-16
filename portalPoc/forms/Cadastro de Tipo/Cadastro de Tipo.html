@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Pré-Cadastro de Tipo de Demanda</title>
+	<link rel="stylesheet" type="text/css" href="/portal/resources/style-guide/css/fluig-style-guide.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+
+</head>
+<body>
+	<div class="fluig-style-guide">
+		<form name="form" role="form">
+			<div class="hide">
+				<fieldset id="var-global">
+					<input type="hidden" name="hd_pool" id="hd_pool" value="">
+				</fieldset>
+			</div>
+			<div>
+				<fieldset id="pre-cadastro">
+					<legend class="com-imagem">
+						Pré-Cadastro de Tipo de Demanda
+						<img src="img/logo.png" class="fs-transparent-25">
+					</legend>
+					<div class="form-group">
+						<div class="col-sm-6">
+							<label for="nome">
+								Nome da Demanda
+								<strong class="is-required">*</strong>
+							</label>
+							<input type="text" name="nome" id="nome" class="form-control">
+						</div>
+						<div class="col-sm-6">
+							<label for="pool">
+								Pool Responsável pela Demanda
+								<strong class="is-required">*</strong>
+							</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="pool" name="pool" readonly />
+								<i class="input-group-addon fluigicon fluigicon-role-lists fluigicon-sm" onclick="mostraZoom('workflowRole', 'workflowRolePK.roleId,Papel,roleDescription,Descri\u00E7\u00E3o', 'workflowRolePK.roleId,roleDescription', 'papel', 'Selecione o Papel')"></i>
+							</div>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+		</form>
+	</div>
+	<script src="/portal/resources/js/jquery/jquery.js"></script>
+	<script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+	<script src="js/function.js"></script>	
+</body>
+</html>

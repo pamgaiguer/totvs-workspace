@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Habilitação de Canais - Solicitação de Demanda</title>
+	<link rel="stylesheet" type="text/css" href="/portal/resources/style-guide/css/fluig-style-guide.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<div class="fluig-style-guide">
+		<form name="form" role="form">
+			<div class="hide">
+				<fieldset id="var-global">
+					<input type="hidden" name="atribuicao_para_pool" id="atribuicao_para_pool" value="">
+				</fieldset>
+			</div>
+			<div>
+				<fieldset id="iniciar-solicitacao">
+					<legend class="com-imagem">
+						Solicitar Demanda (Solicitante)
+						<img src="img/logo.png" class="fs-transparent-25" alt="Fluig">
+					</legend>
+					<div class="form-group">
+						<div class="col-sm-9">
+							<label for="sol_nome">
+								Nome do Solicitante
+							</label>
+							<input type="text" name="sol_nome" id="sol_nome" class="form-control" readonly>
+						</div>
+						<div class="col-sm-3">
+							<label for="sol_data">
+								Data da Solicitação
+							</label>
+							<input type="text" name="sol_data" id="sol_data" class="form-control" readonly>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label for="sol_tipo_demanda">
+								Tipo da Demanda
+								<strong class="is-required">*</strong>
+							</label>
+							<select name="sol_tipo_demanda" id="sol_tipo_demanda" dataset="hc_cadastro_tipo" datasetkey="pool" datasetvalue="nome" class="form-control"></select>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label for="sol_descricao">
+								Descrição da Demanda
+								<strong class="is-required">*</strong>
+							</label>
+							<textarea name="sol_descricao" id="sol_descricao" rows="3" class="form-control"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<h2>ORIGEM DA DEMANDA</h2>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-3">
+							<label for="sol_ori">
+								Origem
+								<strong class="is-required">*</strong>
+							</label>
+							<select name="sol_ori" id="sol_ori" class="form-control">
+								<option value="">Selecione</option>
+								<option value="canal_fluig">Canal Fluig</option>
+								<option value="drg_totvs">DRG TOTVS</option>
+								<option value="franquia_totvs">Franquia TOTVS</option>
+								<option value="externo">Externo</option>
+							</select>
+						</div>
+						<div class="col-sm-9">
+							<label for="sol_ori_nm_empresa">
+								Nome da Empresa
+								<strong class="is-required">*</strong>
+							</label>
+							<input type="text" name="sol_ori_nm_empresa" id="sol_ori_nm_empresa" class="form-control">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-6">
+							<label for="sol_ori_nm_contato">
+								Nome da Pessoa de Contato
+								<strong class="is-required">*</strong>
+							</label>
+							<input type="text" name="sol_ori_nm_contato" id="sol_ori_nm_contato" class="form-control">
+						</div>
+						<div class="col-sm-3">
+							<label for="sol_ori_tel_contato">
+								Telefone do Contato
+								<strong class="is-required">*</strong>
+							</label>
+							<input type="text" name="sol_ori_tel_contato" id="sol_ori_tel_contato" class="form-control">
+						</div>
+						<div class="col-sm-3">
+							<label for="sol_ori_email_contato">
+								E-mail do Contato
+								<strong class="is-required">*</strong>
+							</label>
+							<input type="text" name="sol_ori_email_contato" id="sol_ori_email_contato" class="form-control">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<h2>EXECUÇÃO</h2>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-4">
+							<label for="sol_ex_pr_sugerido">
+								Prazo Sugerido
+								<strong class="is-required">*</strong>
+							</label>
+							<input type="text" name="sol_ex_pr_sugerido" id="sol_ex_pr_sugerido" class="form-control">
+						</div>
+						<div class="col-sm-4">
+							<p>
+								<strong>Forma de Execução?</strong>
+								<strong class="is-required">*</strong>
+							</p>
+							<label class="radio-inline">
+								<input type="radio" name="sol_ex_forma" id="sol_ex_presencial" value="presencial"> Presencial
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="sol_ex_forma" id="sol_ex_remota" value="remota"> Remota
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="sol_ex_forma" id="sol_ex_ambos" value="ambos"> Ambos
+							</label>
+						</div>
+						<div class="col-sm-4">
+							<p>
+								<strong>Tem Cliente Envolvido?</strong>
+								<strong class="is-required">*</strong>
+							</p>
+							<label class="radio-inline">
+								<input type="radio" name="sol_ex_cliente" id="sol_ex_cliente_sim" value="sim"> Sim
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="sol_ex_cliente" id="sol_ex_cliente_nao" value="nao"> Não
+							</label>
+						</div>
+					</div>
+					<div class="hide" id="dados_cliente">
+						<div class="form-group">
+							<div class="col-sm-6">
+								<label for="sol_ex_cli_nome">
+									Nome do Cliente
+									<strong class="is-required">*</strong>
+								</label>
+								<input type="text" name="sol_ex_cli_nome" id="sol_ex_cli_nome" class="form-control">
+							</div>
+							<div class="col-sm-6">
+								<label for="sol_ex_cli_nm_contato">
+									Nome da Pessoa de Contato do Cliente
+									<strong class="is-required">*</strong>
+								</label>
+								<input type="text" name="sol_ex_cli_nm_contato" id="sol_ex_cli_nm_contato" class="form-control">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-6">
+								<label for="sol_ex_cli_tel_contato">
+									Telefone
+									<strong class="is-required">*</strong>
+								</label>
+								<input type="text" name="sol_ex_cli_tel_contato" id="sol_ex_cli_tel_contato" class="form-control">
+							</div>
+							<div class="col-sm-6">
+								<label for="sol_ex_cli_mail_contato">
+									E-mail
+									<strong class="is-required">*</strong>
+								</label>
+								<input type="text" name="sol_ex_cli_mail_contato" id="sol_ex_cli_mail_contato" class="form-control">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<h2>FORMA DE PAGAMENTO</h2>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-6">
+							<label for="sol_pag_origem">
+								Origem
+								<strong class="is-required">*</strong>
+							</label>
+							<select name="sol_pag_origem" id="sol_pag_origem" class="form-control">
+								<option value="">Selecione</option>
+								<option value="transferencia_gerencial">Transferência Gerencial (Unidades Próprias TOTVS)</option>
+								<option value="contra_cliente">Faturamento Contra Cliente</option>
+								<option value="contra_franquia">Faturamento Contra Franquia TOTVS</option>
+								<option value="contra_canal">Faturamento Contra Canal Fluig</option>
+								<option value="contra_drg">Investimento Fluig</option>
+							</select>
+						</div>
+						<div class="col-sm-3">
+							<label for="sol_pag_cc">
+								Centro de Custo
+							</label>
+							<input type="text" name="sol_pag_cc" id="sol_pag_cc" class="form-control">
+						</div>
+						<div class="col-sm-3">
+							<label for="sol_pag_cfp">
+								Código do Projeto CFP
+							</label>
+							<input type="text" name="sol_pag_cfp" id="sol_pag_cfp" class="form-control">
+						</div>
+					</div>
+				</fieldset>
+			</div>
+			<div class="mgt-25">
+				<fieldset id="esclarecer-duvida">
+					<legend class="sem-imagem">
+						Esclarecer Dúvida (Gestor)
+					</legend>
+					<div class="form-group">
+						<div class="col-sm-9">
+							<label for="ges_duv_nome">
+								Nome do Gestor
+							</label>
+							<input type="text" name="ges_duv_nome" id="ges_duv_nome" class="form-control" readonly>
+						</div>
+						<div class="col-sm-3">
+							<label for="ges_duv_dt_recebimento">
+								Data de Recebimento
+							</label>
+							<input type="text" name="ges_duv_dt_recebimento" id="ges_duv_dt_recebimento" class="form-control" readonly>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label for="ges_duv_respostas">
+								Respostas
+								<strong class="is-required">*</strong>
+							</label>
+							<textarea name="ges_duv_respostas" id="ges_duv_respostas" rows="2" class="form-control"></textarea>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+			<div class="mgt-25">
+				<fieldset id="avaliar-demanda">
+					<legend class="sem-imagem">
+						Avaliar Demanda (Líder)
+					</legend>
+					<div class="form-group">
+						<div class="col-sm-9">
+							<label for="lid_nome">
+								Nome do Líder
+							</label>
+							<input type="text" name="lid_nome" id="lid_nome" class="form-control" readonly>
+						</div>
+						<div class="col-sm-3">
+							<label for="lid_dt_recebimento">
+								Data de Recebimento
+							</label>
+							<input type="text" name="lid_dt_recebimento" id="lid_dt_recebimento" class="form-control" readonly>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-4">
+							<label for="lid_pr_execucao">
+								Prazo de Execução
+								<strong class="is-required">*</strong>
+							</label>
+							<input type="text" name="lid_pr_execucao" id="lid_pr_execucao" class="form-control">
+						</div>
+						<div class="col-sm-4">
+							<label for="lid_qtd_horas">
+								Quantidade de Horas
+								<strong class="is-required">*</strong>
+							</label>
+							<input type="text" name="lid_qtd_horas" id="lid_qtd_horas" class="form-control">
+						</div>
+						<div class="col-sm-4">
+							<label for="lid_vl_total">
+								Valor Total
+								<strong class="is-required">*</strong>
+							</label>
+							<input type="text" name="lid_vl_total" id="lid_vl_total" class="form-control">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-4">
+							<p>
+								<strong>Possui Inconsistência?</strong>
+								<strong class="is-required">*</strong>
+							</p>
+							<div class="radio">
+								<label>
+									<input type="radio" name="lid_inconsistencia" id="lid_i_sim" value="sim"> Sim
+								</label>
+							</div>
+							<div class="radio">
+								<label>
+									<input type="radio" name="lid_inconsistencia" id="lid_i_nao" value="nao"> Não
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-4 hide" id="div_tipo_acao">
+							<p>
+								<strong>Tipo de Ação?</strong>
+								<strong class="is-required">*</strong>
+							</p>
+							<div class="radio">
+								<label>
+									<input type="radio" name="lid_tipo_acao" id="lid_ap_aprovado" value="aprovado"> Aprovado
+								</label>
+							</div>
+							<div class="radio">
+								<label>
+									<input type="radio" name="lid_tipo_acao" id="lid_ap_reprovado" value="reprovado"> Reprovado
+								</label>
+							</div>
+							<div class="radio">
+								<label>
+									<input type="radio" name="lid_tipo_acao" id="lid_ap_consultar" value="consultar"> Consultar Gestor
+								</label>
+							</div>
+							<div class="radio">
+								<label>
+									<input type="radio" name="lid_tipo_acao" id="lid_ap_solicitar" value="solicitar"> Solicitar Aprovação
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-4 hide" id="div_urgencia">
+							<p>
+								<strong>Urgência</strong>
+								<strong class="is-required">*</strong>
+							</p>
+							<div class="radio">
+								<label>
+									<input type="radio" name="lid_urgencia" id="lid_ur_baixa" value="baixa"> Baixa
+								</label>
+							</div>
+							<div class="radio">
+								<label>
+									<input type="radio" name="lid_urgencia" id="lid_ur_media" value="media"> Média
+								</label>
+							</div>
+							<div class="radio">
+								<label>
+									<input type="radio" name="lid_urgencia" id="lid_ur_alta" value="alta"> Alta
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label for="lid_obs">
+								Observações
+								<strong class="is-required">*</strong>
+							</label>
+							<textarea name="lid_obs" id="lid_obs" rows="4" class="form-control"></textarea>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+			<div class="mgt-25">
+				<fieldset id="aprovar-demanda">
+					<legend class="sem-imagem">
+						Aprovar Demanda (Gestor)
+					</legend>
+					<div class="form-group">
+						<div class="col-sm-9">
+							<label for="ges_nome">
+								Nome do Gestor
+							</label>
+							<input type="text" name="ges_nome" id="ges_nome" class="form-control" readonly>
+						</div>
+						<div class="col-sm-3">
+							<label for="ges_dt_recebimento">
+								Data de Recebimento
+							</label>
+							<input type="text" name="ges_dt_recebimento" id="ges_dt_recebimento" class="form-control" readonly>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-3">
+							<p>
+								<strong>Aprovar Demanda?</strong>
+								<strong class="is-required">*</strong>
+							</p>
+							<label class="radio-inline">
+								<input type="radio" name="ges_ap_demanda" id="ges_ap_sim" value="sim"> Sim
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="ges_ap_demanda" id="ges_ap_nao" value="nao"> Não
+							</label>
+						</div>
+						<div class="col-sm-9">
+							<label for="ges_obs">
+								Observações
+								<strong class="is-required">*</strong>
+							</label>
+							<textarea name="ges_obs" id="ges_obs" rows="2" class="form-control"></textarea>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+			<div class="mgt-25">
+				<fieldset id="associar-demanda">
+					<legend class="sem-imagem">
+						Associar Demanda (PMO)
+					</legend>
+					<div class="form-group">
+						<div class="col-sm-9">
+							<label for="pmo_nome">
+								Nome do PMO
+							</label>
+							<input type="text" name="pmo_nome" id="pmo_nome" class="form-control" readonly>
+						</div>
+						<div class="col-sm-3">
+							<label for="pmo_dt_recebimento">
+								Data de Recebimento
+							</label>
+							<input type="text" name="pmo_dt_recebimento" id="pmo_dt_recebimento" class="form-control" readonly>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-3">
+							<p>
+								<strong>Possui Inconsistência?</strong>
+								<strong class="is-required">*</strong>
+							</p>
+							<label class="radio-inline">
+								<input type="radio" name="pmo_inconsistencia" id="pmo_i_sim" value="sim"> Sim
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="pmo_inconsistencia" id="pmo_i_nao" value="nao"> Não
+							</label>
+						</div>
+						<div id="pmo_sem_inconsistencia" class="hide">
+							<div class="col-sm-6">
+								<label for="pmo_cfp">
+									Código CFP
+									<strong class="is-required">*</strong>
+								</label>
+								<input type="text" name="pmo_cfp" id="pmo_cfp" class="form-control">
+							</div>
+							<div class="col-sm-3">
+								<p>
+									<strong>Projeto de Investimento?</strong>
+									<strong class="is-required">*</strong>
+								</p>
+								<label class="radio-inline">
+									<input type="radio" name="pmo_pro_investimento" id="pmo_pi_sim" value="sim"> Sim
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="pmo_pro_investimento" id="pmo_pi_nao" value="nao"> Não
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label for="pmo_obs">
+								Observações
+								<strong class="is-required">*</strong>
+							</label>
+							<textarea name="pmo_obs" id="pmo_obs" rows="2" class="form-control"></textarea>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+			<div class="mgt-25">
+				<fieldset id="aguardar-aprovacao">
+					<legend class="sem-imagem">
+						Aguardar Aprovação (PMO)
+					</legend>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label for="pmo_ap_nome">
+								Nome do Aprovador
+								<strong class="is-required">*</strong>
+							</label>
+							<input type="text" name="pmo_ap_nome" id="pmo_ap_nome" class="form-control">
+						</div>
+					</div>
+				</fieldset>
+			</div>
+			<div class="mgt-25">
+				<fieldset id="executar-demanda">
+					<legend class="sem-imagem">
+						Executar Demanda (Analista)
+					</legend>
+					<div class="form-group">
+						<div class="col-sm-9">
+							<label for="ana_nome">
+								Nome do Analista
+							</label>
+							<input type="text" name="ana_nome" id="ana_nome" class="form-control" readonly>
+						</div>
+						<div class="col-sm-3">
+							<label for="ana_dt_recebimento">
+								Data de Recebimento
+							</label>
+							<input type="text" name="ana_dt_recebimento" id="ana_dt_recebimento" class="form-control" readonly>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+			<div class="mgt-25">
+				<fieldset id="apontar-horas">
+					<legend class="sem-imagem">
+						Apontar Horas (Analista)
+					</legend>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label for="ana_jira">
+								Link da atividade no Jira
+							</label>
+							<input type="text" name="ana_jira" id="ana_jira" class="form-control" placeholder="http://">
+						</div>
+					</div>
+				</fieldset>
+			</div>
+			<div class="mgt-25">
+				<fieldset id="validar-solucao">
+					<legend class="sem-imagem">
+						Validar Solução (Líder)
+					</legend>
+					<div class="form-group">
+						<div class="col-sm-3">
+							<p>
+								<strong>Solução Aprovada?</strong>
+								<strong class="is-required">*</strong>
+							</p>
+							<label class="radio-inline">
+								<input type="radio" name="lid_ap_solucao" id="lid_ap_sol_sim" value="sim"> Sim
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="lid_ap_solucao" id="lid_ap_sol_nao" value="nao"> Não
+							</label>
+						</div>
+						<div class="col-sm-9">
+							<label for="lid_ap_sol_obs">
+								Observações
+								<strong class="is-required">*</strong>
+							</label>
+							<textarea name="lid_ap_sol_obs" id="lid_ap_sol_obs" rows="2" class="form-control"></textarea>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+			<div class="mgt-25">
+				<fieldset id="avaliar-reprovacao">
+					<legend class="sem-imagem">
+						Avaliar Reprovação (Líder)
+					</legend>
+					<div class="form-group">
+						<div class="col-sm-3">
+							<p>
+								<strong>Aceitar Reprovação?</strong>
+								<strong class="is-required">*</strong>
+							</p>
+							<label class="radio-inline">
+								<input type="radio" name="lid_ace_reprovacao" id="lid_ar_sim" value="sim"> Sim
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="lid_ace_reprovacao" id="lid_ar_nao" value="nao"> Não
+							</label>
+						</div>
+						<div class="col-sm-9">
+							<label for="lid_ar_obs">
+								Observações
+								<strong class="is-required">*</strong>
+							</label>
+							<textarea name="lid_ar_obs" id="lid_ar_obs" rows="2" class="form-control"></textarea>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+			<div class="mgt-25">
+				<fieldset id="avaliar-solucao">
+					<legend class="sem-imagem">
+						Avaliar Solução (Solicitante)
+					</legend>
+					<div class="form-group">
+						<div class="col-sm-3">
+							<p>
+								<strong>Solução Validada?</strong>
+								<strong class="is-required">*</strong>
+							</p>
+							<label class="radio-inline">
+								<input type="radio" name="sol_ap_solucao" id="sol_ap_sim" value="sim"> Sim
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="sol_ap_solucao" id="sol_ap_nao" value="nao"> Não
+							</label>
+						</div>
+						<div class="col-sm-9">
+							<label for="sol_ap_sol_obs">
+								Observações
+								<strong class="is-required">*</strong>
+							</label>
+							<textarea name="sol_ap_sol_obs" id="sol_ap_sol_obs" rows="2" class="form-control"></textarea>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+			<div class="mgt-25">
+				<fieldset id="qualificar-demanda">
+					<legend class="sem-imagem">
+						Qualificar Demanda (Líder)
+					</legend>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<p>Nesta avaliação será utilizada uma escala de 0 (Zero) a 10 (Dez) onde 0 significa que você está totalmente insatisfeito e 10 está totalmente satisfeito.</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<h2>Avaliação do Produto</h2>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-3">
+							<p>
+								<strong>Apresentou Gap?</strong>
+							</p>
+							<label class="radio-inline">
+								<input type="radio" name="av_prod_gap" value="sim"> Sim
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="av_prod_gap" value="nao"> Não
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="av_prod_gap" value="nao_aplicavel" checked> não aplicável
+							</label>
+						</div>
+						<div class="col-sm-9">
+							<label for="av_prod_gap_o">
+								Observações
+							</label>
+							<textarea name="av_prod_gap_o" id="av_prod_gap_o" rows="2" class="form-control"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-3">
+							<p>
+								<strong>Apresentou Bug?</strong>
+							</p>
+							<label class="radio-inline">
+								<input type="radio" name="av_prod_bug" value="sim"> Sim
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="av_prod_bug" value="nao"> Não
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="av_prod_bug" value="nao_aplicavel" checked> não aplicável
+							</label>
+						</div>
+						<div class="col-sm-9">
+							<label for="av_prod_bug_o">
+								Observações
+							</label>
+							<textarea name="av_prod_bug_o" id="av_prod_bug_o" rows="2" class="form-control"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-3">
+							<p>
+								<strong>Possui chamado aberto?</strong>
+							</p>
+							<label class="radio-inline">
+								<input type="radio" name="av_prod_chamado" value="sim"> Sim
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="av_prod_chamado" value="nao"> Não
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="av_prod_chamado" value="nao_aplicavel" checked> não aplicável
+							</label>
+						</div>
+						<div class="col-sm-9">
+							<label for="av_prod_chamado_o">
+								Observações
+							</label>
+							<textarea name="av_prod_chamado_o" id="av_prod_chamado_o" rows="2" class="form-control"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-3">
+							<p>
+								<strong>Teve envolvimento do time de Produto?</strong>
+							</p>
+							<label class="radio-inline">
+								<input type="radio" name="av_prod_envolvimento" value="sim"> Sim
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="av_prod_envolvimento" value="nao"> Não
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="av_prod_envolvimento" value="nao_aplicavel" checked> não aplicável
+							</label>
+						</div>
+						<div class="col-sm-9">
+							<label for="av_prod_envolvimento_o">
+								Observações
+							</label>
+							<textarea name="av_prod_envolvimento_o" id="av_prod_envolvimento_o" rows="2" class="form-control"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-3">
+							<label for="av_prod_percepcao">
+								Qual a percepção do cliente quanto ao suporte de Produto?
+							</label>
+							<select name="av_prod_percepcao" id="av_prod_percepcao" class="form-control">
+								<option value="nao_aplicavel">Não Aplicável</option>
+								<option value="0">0</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+							</select>
+						</div>
+						<div class="col-sm-9">
+							<label for="av_prod_percepcao_o">
+								Observações
+							</label>
+							<textarea name="av_prod_percepcao_o" id="av_prod_percepcao_o" rows="3" class="form-control"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<h2>Avaliação do Canal Fluig</h2>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-3">
+							<label for="av_can_prf_gp">
+								Proficiência em Gestão de Projeto?
+							</label>
+							<select name="av_can_prf_gp" id="av_can_prf_gp" class="form-control">
+								<option value="nao_aplicavel">Não Aplicável</option>
+								<option value="0">0</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+							</select>
+						</div>
+						<div class="col-sm-9">
+							<label for="av_can_prf_gp_o">
+								Observações
+							</label>
+							<textarea name="av_can_prf_gp_o" id="av_can_prf_gp_o" rows="2" class="form-control"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-3">
+							<label for="av_can_prf_tec">
+								Proficiência Técnica?
+							</label>
+							<select name="av_can_prf_tec" id="av_can_prf_tec" class="form-control">
+								<option value="nao_aplicavel">Não Aplicável</option>
+								<option value="0">0</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+							</select>
+						</div>
+						<div class="col-sm-9">
+							<label for="av_can_prf_tec_o">
+								Observações
+							</label>
+							<textarea name="av_can_prf_tec_o" id="av_can_prf_tec_o" rows="2" class="form-control"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-3">
+							<label for="av_can_prf_prod">
+								Proficiência no Produto?
+							</label>
+							<select name="av_can_prf_prod" id="av_can_prf_prod" class="form-control">
+								<option value="nao_aplicavel">Não Aplicável</option>
+								<option value="0">0</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+							</select>
+						</div>
+						<div class="col-sm-9">
+							<label for="av_can_prf_prod_o">
+								Observações
+							</label>
+							<textarea name="av_can_prf_prod_o" id="av_can_prf_prod_o" rows="2" class="form-control"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-3">
+							<label for="av_can_prf_venda">
+								Proficiência de Venda?
+							</label>
+							<select name="av_can_prf_venda" id="av_can_prf_venda" class="form-control">
+								<option value="nao_aplicavel">Não Aplicável</option>
+								<option value="0">0</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+							</select>
+						</div>
+						<div class="col-sm-9">
+							<label for="av_can_prf_venda_o">
+								Observações
+							</label>
+							<textarea name="av_can_prf_venda_o" id="av_can_prf_venda_o" rows="2" class="form-control"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-3">
+							<p>
+								<strong>Canal Certificado?</strong>
+							</p>
+							<label class="radio-inline">
+								<input type="radio" name="av_can_cert" value="sim"> Sim
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="av_can_cert" value="nao"> Não
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="av_can_cert" value="nao_aplicavel" checked> não aplicável
+							</label>
+						</div>
+						<div class="col-sm-9">
+							<label for="av_can_cert_o">
+								Observações
+							</label>
+							<textarea name="av_can_cert_o" id="av_can_cert_o" rows="2" class="form-control"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<h2>Avaliação de Cloud</h2>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-3">
+							<p>
+								<strong>Teve envolvimento do time de Cloud?</strong>
+							</p>
+							<label class="radio-inline">
+								<input type="radio" name="av_cl_envolvimento" value="sim"> Sim
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="av_cl_envolvimento" value="nao"> Não
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="av_cl_envolvimento" value="nao_aplicavel" checked> não aplicável
+							</label>
+						</div>
+						<div class="col-sm-9">
+							<label for="av_cl_envolvimento_o">
+								Observações
+							</label>
+							<textarea name="av_cl_envolvimento_o" id="av_cl_envolvimento_o" rows="2" class="form-control"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-3">
+							<p>
+								<strong>Banco de Dados apresentou problema?</strong>
+							</p>
+							<label class="radio-inline">
+								<input type="radio" name="av_cl_banco" value="sim"> Sim
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="av_cl_banco" value="nao"> Não
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="av_cl_banco" value="nao_aplicavel" checked> não aplicável
+							</label>
+						</div>
+						<div class="col-sm-9">
+							<label for="av_cl_banco_o">
+								Observações
+							</label>
+							<textarea name="av_cl_banco_o" id="av_cl_banco_o" rows="2" class="form-control"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-3">
+							<p>
+								<strong>Aplicação apresentou problema?</strong>
+							</p>
+							<label class="radio-inline">
+								<input type="radio" name="av_cl_aplicacao" value="sim"> Sim
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="av_cl_aplicacao" value="nao"> Não
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="av_cl_aplicacao" value="nao_aplicavel" checked> não aplicável
+							</label>
+						</div>
+						<div class="col-sm-9">
+							<label for="av_cl_aplicacao_o">
+								Observações
+							</label>
+							<textarea name="av_cl_aplicacao_o" id="av_cl_aplicacao_o" rows="2" class="form-control"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-3">
+							<p>
+								<strong>Rede apresentou problema?</strong>
+							</p>
+							<label class="radio-inline">
+								<input type="radio" name="av_cl_rede" value="sim"> Sim
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="av_cl_rede" value="nao"> Não
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="av_cl_rede" value="nao_aplicavel" checked> não aplicável
+							</label>
+						</div>
+						<div class="col-sm-9">
+							<label for="av_cl_rede_o">
+								Observações
+							</label>
+							<textarea name="av_cl_rede_o" id="av_cl_rede_o" rows="2" class="form-control"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-3">
+							<p>
+								<strong>Apresentou problema operacional?</strong>
+							</p>
+							<label class="radio-inline">
+								<input type="radio" name="av_cl_operacional" value="sim"> Sim
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="av_cl_operacional" value="nao"> Não
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="av_cl_operacional" value="nao_aplicavel" checked> não aplicável
+							</label>
+						</div>
+						<div class="col-sm-9">
+							<label for="av_cl_operacional_o">
+								Observações
+							</label>
+							<textarea name="av_cl_operacional_o" id="av_cl_operacional_o" rows="2" class="form-control"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-3">
+							<p>
+								<strong>Algum chamado aberto?</strong>
+							</p>
+							<label class="radio-inline">
+								<input type="radio" name="av_cl_chamado" value="sim"> Sim
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="av_cl_chamado" value="nao"> Não
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="av_cl_chamado" value="nao_aplicavel" checked> não aplicável
+							</label>
+						</div>
+						<div class="col-sm-9">
+							<label for="av_cl_chamado_o">
+								Observações
+							</label>
+							<textarea name="av_cl_chamado_o" id="av_cl_chamado_o" rows="2" class="form-control"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-3">
+							<label for="av_cl_cliente">
+								Qual a percepção do cliente quanto ao suporte de Cloud?
+							</label>
+							<select name="av_cl_cliente" id="av_cl_cliente" class="form-control">
+								<option value="nao_aplicavel">Não Aplicável</option>
+								<option value="0">0</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+							</select>
+						</div>
+						<div class="col-sm-9">
+							<label for="av_cl_cliente_o">
+								Observações
+							</label>
+							<textarea name="av_cl_cliente_o" id="av_cl_cliente_o" rows="3" class="form-control"></textarea>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+		</form>
+	</div>
+	<script src="/portal/resources/js/jquery/jquery.js"></script>
+	<script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+	<script src="js/jquery.maskedinput.min.js"></script>
+	<script src="js/cDisplayFields.js"></script>	
+</body>
+</html>

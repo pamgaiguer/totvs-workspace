@@ -1,0 +1,12 @@
+.mgt-25 { margin: 25px 0 0 0; }
+legend.com-imagem { overflow: hidden; line-height: 44px; }
+legend.com-imagem img { max-height: 50px; max-width: 250px; float: right; padding: 0 0 10px 0; }
+legend.sem-imagem { padding: 0 0 10px 0; }
+form fieldset div.form-group { overflow: hidden; }
+form fieldset strong.is-required { color: red; }
+.fluig-style-guide form fieldset .input-group-addon { position: relative; top: 0; cursor: pointer; }
+
+@media (max-width: 768px) {
+	form fieldset div.form-group div:first-child { margin: 0; }
+	form fieldset div.form-group div { margin: 15px 0 0 0; }
+}
